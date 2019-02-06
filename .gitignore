@@ -1,0 +1,4 @@
+# ignore the configuration file with secure information
+config.json
+yoink.json
+**/node_modules
