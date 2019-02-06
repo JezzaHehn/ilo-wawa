@@ -8,10 +8,8 @@
   },
   "dependencies": {
     "discord.js": "^11.4.2",
-    "freetype2": "^0.3.1",
-    "gm": "^1.23.1",
     "fs": "^0.0.1-security",
-    "discord": "^0.8.2"
+    "jimp": "^0.6.0"
   },
   "devDependencies": {},
   "scripts": {

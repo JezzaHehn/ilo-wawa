@@ -24,47 +24,34 @@ var fs = require('fs'); // for filesystem read/write
 //   }
 // });
 
-// var gm = require('gm').subClass({
-//   imageMagick: true,
-//   appPath: 'C:\\Program Files\\ImageMagick-7.0.8-Q16'
-// });
+const Jimp = require('jimp');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-console.log(client)
 
-// function imagetest() {
-//   console.log(`Attempting image test...`);
-//   // gm('').textFont("toki-pona.ttf",24)
-//   // .drawText(10, 50, "ilo wawa li ilo li wawa")
-//   // .write(`./test.jpg`, function (err) {
-//   // resize and remove EXIF profile data
-//   waso = gm('waso.jpg').options({imageMagick: true}).noProfile();
-//   console.log(`Image imported successfully!`);
-//   console.log(`Attempting size check...`);
-//   waso.options({imageMagick: true}).size(function (err, size) {
-//     if (err)
-//       console.log(`${err}`);
-//     if (!err)
-//       console.log(`w=${size.width}, h=${size.height}`);
-//   });
-//   console.log(`Attempting to write test.jpg.....`);
-//   waso.options({imageMagick: true}).write('test.jpg', function (err) {
-//     if(err) {
-//       console.log(`No luck. :( :( :( :( :(  `);
-//       console.log(err);
-//     } else {
-//       console.log(`Image test successful!!`);
-//     }
-//   });
-// }
+async function imagetest() {
+  console.log(`Attempting image test...`);
+  waso = await Jimp.read('./waso.jpg');
+  console.log(`Image imported successfully!`);
+  console.log(`Resizing...`);
+  waso.resize(200,100);
+  console.log(`Attempting to write "test.jpg".....`);
+  waso.write('test.jpg', function (err) {
+    if(err) {
+      console.log(`No luck. :( :( :( :( :(  `);
+      console.log(err);
+    } else {
+      console.log(`Image test successful!!`);
+    }
+  });
+}
 
 const dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
-  // imagetest();
+  imagetest();
 });
 
 client.on('message', async msg => { // for every message, do the following:
@@ -85,7 +72,6 @@ client.on('message', async msg => { // for every message, do the following:
       if (command === 'define') { // define each argument if toki pona word
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
-          console.log(`Attempting to define "${w}"`);
           if (w in dict) {  // if the word is in the dictionary
             var out = `───────────────────────────\n__**${w}**__`; // initialize output string with word
             var defs = dict[w].defs;
@@ -95,27 +81,41 @@ client.on('message', async msg => { // for every message, do the following:
             out += `\n*etymology:* ${dict[w].etym}`; // add etymology
             msg.channel.send(out) // send data dump to channel
           } else {
-            msg.channel.send(`───────────────────────────\nThe word "${w}" was not found in the dictionary. :book::mag::shrug:`);
+            msg.channel.send(`───────────────────────────\nThe word "${w}" was not found. :book::mag::shrug:`);
           }
         }
       }
 
+      if (command === 'sitelen') { // convert to sitelen pona
+        // combine argument list with spaces to reconstruct sentence
+        sentence = "";
+        for(var i=0; i<args.length; i++) { // for each word
+          sentence += args[i] + ' ';
+        }
+        // generate blank image based on argument list size
+        // add sentence to image in sitelen pona
+        const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+        const image = await Jimp.read(200, 100, 0xffffffff);
+
+        image.print(font, 0, 0,
+          {
+            text: sentence,
+            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+          },
+          200,  // max width
+          100   // max height
+        );
+        image.write('./test.jpg');
+
+        // reply with attachment of image
+        msg.channel.send(
+          `${msg.author} li toki:`,
+          new Discord.Attachment('./test.jpg')  // (`./${msg.id}.jpg`)
+        )
+      }
     }
   }
 });
-
-
-//   // write message onto new image
-//   gm(64, 256, "#ffffffff").textFont("toki-pona.ttf",24)
-//   .drawText(10, 50, "ilo wawa li ilo li wawa")
-//   .write(`./${msg.id}.jpg`, function (err) {
-//     console.log(err)
-//   });
-//   // reply with attachment of image
-//   msg.channel.send(
-//     `${msg.author} li toki:`,
-//     new Discord.Attachment(`./${msg.id}.jpg`)
-//   )
-
 
 client.login(config.token);
