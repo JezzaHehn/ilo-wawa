@@ -1,0 +1,43 @@
+{
+  "name": "ilo-wawa",
+  "version": "1.0.0",
+  "description": "ilo wawa li Discord Bot pi pana sitelen pi sitelen pona.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "freetype2": "^0.3.1",
+    "gm": "^1.23.1",
+    "fs": "^0.0.1-security",
+    "discord": "^0.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthrakia/ilo-wawa.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ilo",
+    "wawa",
+    "dictionary",
+    "toki",
+    "pona",
+    "sitelen",
+    "conlang",
+    "linguistics",
+    "language"
+  ],
+  "author": "Jezza Hehn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anthrakia/ilo-wawa/issues"
+  },
+  "homepage": "https://github.com/Anthrakia/ilo-wawa#readme"
+}

@@ -1,0 +1,937 @@
+{
+  "a": {
+    "defs": [
+      "emphasis, emotion, or confirmation"
+    ],
+    "etym": "{onomatopoetic}"
+  },
+  "akesi": {
+    "defs": [
+      "reptile, amphibian, non-cute animal"
+    ],
+    "etym": "Dutch *hagedis* 'lizard'"
+  },
+  "ala": {
+    "defs": [
+      "no, not, zero"
+    ],
+    "etym": "Georgian *არა ara* 'no'"
+  },
+  "alasa": {
+    "defs": [
+      "hunt, forage"
+    ],
+    "etym": "Acadian French *à la chasse* 'hunting' ← French *chasser* 'to hunt'"
+  },
+  "ale": {
+    "defs": [
+      "all, abundant, countless, bountiful, every, plentiful",
+      "abundance, everything, life, universe",
+      "the number 20",
+      "the number 100",
+      "*ali*"
+    ],
+    "etym": "Dutch *alle* 'all'"
+  },
+  "ali": {
+    "defs": [
+      "all, abundant, countless, bountiful, every, plentiful",
+      "abundance, everything, life, universe",
+      "the number 20",
+      "the number 100",
+      "*ale*"
+    ],
+    "etym": "toki pona *ale*"
+  },
+  "anpa": {
+    "defs": [
+      "bowing down, downward, humble, lowly, dependent"
+    ],
+    "etym": "Acadian French *en bas* 'below'"
+  },
+  "ante": {
+    "defs": [
+      "different, altered, changed, other"
+    ],
+    "etym": "Dutch *ander* 'other, different'"
+  },
+  "anu": {
+    "defs": [
+      "or",
+      "choose"
+    ],
+    "etym": "Georgian *ან an* 'or'"
+  },
+  "awen": {
+    "defs": [
+      "enduring, kept, protected, safe, waiting, staying",
+      "to continue"
+    ],
+    "etym": "Dutch *houden* 'keep, care for, hold (in a particular state)'"
+  },
+  "e": {
+    "defs": [
+      "(before the direct object)"
+    ],
+    "etym": "jan Sonja"
+  },
+  "en": {
+    "defs": [
+      "(between multiple subjects)"
+    ],
+    "etym": "Dutch *en* 'and'"
+  },
+  "esun": {
+    "defs": [
+      "market, shop, fair, bazaar, business transaction"
+    ],
+    "etym": "of uncertain Akan origin"
+  },
+  "ijo": {
+    "defs": [
+      "thing, phenomenon, object, matter"
+    ],
+    "etym": "Esperanto *io* 'something'"
+  },
+  "ike": {
+    "defs": [
+      "bad, negative; non-essential, irrelevant"
+    ],
+    "etym": "Finnish *ilkeä* 'bad, mean, wicked'"
+  },
+  "iki": {
+    "defs": [
+      "she, he, it, they"
+    ],
+    "etym": "unknown",
+    "rep": "replaced by *ona*"
+  },
+  "ilo": {
+    "defs": [
+      "tool, implement, machine, device"
+    ],
+    "etym": "Esperanto *ilo* 'tool'"
+  },
+  "insa": {
+    "defs": [
+      "centre, content, inside, between; internal organ, stomach"
+    ],
+    "etym": "Tok Pisin *insait* 'inside, center, stomach' ← English *inside*"
+  },
+  "jaki": {
+    "defs": [
+      "disgusting, obscene, sickly, toxic, unclean, unsanitary"
+    ],
+    "etym": "English *yucky*"
+  },
+  "jan": {
+    "defs": [
+      "human being, person, somebody"
+    ],
+    "etym": "Cantonese *人 jan* 'person'"
+  },
+  "jelo": {
+    "defs": [
+      "yellow, yellowish"
+    ],
+    "etym": "English *yellow*"
+  },
+  "jo": {
+    "defs": [
+      "have, carry, contain, hold"
+    ],
+    "etym": "Mandarin *有 yǒu* 'have'"
+  },
+  "kala": {
+    "defs": [
+      "fish, marine animal, sea creature"
+    ],
+    "etym": "Finnish *kala* 'fish'"
+  },
+  "kalama": {
+    "defs": [
+      "(produce a) sound; recite, utter aloud"
+    ],
+    "etym": "Serbo-Croatian *galama галама* 'fuss, noise'"
+  },
+  "kama": {
+    "defs": [
+      "arriving, coming, future, summoned",
+      "become, manage to, succeed in"
+    ],
+    "etym": "Tok Pisin *kamap* 'event, arrive, happen, become, bring about, summon' ← English *come up*"
+  },
+  "kamalawala": {
+    "defs": [
+      "anarchy"
+    ],
+    "etym": "toki pona *'kama pi lawa ala'*"
+  },
+  "kan": {
+    "defs": [
+      "with, among"
+    ],
+    "etym": "?Finnish *kanssa* 'with'",
+    "rep": "generally replaced by *poka*"
+  },
+  "kapa": {
+    "defs": [
+      "hill, protrusion"
+    ],
+    "etym": "?Dutch *kop* 'head, cup' or ?Esperanto *kapo* 'head'",
+    "rep": "replaced by *nena*"
+  },
+  "kapesi": {
+    "defs": [
+      "brown, grey"
+    ],
+    "etym": "?French *café* 'light brown' or Greek *καφές kafés* 'coffee'",
+    "rep": "generally replaced by *pimeja*"
+  },
+  "kasi": {
+    "defs": [
+      "plant, vegetation; herb, leaf"
+    ],
+    "etym": "Finnish *kasvi* 'plant'"
+  },
+  "ke": {
+    "defs": [
+      "[interjection expressing contextual agreement]",
+      "*oke*"
+    ],
+    "etym": "English *'kay* ← *okay*"
+  },
+  "ken": {
+    "defs": [
+      "be able to, be allowed to, can, may",
+      "possible"
+    ],
+    "etym": "Tok Pisin *ken* ← English *can*"
+  },
+  "kepeken": {
+    "defs": [
+      "use, with, by means of"
+    ],
+    "etym": "Dutch *gebruiken* 'to use'"
+  },
+  "kijetesantakalu": {
+    "defs": [
+      "any animal from the Procyonidae family, such as raccoons, coatis, kinkajous, olingos, ringtails, and cacomistles",
+      "Sonja's April Fool's Day joke from 2009"
+    ],
+    "etym": "Finnish *kierteishäntäkarhu* 'kinkajou' ← *kierteis* 'spiral' + *häntä* 'tail' + *karhu* 'bear'"
+  },
+  "kili": {
+    "defs": [
+      "fruit, vegetable, mushroom"
+    ],
+    "etym": "Georgian *ხილი xili* 'fruit'"
+  },
+  "kin": {
+    "defs": [
+      "too, also, as well"
+    ],
+    "etym": "Finnish *-kin* 'too, also, still'"
+  },
+  "kipisi": {
+    "defs": [
+      "split, cut"
+    ],
+    "etym": "Swahili *kipisi* 'sliver, small piece of wood'"
+  },
+  "kiwen": {
+    "defs": [
+      "hard object, metal, rock, stone"
+    ],
+    "etym": "Finnish *kiven*, genitive of *kivi* 'stone'"
+  },
+  "ko": {
+    "defs": [
+      "clay, clinging form, dough, semi-solid, paste, powder"
+    ],
+    "etym": "Cantonese *膏 gou* 'cream, paste'"
+  },
+  "kule": {
+    "defs": [
+      "colourful, pigmented, painted",
+      "*of or relating to the LGBT+ community*"
+    ],
+    "etym": "French *couleur* 'color'"
+  },
+  "kulu": {
+    "defs": [
+      "community, company, group, nation, society, tribe",
+      "*kulupu*",
+      "the number 6 (especially in senary)"
+    ],
+    "etym": "toki pona *kulupu*"
+  },
+  "kulupu": {
+    "defs": [
+      "community, company, group, nation, society, tribe",
+      "*kulu*"
+    ],
+    "etym": "Tongan *kulupu* ← English *group*"
+  },
+  "kuntu": {
+    "defs": [
+      "laughter, humor"
+    ],
+    "etym": "toki pona abbrev. *k.m.t.u.* ← *'kalama musi tan uta'*"
+  },
+  "la": {
+    "defs": [
+      "(between the context [/adverbial] phrase and the main sentence)"
+    ],
+    "etym": "Esperanto *la* '[definite article]'"
+  },
+  "lanpan": {
+    "defs": [
+      "take, seize, catch, receive"
+    ],
+    "etym": "Greek *λαμβάνω lamváno* 'take, seize, grasp, receive'"
+  },
+  "laso": {
+    "defs": [
+      "blue, green"
+    ],
+    "etym": "Welsh *glas* 'blue, inexperienced' ← Proto-Brythonic *glas* 'green, blue'"
+  },
+  "lawa": {
+    "defs": [
+      "head, mind",
+      "control, direct, guide, lead, own, plan, regulate, rule"
+    ],
+    "etym": "Serbo-Croatian *glava глава* 'head'"
+  },
+  "leko": {
+    "defs": [
+      "stairs, square, block"
+    ],
+    "etym": "?Finnish *lohko* 'block, section' or ?Danish *Lego* (← *leg godt* 'play well')"
+  },
+  "len": {
+    "defs": [
+      "cloth, clothing, fabric, textile; cover, layer of privacy"
+    ],
+    "etym": "Acadian French *linge* 'clothing'"
+  },
+  "lete": {
+    "defs": [
+      "cold, cool; uncooked, raw"
+    ],
+    "etym": "Acadian French *frette* 'cold' ← Old French *freit* 'cold'"
+  },
+  "li": {
+    "defs": [
+      "(between any subject except *mi* or *sina* alone and its verb; used to introduce a new verb with the same subject)"
+    ],
+    "etym": "Esperanto *li* 'he'"
+  },
+  "lili": {
+    "defs": [
+      "little, small, short; few; a bit; young"
+    ],
+    "etym": "Tok Pisin *liklik* 'small, little' ← Ramoaaina *liklik*"
+  },
+  "linja": {
+    "defs": [
+      "long and flexible thing; cord, hair, rope, thread, yarn"
+    ],
+    "etym": "Finnish *linja* 'line' ← Old Swedish *linia*"
+  },
+  "linluwi": {
+    "defs": [
+      "network(s), internet(s)"
+    ],
+    "etym": "Welsh *rhyngrwyd* 'Internet'"
+  },
+  "lipu": {
+    "defs": [
+      "flat object; book, document, card, paper, record, website"
+    ],
+    "etym": "Finnish *lippu* 'flag, banner, ticket'"
+  },
+  "loje": {
+    "defs": [
+      "red, reddish"
+    ],
+    "etym": "Dutch *rooie* 'red [inflected]' ← *rood* 'red'"
+  },
+  "lon": {
+    "defs": [
+      "located at, present at, real, true, existing"
+    ],
+    "etym": "Tok Pisin *long* 'at, in, on, [spacial particle]' ← English *along*"
+  },
+  "luka": {
+    "defs": [
+      "arm, hand, tactile organ",
+      "the number 5"
+    ],
+    "etym": "Serbo-Croation *ruka рука* 'hand, arm'"
+  },
+  "lukin": {
+    "defs": [
+      "look at, see, examine, observe, read, watch",
+      "seek, look for, try to"
+    ],
+    "etym": "Tok Pisin *lukim* 'see, look at' ← *luk* 'look [intransitive]' (← English *look*) + *-im* '[transitive suffix]' (← English *him, 'em*)"
+  },
+  "lupa": {
+    "defs": [
+      "door, hole, orifice, window"
+    ],
+    "etym": "Lojban *clupa* 'loop' (← Mandarin *圈 quān*, English *loop*, Hindi *पाश pāś*, Arabic *أنشوطة‏ ʾanšūṭa*)"
+  },
+  "ma": {
+    "defs": [
+      "earth, land; outdoors, world; country, territory; soil"
+    ],
+    "etym": "Finnish *maa* 'earth, land'"
+  },
+  "majuna": {
+    "defs": [
+      "old"
+    ],
+    "etym": "Esperanto *maljuna* 'old' ← *mal-* '[opposite of]' + *juna* 'young'"
+  },
+  "mama": {
+    "defs": [
+      "parent, ancestor; creator, originator; caretaker, sustainer"
+    ],
+    "etym": "Georgian *მამა mama* 'father'"
+  },
+  "mani": {
+    "defs": [
+      "money, cash, savings, wealth; large domesticated animal"
+    ],
+    "etym": "English *money*"
+  },
+  "meli": {
+    "defs": [
+      "woman, female, feminine person; wife"
+    ],
+    "etym": "Tok Pisin *meri* 'woman, wife, feminine' ← Tolai *mari* 'pretty'"
+  },
+  "melome": {
+    "defs": [
+      "sapphic, lesbian, wlw (women/fem-aligned people loving women/fem-aligned people)"
+    ],
+    "etym": "toki pona *'meli pi olin meli'*"
+  },
+  "mi": {
+    "defs": [
+      "I, me, we, us"
+    ],
+    "etym": "Esperanto *mi* 'I, me'"
+  },
+  "mije": {
+    "defs": [
+      "man, male, masculine person; husband"
+    ],
+    "etym": "Finnish *mies* 'man, husband'"
+  },
+  "mijomi": {
+    "defs": [
+      "gay, mlm (men/masc-aligned people loving men/masc-aligned people)"
+    ],
+    "etym": "toki pona *'mije pi olin mije'*"
+  },
+  "moli": {
+    "defs": [
+      "dead, dying"
+    ],
+    "etym": "French *mourir* 'die'"
+  },
+  "moku": {
+    "defs": [
+      "eat, drink, consume, swallow, ingest"
+    ],
+    "etym": "Japanese *モグモグ mogumogu* 'munching'"
+  },
+  "monsi": {
+    "defs": [
+      "back, behind, rear"
+    ],
+    "etym": "Acadian French *mon tchu* '{vulgar} my ass'"
+  },
+  "monsuta": {
+    "defs": [
+      "fear, monster "
+    ],
+    "etym": "?Japanese *モンスター monsutā* 'monster' ← English *monster*"
+  },
+  "mu": {
+    "defs": [
+      "(animal noise or communication)"
+    ],
+    "etym": "{onomatopoetic}"
+  },
+  "mun": {
+    "defs": [
+      "moon, night sky object, star"
+    ],
+    "etym": "English *moon*"
+  },
+  "musi": {
+    "defs": [
+      "artisitic, entertaining, frivolous, playful, recreation"
+    ],
+    "etym": "Esperanto *amuzi* 'have fun'"
+  },
+  "mute": {
+    "defs": [
+      "many, a lot, more, much, several, very",
+      "quantity"
+    ],
+    "etym": "Esperanto *multe* 'a lot'"
+  },
+  "namako": {
+    "defs": [
+      "embellishment, spice",
+      "extra, additional"
+    ],
+    "etym": "Hindi *नमक namak* 'salt' ← Persian *نمک namak* 'salt'"
+  },
+  "nanpa": {
+    "defs": [
+      "-th(ordinal number)",
+      "numbers"
+    ],
+    "etym": "Tok Pisin *namba* 'number, [ordinal marker]' ← English *number*"
+  },
+  "nasa": {
+    "defs": [
+      "unusual, strange; foolish, crazy; drunk, intoxicated"
+    ],
+    "etym": "Tok Pisin *nasau* 'stupid'"
+  },
+  "nasin": {
+    "defs": [
+      "way, custom, doctrine, method, path, road"
+    ],
+    "etym": "Serbo-Croation *način начин* 'way, method'"
+  },
+  "nena": {
+    "defs": [
+      "bump, button, hill, mountain, nose, protuberance"
+    ],
+    "etym": "Finnish *nenä* 'nose'"
+  },
+  "ni": {
+    "defs": [
+      "that, this"
+    ],
+    "etym": "Cantonese *呢 ni* 'this'"
+  },
+  "nimi": {
+    "defs": [
+      "name, word"
+    ],
+    "etym": "Finnish *nimi* 'name'"
+  },
+  "noka": {
+    "defs": [
+      "foot, leg, organ of locomotion; bottom, lower part"
+    ],
+    "etym": "Serbo-Croatian *noga нога* 'foot, leg'"
+  },
+  "o": {
+    "defs": [
+      "hey! O! (vocative or imperative)"
+    ],
+    "etym": "Georgian *-ო -o* '[vocative suffix]' & English *oh*"
+  },
+  "oke": {
+    "defs": [
+      "[interjection expressing contextual agreement]",
+      "*ke*"
+    ],
+    "etym": "English *okay*"
+  },
+  "oko": {
+    "defs": [
+      "eye"
+    ],
+    "etym": "Serbo-Croation *оko око* 'eye'"
+  },
+  "olin": {
+    "defs": [
+      "love, have compassion for, respect, show affection to"
+    ],
+    "etym": "Serbo-Croation *volim волим* 'I love'"
+  },
+  "omen": {
+    "defs": [
+      "sarcasm, sarcastic, irony, ironic"
+    ],
+    "etym": "toki pona abbrev. *o.m.e.m.* ← *'o moli e mi'*"
+  },
+  "open": {
+    "defs": [
+      "begin, start; open; turn on"
+    ],
+    "etym": "English *open*"
+  },
+  "pake": {
+    "defs": [
+      "stop, cease"
+    ],
+    "etym": "unknown"
+  },
+  "pali": {
+    "defs": [
+      "do, take action on, work on; build, make, prepare"
+    ],
+    "etym": "Esperanto *fari* 'do, make'"
+  },
+  "palisa": {
+    "defs": [
+      "long hard thing; branch, rod, stick"
+    ],
+    "etym": "Serbo-Croatian *palica палица* 'bat, rod, cane'"
+  },
+  "pan": {
+    "defs": [
+      "cereal, grain; barley, corn, oat, rice, wheat; bread, pasta"
+    ],
+    "etym": "common Romance *pan* 'bread' & Japanese *パン pan* 'bread' (← Portuguese *pão* 'bread)"
+  },
+  "pana": {
+    "defs": [
+      "give, send, emit, provide, put, release"
+    ],
+    "etym": "?Finnish *panna* 'put, set, place'"
+  },
+  "pasila": {
+    "defs": [
+      "good, easy"
+    ],
+    "etym": "?French *facile* 'easy'",
+    "rep": "generally replaced by *pona*"
+  },
+  "pata": {
+    "defs": [
+      "sibling"
+    ],
+    "etym": "?Serbo-Croatian *brat брат* \"brother\" or ?Tok Pisin *b(a)rata* 'brother, paternal cousin (of the same gender), woman's sister' (← English *brother*)",
+    "rep": "generally replaced by *jan sama*"
+  },
+  "peto": {
+    "defs": [
+      "cry, tear(s)"
+    ],
+    "etym": "toki pona *'pana e telo oko'*"
+  },
+  "pi": {
+    "defs": [
+      "of"
+    ],
+    "etym": "Tok Pisin *bilong* 'of' ← English *belong*"
+  },
+  "pilin": {
+    "defs": [
+      "heart (physical or emotional)",
+      "feeling (an emotion, a direct experience)"
+    ],
+    "etym": "Tok Pisin *pilim* 'feel' ← English *feel* + *-im* '[transitive suffix]' (← English *him, 'em*)"
+  },
+  "pimeja": {
+    "defs": [
+      "black, dark, unlit"
+    ],
+    "etym": "Finnish *pimeä* 'dark'"
+  },
+  "pini": {
+    "defs": [
+      "ago, completed, ended, finished, past"
+    ],
+    "etym": "Acadian French *fini* 'finished, completed' & Tok Pisin *pinis* '[perfective aspect]' ← English *finish*"
+  },
+  "pipi": {
+    "defs": [
+      "bug, insect, ant, spider"
+    ],
+    "etym": "Acadian French *bibitte* 'bug'"
+  },
+  "pipo": {
+    "defs": [
+      "annoy, annoyance, bothersome, boring"
+    ],
+    "etym": "toki pona *pipi*"
+  },
+  "po": {
+    "defs": [
+      "the number 4"
+    ],
+    "etym": "?English *four*",
+    "rep": "generally replaced by *tu tu*"
+  },
+  "poka": {
+    "defs": [
+      "hip, side; next to, nearby, vicinity"
+    ],
+    "etym": "Serbo-Croatian *boka бока*, genitive of *bok бок* 'side, flank'"
+  },
+  "poki": {
+    "defs": [
+      "container, bag, bowl, box, cup, cupboard, drawer, vessel"
+    ],
+    "etym": "Tok Pisin *bokis* 'box, {vulgar} female genitalia' ← English *box*"
+  },
+  "pona": {
+    "defs": [
+      "good, positive, useful; friendly, peaceful; simple"
+    ],
+    "etym": "Esperanto *bona* 'good'"
+  },
+  "powe": {
+    "defs": [
+      "unreal, false, untrue, pretend, deceive, trick"
+    ],
+    "etym": "?French *faux* 'false'"
+  },
+  "pu": {
+    "defs": [
+      "interacting with the official Toki Pona book"
+    ],
+    "etym": "?Mandarin *普 pǔ* 'general, common,"
+  },
+  "sama": {
+    "defs": [
+      "same, similar; each other; sibling, peer, fellow",
+      "as, like"
+    ],
+    "etym": "Finnish & Esperanto *sama* 'same'"
+  },
+  "seli": {
+    "defs": [
+      "fire; cooking element, chemical reaction, heat source"
+    ],
+    "etym": "Georgian *ცხელი cxeli* 'hot'"
+  },
+  "selo": {
+    "defs": [
+      "outer form, outer layer; bark, peel, shell, skin; boundary"
+    ],
+    "etym": "Esperanto *ŝelo* 'skin, peel'"
+  },
+  "seme": {
+    "defs": [
+      "what? which?"
+    ],
+    "etym": "Mandarin *什麼 shénme* 'what, something'"
+  },
+  "sewi": {
+    "defs": [
+      "area above, highest part, something elevated",
+      "awe-inspiring, divine, sacred, supernatural"
+    ],
+    "etym": "Georgian *ზევით zevit* 'upwards'"
+  },
+  "sijelo": {
+    "defs": [
+      "body (of person or animal), physical state, torso"
+    ],
+    "etym": "Serbo-Croation *tijelo тијело* 'body'"
+  },
+  "sike": {
+    "defs": [
+      "round or circular thing; ball, circle, cycle",
+      "of one year"
+    ],
+    "etym": "English *circle*"
+  },
+  "sin": {
+    "defs": [
+      "renewal, newness",
+      "new, fresh",
+      "again"
+    ],
+    "etym": "Mandarin *新 xīn* 'new, fresh'"
+  },
+  "sina": {
+    "defs": [
+      "you, your"
+    ],
+    "etym": "Finnish *sinä* 'you'"
+  },
+  "sinpin": {
+    "defs": [
+      "face, foremost, front, wall"
+    ],
+    "etym": "Cantonese *前邊 tsin bin* 'in front'"
+  },
+  "sitelen": {
+    "defs": [
+      "image, picture, representation, symbol, mark, writing"
+    ],
+    "etym": "Dutch *schilderen* 'paint'"
+  },
+  "sona": {
+    "defs": [
+      "know, be skilled in, be wise about, have information on",
+      "know how to"
+    ],
+    "etym": "Georgian *ცოდნა codna* 'knowledge'"
+  },
+  "soweli": {
+    "defs": [
+      "animal, beast, land mammal",
+      "wild"
+    ],
+    "etym": "Georgian *ცხოველი cxoveli* 'beastly animal, lively, passionate'"
+  },
+  "suli": {
+    "defs": [
+      "big, heavy, large, long, tall; important; adult"
+    ],
+    "etym": "Finnish *suuri* 'big, large, great'"
+  },
+  "suno": {
+    "defs": [
+      "sun; light, brightness, glow, radiance, shine; light source"
+    ],
+    "etym": "Esperanot *suno* 'sun'"
+  },
+  "supa": {
+    "defs": [
+      "horizontal surface, thing to put or rest something on"
+    ],
+    "etym": "French & English *surface*, Esperanto *surfaco*"
+  },
+  "suwi": {
+    "defs": [
+      "sweet, fragrant; cute, innocent, adorable"
+    ],
+    "etym": "Tok Pisin *suwi* ← English *sweet*"
+  },
+  "tan": {
+    "defs": [
+      "by, from, because of",
+      "origin, cause"
+    ],
+    "etym": "Cantonese *從 tsung* 'from'"
+  },
+  "taso": {
+    "defs": [
+      "but, however,",
+      "only"
+    ],
+    "etym": "Tok Pisin *tasol* 'just, only, but, however' ← English *that's all*"
+  },
+  "tawa": {
+    "defs": [
+      "going to, toward; for; from the perspective of",
+      "moving"
+    ],
+    "etym": "English *towards*"
+  },
+  "telo": {
+    "defs": [
+      "water, liquid, fluid, wet substance; beverage"
+    ],
+    "etym": "Acadian French *de l'eau* '(some) water'"
+  },
+  "ten": {
+    "defs": [
+      "time, duration, moment, occasion, period, situation",
+      "clipping of *'tenpo'*"
+    ],
+    "etym": "toki pona *tenpo* ← Esperanto *tempo* 'time'"
+  },
+  "tenpo": {
+    "defs": [
+      "time, duration, moment, occasion, period, situation"
+    ],
+    "etym": "Esperanto *tempo* 'time'"
+  },
+  "toki": {
+    "defs": [
+      "communicate, say, speak, talk, *say*, use language, think"
+    ],
+    "etym": "Tok Pisin *tok* ← English *talk*"
+  },
+  "tomo": {
+    "defs": [
+      "indoor space; building, home, house, room"
+    ],
+    "etym": "Esperanto *domo* 'house'"
+  },
+  "tu": {
+    "defs": [
+      "the number 2"
+    ],
+    "etym": "English *two*, Esperanto *du*"
+  },
+  "tuli": {
+    "defs": [
+      "the number 3",
+      "_san_"
+    ],
+    "etym": "English *three*",
+    "rep": "generally replaced by *tu wan*"
+  },
+  "unpa": {
+    "defs": [
+      "have sexual or marital relations with"
+    ],
+    "etym": "?{onomatopoetic}"
+  },
+  "uta": {
+    "defs": [
+      "mouth, lips, oral cavity, jaw"
+    ],
+    "etym": "Serbo-Croatian *usta уста* 'mouth'"
+  },
+  "utala": {
+    "defs": [
+      "battle, challenge, compete against, struggle against"
+    ],
+    "etym": "Serbo-Croation *udarati ударати* 'strike, hit, hurt'"
+  },
+  "walo": {
+    "defs": [
+      "white, whitish; light-coloured, pale"
+    ],
+    "etym": "Finnish *valko-* 'white'"
+  },
+  "wan": {
+    "defs": [
+      "unique, united",
+      "the number 1"
+    ],
+    "etym": "English *one*"
+  },
+  "waso": {
+    "defs": [
+      "bird, flying creature, winged animal"
+    ],
+    "etym": "French *oiseau* 'bird'"
+  },
+  "wawa": {
+    "defs": [
+      "strong, powerful; confident, sure; energetic, intense"
+    ],
+    "etym": "Finnish *vahva* 'strong, powerful, thick'"
+  },
+  "weka": {
+    "defs": [
+      "absent, away, ignored"
+    ],
+    "etym": "Dutch *weg* 'away, gone'"
+  },
+  "wesu": {
+    "defs": [
+      "rebel, protest, defiance against big odds"
+    ],
+    "etym": "Japanese *押す osu* 'push, shove'"
+  },
+  "wi": {
+    "defs": [
+      "*first person singular exclusive pronoun*, *'mi'* when it does not include *'sina'*"
+    ],
+    "etym": "English *we*"
+  }
+}
