@@ -59,7 +59,7 @@ console.log(client)
 //   });
 // }
 
-var dict = require('./lib/rawdict.json');
+var dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 // function savedict() {
 //   fs.writeFile("./lib/rawdict.json", JSON.stringify(dict, null, 2),
@@ -81,51 +81,14 @@ client.on('ready', () => {
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
-    if (msg.content === 'ping') {
+    if (msg.content === 'ping') { // test connection time
       const m = await msg.channel.send("Ping?");
       const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
       m.edit(reply);
       console.log(reply);
     }
-    if(msg.author.bot) { // if it's a bot (in this case, mee6)
-      console.log(msg.content);
-      var word = wordregex.exec(msg.content)[1];
-      console.log("----------------");
-      console.log(`Word: ${word}`);
-      var defs = [];  // list of definitions for the word
-      var def;        // definition placeholder
-      do {
-        def = defregex.exec(msg.content);
-        if(!def) break;
-        def = def[1];
-        console.log(`definition: ${def}`);
-        defs[defs.length] = def;
-      } while(true);
-      // var def, defs;
-      // def = defregex.exec(msg.content)[1];
-      // defs = def;
-      // console.log("----------------");
-      // console.log(`def: ${def}`);
-      // while ((def = defregex.exec(msg.content)[1]) !== null){
-      //   defs[defs.length] = def;
-      //   console.log("----------------");
-      //   console.log(`def: ${def}`);
-      // }
-      var rep = repregex.exec(msg.content);
-      if(rep) {
-        rep = rep[1];
-        console.log(`replacement: ${rep}`);
-      }
-      var etym = etymregex.exec(msg.content)[1];
-      console.log(`etymology: ${etym}`);
-      var item = {
-        "defs":defs,  // definition array
-        "etym":etym   // etymology
-      }
-      if(rep) item.rep = rep;
-      console.log("----------------");
-      rawdict[word] = item;
-      savedict();
+    if (msg.content.startsWith(config.prefix)) {
+      // do stuff
     }
   }
 });
