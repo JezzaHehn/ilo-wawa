@@ -59,19 +59,7 @@ console.log(client)
 //   });
 // }
 
-var dict = require('./lib/rawdict.json'); // dictionary of toki pona words
-
-// function savedict() {
-//   fs.writeFile("./lib/rawdict.json", JSON.stringify(dict, null, 2),
-//     function(err) {
-//       if (err) {
-//         console.log("Dictionary couldn't be saved. :(   ");
-//         console.log(err);
-//       } else {
-//         console.log("Dictionary saved successfully!");
-//       }
-//   });
-// }
+const dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -81,19 +69,42 @@ client.on('ready', () => {
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
-    if (msg.content === 'ping') { // test connection time
-      const m = await msg.channel.send("Ping?");
-      const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
-      m.edit(reply);
-      console.log(reply);
-    }
     if (msg.content.startsWith(config.prefix)) {
-      // do stuff
+
+      // first split the arguments, remove prefix, shift to lower case
+      const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
+
+      if (command === 'ping') { // test connection time
+        const m = await msg.channel.send("Ping?");
+        const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
+        m.edit(reply);
+        console.log(reply);
+      }
+
+      if (command === 'define') { // define each argument if toki pona word
+        for(var i=0; i<args.length; i++) { // for each word
+          w = args[i];
+          console.log(`Attempting to define "${w}"`);
+          if (w in dict) {  // if the word is in the dictionary
+            var out = `───────────────────────────\n__**${w}**__`; // initialize output string with word
+            var defs = dict[w].defs;
+            for(var j=0; j<defs.length; j++) {
+              out += `\n• ${defs[j]}`;  // add each definition to output
+            }
+            out += `\n*etymology:* ${dict[w].etym}`; // add etymology
+            msg.channel.send(out) // send data dump to channel
+          } else {
+            msg.channel.send(`───────────────────────────\nThe word "${w}" was not found in the dictionary. :book::mag::shrug:`);
+          }
+        }
+      }
+
     }
   }
 });
 
-// if(msg.content.startsWith(config.prefix)) {
+
 //   // write message onto new image
 //   gm(64, 256, "#ffffffff").textFont("toki-pona.ttf",24)
 //   .drawText(10, 50, "ilo wawa li ilo li wawa")
@@ -105,7 +116,6 @@ client.on('message', async msg => { // for every message, do the following:
 //     `${msg.author} li toki:`,
 //     new Discord.Attachment(`./${msg.id}.jpg`)
 //   )
-// };
 
 
 client.login(config.token);
