@@ -12,36 +12,18 @@ const config = require("./config.json");
 // utility functions for filesystem read/write
 var fs = require('fs');
 
+// for spawning python process
+const spawn = require("child_process").spawn;
+
 // Discord bot library
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
-// libraries for saving canvases to images before sending
-// const { createCanvas, loadImage } = require('canvas')
-// const canvasToImage = require('canvas-to-image')
-
-// async function imagetest() {
-//   console.log(`Attempting image test...`);
-//
-//   // create a blank canvas
-//   const canvas = createCanvas(200, 100)
-//   const ctx = canvas.getContext('2d')
-//
-//   // write "ni li sitelen"
-//   ctx.font = '30px toki-pona'
-//   ctx.fillText('ni li sitelen', 50, 100)
-//
-//   canvasToImage(ctx);
-//
-//   console.log(`Image test successful!!`);
-// }
 
 const dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
-  // imagetest();
 });
 
 client.on('message', async msg => { // for every message, do the following:
@@ -104,32 +86,26 @@ client.on('message', async msg => { // for every message, do the following:
       } // end pu
 
 
-      // if (command === 'sitelen') { // convert to sitelen pona
-      //   // combine argument list with spaces to reconstruct sentence
-      //   sentence = "";
-      //   for(var i=0; i<args.length; i++) { // for each word
-      //     sentence += args[i] + ' ';
-      //   }
-      //
-      //   // save message id as filename string
-      //   const fn = `${msg.id}.png`;
-      //
-      //   // create a blank canvas
-      //   var canvas = createCanvas(200, 100)
-      //   var ctx = canvas.getContext('2d')
-      //
-      //   // add sentence to image in sitelen pona
-      //   ctx.font = '30px toki-pona'
-      //   ctx.fillText(sentence, 50, 100)
-      //
-      //   canvasToImage(ctx);
-      //
-      //   // reply with attachment of image
-      //   msg.channel.send(
-      //     `${msg.author} li toki e ni:`,
-      //     new Discord.Attachment(fn)
-      //   )
-      // } // end sitelen
+      if (command === 'sitelen') { // convert to sitelen pona
+        // combine argument list with spaces to reconstruct sentence
+        sentence = "";
+        for(var i=0; i<args.length; i++) { // for each word
+          sentence += args[i] + ' ';
+        }
+
+        // call python function to put text in image
+        const pythonProcess = await spawn('python',["./sitelen.py", sentence]);
+
+        // reply with attachment of image
+        pythonProcess.on('close', (err) => {
+          if (err !== 0) {
+            console.log(`process exited with error: ${err}`);
+          } else {
+            msg.channel.send(`${msg.author} li toki e ni:`,
+            new Discord.Attachment("sitelen.png"));
+          }
+        });
+      } // end sitelen
 
 
     }
