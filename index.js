@@ -5,16 +5,18 @@
 //////////////////////////////////
 
 // configuration include file
+// config.token - bot token
+// config.prefix - message prefix
 const config = require("./config.json");
-//    config.token - bot token
-//    config.prefix - message prefix
 
-// utility funtions
-var fs = require('fs'); // for filesystem read/write
+// utility functions for filesystem read/write
+var fs = require('fs');
 
+// Discord bot library
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+// libraries for saving canvases to images before sending
 // const { createCanvas, loadImage } = require('canvas')
 // const canvasToImage = require('canvas-to-image')
 
@@ -59,6 +61,15 @@ client.on('message', async msg => { // for every message, do the following:
       }
 
 
+      if (command === 'help' || command === '?') { // print command list
+          var out = '__**nimi ilo pi ilo wawa**__\n';
+          out += '**define** [*arg1, arg2, arg3,...*] - Define toki pona words';
+          out += '**help** or **?** - Print this command list';
+          out += '**ping** - Determine bot connection speed';
+          out += '**pu** [*arg1, arg2, arg3,...*] - Show whether words are from The Book';
+          out += '**sitelen** - (under construction) Convert to sitelen pona';
+      }
+
       if (command === 'define') { // define each argument if toki pona word
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
@@ -98,26 +109,24 @@ client.on('message', async msg => { // for every message, do the following:
         for(var i=0; i<args.length; i++) { // for each word
           sentence += args[i] + ' ';
         }
-        // generate blank image based on argument list size
-        // add sentence to image in sitelen pona
-        const font = await Jimp.loadFont('linja pona 3 OTF.otf');
-        const image = await Jimp.read(200, 100, 0xffffffff);
 
-        image.print(font, 0, 0,
-          {
-            text: sentence,
-            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
-            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
-          },
-          200,  // max width
-          100   // max height
-        );
-        image.write('./test.jpg');
+        // save message id as filename string
+        const fn = `${msg.id}.png`;
+
+        // create a blank canvas
+        const canvas = createCanvas(200, 100)
+        const ctx = canvas.getContext('2d')
+
+        // add sentence to image in sitelen pona
+        ctx.font = '30px linja pona 3'
+        ctx.fillText(sentence, 50, 100)
+
+        canvasToImage(ctx);
 
         // reply with attachment of image
         msg.channel.send(
-          `${msg.author} li toki:`,
-          new Discord.Attachment('./test.jpg')  // (`./${msg.id}.jpg`)
+          `${msg.author} li toki e ni:`,
+          new Discord.Attachment(fn)
         )
       }
 
