@@ -12,46 +12,34 @@ const config = require("./config.json");
 // utility funtions
 var fs = require('fs'); // for filesystem read/write
 
-// import sitelen pona font using the FreeType Project
-// var freetype = require('freetype2');
-// fs.readFile('./lib/toki-pona.ttf', function(err, buffer) {
-//   if (!!err) throw err;
-//   var face = {};
-//   var err = freetype.New_Memory_Face(buffer, 0, face);
-//   if (!err) {
-//     face = face.face;
-//     console.log(face);
-//   }
-// });
-
-const Jimp = require('jimp');
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-async function imagetest() {
-  console.log(`Attempting image test...`);
-  waso = await Jimp.read('./waso.jpg');
-  console.log(`Image imported successfully!`);
-  console.log(`Resizing...`);
-  waso.resize(200,100);
-  console.log(`Attempting to write "test.jpg".....`);
-  waso.write('test.jpg', function (err) {
-    if(err) {
-      console.log(`No luck. :( :( :( :( :(  `);
-      console.log(err);
-    } else {
-      console.log(`Image test successful!!`);
-    }
-  });
-}
+// const { createCanvas, loadImage } = require('canvas')
+// const canvasToImage = require('canvas-to-image')
+
+// async function imagetest() {
+//   console.log(`Attempting image test...`);
+//
+//   // create a blank canvas
+//   const canvas = createCanvas(200, 100)
+//   const ctx = canvas.getContext('2d')
+//
+//   // write "ni li sitelen"
+//   ctx.font = '30px toki-pona'
+//   ctx.fillText('ni li sitelen', 50, 100)
+//
+//   canvasToImage(ctx);
+//
+//   console.log(`Image test successful!!`);
+// }
 
 const dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
-  imagetest();
+  // imagetest();
 });
 
 client.on('message', async msg => { // for every message, do the following:
@@ -62,6 +50,7 @@ client.on('message', async msg => { // for every message, do the following:
       const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
 
+
       if (command === 'ping') { // test connection time
         const m = await msg.channel.send("Ping?");
         const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
@@ -69,22 +58,39 @@ client.on('message', async msg => { // for every message, do the following:
         console.log(reply);
       }
 
+
       if (command === 'define') { // define each argument if toki pona word
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
+          var out = `──────────\n__**${w}**__`; // initialize output string with word
           if (w in dict) {  // if the word is in the dictionary
-            var out = `───────────────────────────\n__**${w}**__`; // initialize output string with word
             var defs = dict[w].defs;
             for(var j=0; j<defs.length; j++) {
               out += `\n• ${defs[j]}`;  // add each definition to output
             }
             out += `\n*etymology:* ${dict[w].etym}`; // add etymology
-            msg.channel.send(out) // send data dump to channel
           } else {
-            msg.channel.send(`───────────────────────────\nThe word "${w}" was not found. :book::mag::shrug:`);
+            out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
           }
+          msg.channel.send(out) // send data dump to channel
         }
       }
+
+
+      if (command === 'pu') { // is the word pu?
+        for(var i=0; i<args.length; i++) { // for each word
+          w = args[i];
+          var out = `──────────\n__**${w}**__`; // initialize output string with word
+          if (w in dict) {  // if the word is in the dictionary
+            if (dict[w].pu) out += `\nnimi '${w}' li pu. :white_check_mark:`;
+            else out += `\nnimi '${w}' li pu ala. :x:`;
+          } else {
+            out += `\nnimi "${w}" li lon ala. :book::mag::shrug: ni li pu ala. :x:`;
+          }
+          msg.channel.send(out) // send data dump to channel
+        }
+      }
+
 
       if (command === 'sitelen') { // convert to sitelen pona
         // combine argument list with spaces to reconstruct sentence
@@ -94,7 +100,7 @@ client.on('message', async msg => { // for every message, do the following:
         }
         // generate blank image based on argument list size
         // add sentence to image in sitelen pona
-        const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+        const font = await Jimp.loadFont('linja pona 3 OTF.otf');
         const image = await Jimp.read(200, 100, 0xffffffff);
 
         image.print(font, 0, 0,
@@ -114,6 +120,8 @@ client.on('message', async msg => { // for every message, do the following:
           new Discord.Attachment('./test.jpg')  // (`./${msg.id}.jpg`)
         )
       }
+
+
     }
   }
 });
