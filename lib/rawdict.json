@@ -1067,19 +1067,5 @@
     ],
     "etym": "Dutch *weg* 'away, gone'",
     "pu": true
-  },
-  "wesu": {
-    "defs": [
-      "rebel, protest, defiance against big odds"
-    ],
-    "etym": "Japanese *押す osu* 'push, shove'",
-    "pu": false
-  },
-  "wi": {
-    "defs": [
-      "*first person singular exclusive pronoun*, *'mi'* when it does not include *'sina'*"
-    ],
-    "etym": "English *we*",
-    "pu": false
   }
 }
