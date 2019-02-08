@@ -58,17 +58,18 @@ client.on('message', async msg => { // for every message, do the following:
         const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
         m.edit(reply);
         console.log(reply);
-      }
+      } // end ping
 
 
       if (command === 'help' || command === '?') { // print command list
-          var out = '__**nimi ilo pi ilo wawa**__\n';
-          out += '**define** [*arg1, arg2, arg3,...*] - Define toki pona words';
-          out += '**help** or **?** - Print this command list';
-          out += '**ping** - Determine bot connection speed';
-          out += '**pu** [*arg1, arg2, arg3,...*] - Show whether words are from The Book';
-          out += '**sitelen** - (under construction) Convert to sitelen pona';
-      }
+          var out = '__**nimi ilo pi ilo wawa**__ \n';
+          out += '\n**define** [*arg1, arg2, arg3,...*] - Define toki pona words';
+          out += '\n**help** or **?** - Print this command list';
+          out += '\n**ping** - Determine bot connection speed';
+          out += '\n**pu** [*arg1, arg2, arg3,...*] - Show whether words are from The Book';
+          out += '\n**sitelen** - (under construction) Convert to sitelen pona';
+          msg.channel.send(out) // send command list to channel
+      } // end help
 
       if (command === 'define') { // define each argument if toki pona word
         for(var i=0; i<args.length; i++) { // for each word
@@ -85,7 +86,7 @@ client.on('message', async msg => { // for every message, do the following:
           }
           msg.channel.send(out) // send data dump to channel
         }
-      }
+      } // end define
 
 
       if (command === 'pu') { // is the word pu?
@@ -100,35 +101,35 @@ client.on('message', async msg => { // for every message, do the following:
           }
           msg.channel.send(out) // send data dump to channel
         }
-      }
+      } // end pu
 
 
-      if (command === 'sitelen') { // convert to sitelen pona
-        // combine argument list with spaces to reconstruct sentence
-        sentence = "";
-        for(var i=0; i<args.length; i++) { // for each word
-          sentence += args[i] + ' ';
-        }
-
-        // save message id as filename string
-        const fn = `${msg.id}.png`;
-
-        // create a blank canvas
-        const canvas = createCanvas(200, 100)
-        const ctx = canvas.getContext('2d')
-
-        // add sentence to image in sitelen pona
-        ctx.font = '30px linja pona 3'
-        ctx.fillText(sentence, 50, 100)
-
-        canvasToImage(ctx);
-
-        // reply with attachment of image
-        msg.channel.send(
-          `${msg.author} li toki e ni:`,
-          new Discord.Attachment(fn)
-        )
-      }
+      // if (command === 'sitelen') { // convert to sitelen pona
+      //   // combine argument list with spaces to reconstruct sentence
+      //   sentence = "";
+      //   for(var i=0; i<args.length; i++) { // for each word
+      //     sentence += args[i] + ' ';
+      //   }
+      //
+      //   // save message id as filename string
+      //   const fn = `${msg.id}.png`;
+      //
+      //   // create a blank canvas
+      //   var canvas = createCanvas(200, 100)
+      //   var ctx = canvas.getContext('2d')
+      //
+      //   // add sentence to image in sitelen pona
+      //   ctx.font = '30px toki-pona'
+      //   ctx.fillText(sentence, 50, 100)
+      //
+      //   canvasToImage(ctx);
+      //
+      //   // reply with attachment of image
+      //   msg.channel.send(
+      //     `${msg.author} li toki e ni:`,
+      //     new Discord.Attachment(fn)
+      //   )
+      // } // end sitelen
 
 
     }
