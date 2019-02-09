@@ -629,6 +629,13 @@
     "etym": "Georgian *-ო -o* '[vocative suffix]' & English *oh*",
     "pu": true
   },
+  "ona": {
+    "defs": [
+      "they, she, he, it"
+    ],
+    "etym": "Serbo-Croation ona она 'she'",
+    "pu": true
+  },
   "oke": {
     "defs": [
       "[interjection expressing contextual agreement]",
@@ -806,7 +813,7 @@
     "defs": [
       "interacting with the official Toki Pona book"
     ],
-    "etym": "?Mandarin *普 pǔ* 'general, common,",
+    "etym": "?Mandarin *普 pǔ* 'general, common, universal', ?English book",
     "pu": true
   },
   "sama": {
