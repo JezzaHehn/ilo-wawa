@@ -54,10 +54,11 @@ client.on('message', async msg => { // for every message, do the following:
       } // end help
 
       if (command === 'define') { // define each argument if toki pona word
+        var out = "";
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
-          if (i>0) var out = `──────────\n`;
-          out += `__**${w}**__`; // initialize output string with word
+          if (i>0) { out += `\n──────────` }
+          out += `\n__**${w}**__`; // initialize output string with word
           if (w in dict) {  // if the word is in the dictionary
             var defs = dict[w].defs;
             for(var j=0; j<defs.length; j++) {
@@ -67,24 +68,25 @@ client.on('message', async msg => { // for every message, do the following:
           } else {
             out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
           }
-          msg.channel.send(out) // send data dump to channel
         }
+        msg.channel.send(out) // send data dump to channel
       } // end define
 
 
       if (command === 'pu') { // is the word pu?
+        var out = "";
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
-          if (i>0) var out = `──────────\n`;
-          out += `__**${w}**__`; // initialize output string with word
+          if (i>0) { out += `\n──────────` }
+          out += `\n__**${w}**__`; // initialize output string with word
           if (w in dict) {  // if the word is in the dictionary
             if (dict[w].pu) out += `\nnimi '${w}' li pu. :white_check_mark:`;
             else out += `\nnimi '${w}' li pu ala. :x:`;
           } else {
             out += `\nnimi "${w}" li lon ala. :book::mag::shrug: ni li pu ala. :x:`;
           }
-          msg.channel.send(out) // send data dump to channel
         }
+        msg.channel.send(out) // send data dump to channel
       } // end pu
 
 
