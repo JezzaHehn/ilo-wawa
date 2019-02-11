@@ -4,22 +4,23 @@
 // pana sitelen pi sitelen pona //
 //////////////////////////////////
 
-// configuration include file
-// config.token - bot token
-// config.prefix - message prefix
+// configuration: prefix, token, gimppath
 const config = require("./config.json");
 
-// utility functions for filesystem read/write
-var fs = require('fs');
+// dictionary of toki pona words
+const dict = require('./lib/rawdict.json');
 
-// for spawning python process
-const spawn = require("child_process").spawn;
+// utility functions for filesystem read/write
+const fs = require('fs');
+const tempy = require('tempy');
+
+// for spawning GIMP process
+const spawn = require('child_process').spawn;
+const exec = require('child_process').exec;
 
 // Discord bot library
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
-const dict = require('./lib/rawdict.json'); // dictionary of toki pona words
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -94,20 +95,43 @@ client.on('message', async msg => { // for every message, do the following:
         // combine argument list with spaces to reconstruct sentence
         sentence = "";
         for(var i=0; i<args.length; i++) { // for each word
-          sentence += args[i] + ' ';
+          if(i>0) sentence += " " // add space between, if not first word
+          sentence += args[i];    // add word
         }
 
-        // call python function to put text in image
-        const pythonProcess = await spawn('python',["./sitelen.py", sentence]);
+        // create temporary .png file and fix backslashes for feckin Winderps
+        var file = escape(tempy.file({extension:".png"}));
+        file = unescape(file.replace(/%5C/g, "%5C%5C"));
+        console.log(`Temp file: ${file}`);
+
+        // concatenate pieces of gimp function to put text in image
+        var sitelencommand = '"(sitelen \\"' + file + '\\" \\"' + sentence;
+        sitelencommand += '\\" \\"linja pona\\" 50 \'(0 0 0) 25)"';
+
+        console.log(`Attempting to sitelen... ${sitelencommand}`);
+
+        // call gimp to create sitelen png, named after message ID
+        const gimpProcess = await spawn(config.gimppath,[
+          '-d',
+          '-b', sitelencommand,
+          '-b', '"(gimp-quit 0)"'
+        ]);
+        console.log(`Process started.`);
+        msg.channel.startTyping();
 
         // reply with attachment of image
-        pythonProcess.on('close', (err) => {
+        gimpProcess.on('close', async (err, signal) => {
           if (err !== 0) {
-            console.log(`process exited with error: ${err}`);
+            console.log(`Process exited with error ${err}: ${signal}`);
           } else {
-            msg.channel.send(`${msg.author} li toki e ni:`,
-            new Discord.Attachment("sitelen.png"));
+            console.log('Process exited without error.')
           }
+          msg.channel.send(`${msg.author} li toki e ni:`, {
+            files: [{
+              attachment: file,
+              name: sentence
+            }]
+          });
         });
       } // end sitelen
 
