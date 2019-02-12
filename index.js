@@ -7,7 +7,7 @@
 // configuration: prefix, token, gimppath
 const config = require("./config.json");
 
-// dictionary of toki pona words, and list
+// dictionary of toki pona words, and list of source languages
 const dict = require('./lib/dict.json');
 const langs = require('./lib/langs.json');
 
@@ -15,8 +15,7 @@ const langs = require('./lib/langs.json');
 const fs = require('fs');
 const tempy = require('tempy');
 
-// for spawning GIMP process
-const spawn = require('child_process').spawn;
+// for forking GIMP child process
 const exec = require('child_process').exec;
 
 // Discord bot library
@@ -34,7 +33,7 @@ client.on('message', async msg => { // for every message, do the following:
     if (msg.content.startsWith(config.prefix)) {
 
       // first split the arguments, remove prefix
-      const args = msg.content.slice(config.prefix.length)
+      let args = msg.content.slice(config.prefix.length)
                               .trim().replace(/\n/g, '\\n').split(/ +/g);
       // pop first argument (command) and leave the other arguments
       const command = args.shift().toLowerCase();
@@ -51,7 +50,7 @@ client.on('message', async msg => { // for every message, do the following:
 
       // print command list
       if (command === 'help' || command === 'h' || command === '?') {
-          var out = '__**nimi ilo pi ilo wawa**__';
+          let out = '__**nimi ilo pi ilo wawa**__';
           out += '\n──────────';
           out += '\n**d, def, define** *arg1 [arg2 arg3...]* - Define toki pona words';
           out += '\n**e, etym, etymology** *arg1 [arg2 arg3...]* - Print etymologies of words';
@@ -65,14 +64,14 @@ client.on('message', async msg => { // for every message, do the following:
 
       // define each argument if toki pona word
       if (command === 'd' || command === 'def' || command === 'define') {
-        var out = ""; // initialize output string
-        for(var i=0; i<args.length; i++) { // for each word
+        let out = ""; // initialize output string
+        for(let i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
           out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
-            var defs = dict[w].defs;
-            for(var j=0; j<defs.length; j++) {
+            let defs = dict[w].defs;
+            for(let j=0; j<defs.length; j++) {
               out += `\n• ${defs[j]}`;  // add each definition to output
             }
             if (dict[w].rep) out += `\n${dict[w].rep}`;
@@ -86,8 +85,8 @@ client.on('message', async msg => { // for every message, do the following:
 
       // give etymology of each argument if toki pona word
       if (command === 'e' || command === 'etym' || command === 'etymology') {
-        var out = ""; // initialize output string
-        for(var i=0; i<args.length; i++) { // for each word
+        let out = ""; // initialize output string
+        for(let i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
           out += `\n__**${w}**__`; // add word to output
@@ -103,12 +102,12 @@ client.on('message', async msg => { // for every message, do the following:
 
       // give etymology of each argument if toki pona word
       if (command === 'l' || command === 'lang' || command === 'language') {
-        var out = "";
+        let out = "";
         l = args.shift().toLowerCase();
         if (l in langs) {  // if the lang is in the list
           lang = langs[l];
           out += `\n__**${l}**__`; // start with name of requested language
-          for (var w in lang.words) {
+          for (w in lang.words) {
              out += `\n${w} ← ${lang.words[w]}`; // add word
           }
         } else {
@@ -125,7 +124,7 @@ client.on('message', async msg => { // for every message, do the following:
 
 
       if (command === 'pu') { // is the word pu?
-        var out = ""; // initialize output string
+        let out = ""; // initialize output string
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
@@ -149,19 +148,19 @@ client.on('message', async msg => { // for every message, do the following:
         }
 
         // combine argument list with spaces to reconstruct sentence
-        sentence = "";
-        for(var i=0; i<args.length; i++) { // for each word
+        let sentence = "";
+        for(let i=0; i<args.length; i++) { // for each word
           if(i>0) sentence += " " // add space between, if not first word
           sentence += args[i];    // add word
         }
 
         // create temporary .png file and fix backslashes for feckin Winderps
-        var file = escape(tempy.file({extension:".png"}));
+        const file = escape(tempy.file({extension:".png"}));
         file = unescape(file.replace(/%5C/g, "%5C%5C"));
         console.log(`Temp file: ${file}`);
 
         // concatenate pieces of gimp function to put text in image
-        var sitelencommand = '"' + config.gimppath +
+        const sitelencommand = '"' + config.gimppath +
           '" -d -b ' + '"(sitelen \\"' + file + '\\" \\"' + sentence +
           '\\" \\"linja pona\\" 50 \'(0 0 0) 20)" -b "(gimp-quit 0)"';
 
