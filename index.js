@@ -44,17 +44,19 @@ client.on('message', async msg => { // for every message, do the following:
       } // end ping
 
 
-      if (command === 'help' || command === '?') { // print command list
-          var out = '__**nimi ilo pi ilo wawa**__ \n';
-          out += '\n**define** [*arg1, arg2, arg3,...*] - Define toki pona words';
-          out += '\n**help** or **?** - Print this command list';
+      if (command === 'help' || command === 'h' || command === '?') { // print command list
+          var out = '__**nimi ilo pi ilo wawa**__';
+          out += '\n──────────';
+          out += '\n**d, define** *arg1 [arg2 arg3...]* - Define toki pona words';
+          out += '\n**e, etym** *arg1 [arg2 arg3...]* - Print etymologies of words';
+          out += '\n**h, help, ?** - Print this command list';
           out += '\n**ping** - Determine bot connection speed';
-          out += '\n**pu** [*arg1, arg2, arg3,...*] - Show whether words are from The Book';
-          out += '\n**sitelen** - (under construction) Convert to sitelen pona';
+          out += '\n**pu** *arg1 [arg2 arg3...]* - Show whether words are from The Book';
+          out += '\n**s, sitelen** - Write in sitelen pona';
           msg.channel.send(out) // send command list to channel
       } // end help
 
-      if (command === 'define') { // define each argument if toki pona word
+      if (command === 'd' || command === 'define') { // define each argument if toki pona word
         var out = "";
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
@@ -65,6 +67,21 @@ client.on('message', async msg => { // for every message, do the following:
             for(var j=0; j<defs.length; j++) {
               out += `\n• ${defs[j]}`;  // add each definition to output
             }
+          } else {
+            out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
+          }
+        }
+        msg.channel.send(out) // send data dump to channel
+      } // end define
+
+
+      if (command === 'e' || command === 'etym') { // give etymology of each argument if toki pona word
+        var out = "";
+        for(var i=0; i<args.length; i++) { // for each word
+          w = args[i];
+          if (i>0) { out += `\n──────────` }
+          out += `\n__**${w}**__`; // initialize output string with word
+          if (w in dict) {  // if the word is in the dictionary
             out += `\n*etymology:* ${dict[w].etym}`; // add etymology
           } else {
             out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
@@ -91,7 +108,12 @@ client.on('message', async msg => { // for every message, do the following:
       } // end pu
 
 
-      if (command === 'sitelen') { // convert to sitelen pona
+      if (command === 's' || command === 'sitelen') { // convert to sitelen pona
+        if(args.length == 0) {
+          msg.channel.send('o toki e nimi. mi ken sitelen e ona.');
+          return
+        }
+
         // combine argument list with spaces to reconstruct sentence
         sentence = "";
         for(var i=0; i<args.length; i++) { // for each word
@@ -105,34 +127,32 @@ client.on('message', async msg => { // for every message, do the following:
         console.log(`Temp file: ${file}`);
 
         // concatenate pieces of gimp function to put text in image
-        var sitelencommand = '"(sitelen \\"' + file + '\\" \\"' + sentence;
-        sitelencommand += '\\" \\"linja pona\\" 50 \'(0 0 0) 25)"';
+        var sitelencommand = '"' + config.gimppath +
+          '" -d -b ' + '"(sitelen \\"' + file + '\\" \\"' + sentence +
+          '\\" \\"linja pona\\" 50 \'(0 0 0) 25)" -b "(gimp-quit 0)"';
 
         console.log(`Attempting to sitelen... ${sitelencommand}`);
-
-        // call gimp to create sitelen png, named after message ID
-        const gimpProcess = await spawn(config.gimppath,[
-          '-d',
-          '-b', sitelencommand,
-          '-b', '"(gimp-quit 0)"'
-        ]);
-        console.log(`Process started.`);
         msg.channel.startTyping();
 
-        // reply with attachment of image
-        gimpProcess.on('close', async (err, signal) => {
-          if (err !== 0) {
-            console.log(`Process exited with error ${err}: ${signal}`);
-          } else {
-            console.log('Process exited without error.')
+        // call gimp to create sitelen png, named after message ID
+        const gimpProcess = exec(sitelencommand, function(err, stdout, stderr) {
+            console.log(`Process started.`);
+            if (err !== 0) {
+              console.log(`Process exited with error ${err}: ${stderr}`);
+            } else {
+              console.log('Process exited without error: ${stderr}')
+            }
+            msg.channel.stopTyping();
+            // reply with attachment of image
+            msg.channel.send(`${msg.author} li toki e ni:`, {
+              files: [{
+                attachment: file,
+                name: sentence+".png"
+              }]
+            });
           }
-          msg.channel.send(`${msg.author} li toki e ni:`, {
-            files: [{
-              attachment: file,
-              name: sentence
-            }]
-          });
-        });
+        );
+
       } // end sitelen
 
 
