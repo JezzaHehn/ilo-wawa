@@ -33,7 +33,8 @@ client.on('message', async msg => { // for every message, do the following:
     if (msg.content.startsWith(config.prefix)) {
 
       // first split the arguments, remove prefix
-      const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+      const args = msg.content.slice(config.prefix.length)
+                              .trim().replace(/\n/g, '\\n').split(/ +/g);
       // pop first argument (command) and leave the other arguments
       const command = args.shift().toLowerCase();
 
@@ -73,6 +74,7 @@ client.on('message', async msg => { // for every message, do the following:
             for(var j=0; j<defs.length; j++) {
               out += `\n• ${defs[j]}`;  // add each definition to output
             }
+            if (dict[w].rep) out += `\n${dict[w].rep}`;
           } else {
             out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
           }
@@ -168,10 +170,10 @@ client.on('message', async msg => { // for every message, do the following:
         // call gimp to create sitelen png, named after message ID
         const gimpProcess = exec(sitelencommand, function(err, stdout, stderr) {
             console.log(`Process started.`);
-            if (err !== 0) {
+            if (err) {
               console.log(`Process exited with error ${err}: ${stderr}`);
             } else {
-              console.log('Process exited without error: ${stderr}')
+              console.log(`Process exited without error: ${stderr}`)
             }
             msg.channel.stopTyping();
             // reply with attachment of image
