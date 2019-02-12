@@ -30,6 +30,7 @@ client.on('ready', () => {
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
+
     if (msg.content.startsWith(config.prefix)) {
 
       // first split the arguments, remove prefix
@@ -162,7 +163,7 @@ client.on('message', async msg => { // for every message, do the following:
         // concatenate pieces of gimp function to put text in image
         var sitelencommand = '"' + config.gimppath +
           '" -d -b ' + '"(sitelen \\"' + file + '\\" \\"' + sentence +
-          '\\" \\"linja pona\\" 50 \'(0 0 0) 25)" -b "(gimp-quit 0)"';
+          '\\" \\"linja pona\\" 50 \'(0 0 0) 20)" -b "(gimp-quit 0)"';
 
         console.log(`Attempting to sitelen... ${sitelencommand}`);
         msg.channel.startTyping();

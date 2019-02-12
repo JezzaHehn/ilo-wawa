@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "discord.js": "^11.4.2",
-    "fs": "^0.0.1-security",
-    "jimp": "^0.6.0"
+    "tempy": "^0.2.1"
   },
   "devDependencies": {},
   "scripts": {
