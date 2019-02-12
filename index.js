@@ -29,8 +29,26 @@ client.on('ready', () => {
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
-
-    if (msg.content.startsWith(config.prefix)) {
+    if (msg.content.toLowerCase().match(/ilo wawa/g)) { // listen for name
+      msg.react("🔨").then(() => {
+        if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
+          msg.react("❤").then(() => {
+            console.log(`mi olin e ${msg.author.tag}`)
+          }).catch(err => {
+            console.log(`error: ${err}`);
+          })
+        } else {
+          msg.react("👍").then(() => {
+            console.log(`mi pilin pona e ${msg.author.tag}`)
+          }).catch(err => {
+            console.log(`error: ${err}`);
+          })
+        }
+      }).catch(err => {
+        console.log(`error: ${err}`);
+      })
+    }
+    if (msg.content.startsWith(config.prefix)) { // listen for command prefix
 
       // first split the arguments, remove prefix
       let args = msg.content.slice(config.prefix.length)
