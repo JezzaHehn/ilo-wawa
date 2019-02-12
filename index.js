@@ -7,8 +7,9 @@
 // configuration: prefix, token, gimppath
 const config = require("./config.json");
 
-// dictionary of toki pona words
-const dict = require('./lib/rawdict.json');
+// dictionary of toki pona words, and list
+const dict = require('./lib/dict.json');
+const langs = require('./lib/langs.json');
 
 // utility functions for filesystem read/write
 const fs = require('fs');
@@ -31,12 +32,14 @@ client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
     if (msg.content.startsWith(config.prefix)) {
 
-      // first split the arguments, remove prefix, shift to lower case
+      // first split the arguments, remove prefix
       const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+      // pop first argument (command) and leave the other arguments
       const command = args.shift().toLowerCase();
 
 
-      if (command === 'ping') { // test connection time
+      // test connection time
+      if (command === 'ping') {
         const m = await msg.channel.send("Ping?");
         const reply = `Pong! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms.`;
         m.edit(reply);
@@ -44,24 +47,27 @@ client.on('message', async msg => { // for every message, do the following:
       } // end ping
 
 
-      if (command === 'help' || command === 'h' || command === '?') { // print command list
+      // print command list
+      if (command === 'help' || command === 'h' || command === '?') {
           var out = '__**nimi ilo pi ilo wawa**__';
           out += '\n──────────';
-          out += '\n**d, define** *arg1 [arg2 arg3...]* - Define toki pona words';
-          out += '\n**e, etym** *arg1 [arg2 arg3...]* - Print etymologies of words';
+          out += '\n**d, def, define** *arg1 [arg2 arg3...]* - Define toki pona words';
+          out += '\n**e, etym, etymology** *arg1 [arg2 arg3...]* - Print etymologies of words';
           out += '\n**h, help, ?** - Print this command list';
+          out += '\n**l, lang, language** *arg1* - (Under Construction) Show all words derived from a language';
           out += '\n**ping** - Determine bot connection speed';
           out += '\n**pu** *arg1 [arg2 arg3...]* - Show whether words are from The Book';
           out += '\n**s, sitelen** - Write in sitelen pona';
           msg.channel.send(out) // send command list to channel
       } // end help
 
-      if (command === 'd' || command === 'define') { // define each argument if toki pona word
-        var out = "";
+      // define each argument if toki pona word
+      if (command === 'd' || command === 'def' || command === 'define') {
+        var out = ""; // initialize output string
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
-          out += `\n__**${w}**__`; // initialize output string with word
+          out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
             var defs = dict[w].defs;
             for(var j=0; j<defs.length; j++) {
@@ -75,12 +81,13 @@ client.on('message', async msg => { // for every message, do the following:
       } // end define
 
 
-      if (command === 'e' || command === 'etym') { // give etymology of each argument if toki pona word
-        var out = "";
+      // give etymology of each argument if toki pona word
+      if (command === 'e' || command === 'etym' || command === 'etymology') {
+        var out = ""; // initialize output string
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
-          out += `\n__**${w}**__`; // initialize output string with word
+          out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
             out += `\n*etymology:* ${dict[w].etym}`; // add etymology
           } else {
@@ -88,15 +95,38 @@ client.on('message', async msg => { // for every message, do the following:
           }
         }
         msg.channel.send(out) // send data dump to channel
-      } // end define
+      } // end etymology
+
+
+      // give etymology of each argument if toki pona word
+      if (command === 'l' || command === 'lang' || command === 'language') {
+        var out = "";
+        l = args.shift().toLowerCase();
+        if (l in langs) {  // if the lang is in the list
+          lang = langs[l];
+          out += `\n__**${l}**__`; // start with name of requested language
+          for (var w in lang.words) {
+             out += `\n${w} ← ${lang.words[w]}`; // add word
+          }
+        } else {
+          out += `\nThe language "${l}" was not found in the list of `;
+          out += `source languages of Toki Pona. :book::mag::shrug:`;
+        }
+        if(args.length) {
+          out += `\n──────────`
+          out += `\nOne language at a time, please. `
+          out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
+        }
+        msg.channel.send(out) // send data dump to channel
+      } // end language
 
 
       if (command === 'pu') { // is the word pu?
-        var out = "";
+        var out = ""; // initialize output string
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
           if (i>0) { out += `\n──────────` }
-          out += `\n__**${w}**__`; // initialize output string with word
+          out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
             if (dict[w].pu) out += `\nnimi '${w}' li pu. :white_check_mark:`;
             else out += `\nnimi '${w}' li pu ala. :x:`;
@@ -108,7 +138,8 @@ client.on('message', async msg => { // for every message, do the following:
       } // end pu
 
 
-      if (command === 's' || command === 'sitelen') { // convert to sitelen pona
+      // convert to sitelen pona
+      if (command === 's' || command === 'sitelen') {
         if(args.length == 0) {
           msg.channel.send('o toki e nimi. mi ken sitelen e ona.');
           return
@@ -152,12 +183,11 @@ client.on('message', async msg => { // for every message, do the following:
             });
           }
         );
-
       } // end sitelen
 
 
     }
   }
-});
+}); // end message
 
 client.login(config.token);
