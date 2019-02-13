@@ -173,7 +173,7 @@ client.on('message', async msg => { // for every message, do the following:
         }
 
         // create temporary .png file and fix backslashes for feckin Winderps
-        const file = escape(tempy.file({extension:".png"}));
+        let file = escape(tempy.file({extension:".png"}));
         file = unescape(file.replace(/%5C/g, "%5C%5C"));
         console.log(`Temp file: ${file}`);
 

@@ -7,7 +7,7 @@
       "mani" : "money",
       "mun" : "moon",
       "o" : "oh",
-      "oke" : "okay",
+      "oke" : "okay ← oll korrect",
       "open" : "open",
       "po" : "four",
       "pu" : "book",
@@ -16,6 +16,70 @@
       "tawa" : "towards",
       "tu" : "two",
       "wan" : "one"
-    }
+    },
+    "aliases":[
+      "eng",
+      "en"
+    ]
+  },
+  "toki pisin":{
+    "words":{
+      "insa" : "insait ← English inside",
+      "kama" : "kamap ← English come up",
+      "ken" : "ken ← English can",
+      "lili" : "liklik ← Ramoaaina liklik",
+      "lon" : "long ← English along",
+      "lukin" : "lukim ← English look him",
+      "meli" : "meri ← English Mary",
+      "nanpa" : "namba ← English number",
+      "nasa" : "nasau",
+      "pakala" : "bagarap ← English bugger up",
+      "pata" : "b(a)rata ← English brother",
+      "pi" : "bilong ← English belong",
+      "pilin" : "pilim ← English feel him",
+      "pini" : "pinis ← English finish",
+      "poki" : "bokis ← English box",
+      "suwi" : "swit ← English sweet",
+      "taso" : "tasol ← English that's all",
+      "toki" : "tok ← English talk"
+    },
+    "aliases":[
+      "tokpisin",
+      "tok-pisin"
+    ]
+  },
+  "finnish":{
+    "words":{
+      "apeja" : "häpeä",
+      "ike" : "ilkeä",
+      "kala" : "fish",
+      "kan" : "kanssa",
+      "kasi" : "kasvi",
+      "kijetesantakalu" : "kierteishäntäkarhu",
+      "kin" : "-kin",
+      "kiwen" : "kiven",
+      "leko" : "lohko",
+      "linja" : "linja",
+      "lipu" : "lippu",
+      "ma" : "maa",
+      "mije" : "mijes",
+      "nena" : "nenä",
+      "nimi" : "nimi",
+      "pana" : "panna",
+      "pimeja" : "pimeä",
+      "sama" : "sama",
+      "sina" : "sinä",
+      "suli" : "suuri",
+      "walo" : "valko-",
+      "wawa" : "vahva"
+    },
+    "aliases":[
+      "fi",
+      "fin",
+      "finnic",
+      "suomi",
+      "suomen kieli",
+      "uralic"
+    ]
   }
 }

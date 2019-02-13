@@ -67,6 +67,7 @@
         inFont)
       )
     )
+    (gimp-text-layer-set-line-spacing theText 15) ; line height
     (set! theImageWidth   (car (gimp-drawable-width  theText) ) )
     (set! theImageHeight  (car (gimp-drawable-height theText) ) )
     (set! theBuffer (* theImageHeight (/ inBufferAmount 100) ) )

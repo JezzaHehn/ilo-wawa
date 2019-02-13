@@ -4,6 +4,7 @@
   "description": "ilo wawa li Discord Bot pi pana sitelen pi sitelen pona.",
   "main": "index.js",
   "directories": {
+    "etc": "etc",
     "lib": "lib"
   },
   "dependencies": {
