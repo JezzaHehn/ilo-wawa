@@ -25,10 +25,12 @@ const client = new Discord.Client();
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
+  console.log(`${langs["english"].aliases}`)
 });
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
+
     if (msg.content.toLowerCase().match(/ilo wawa/g)) { // listen for name to react
       if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
         msg.react("🔨").then(() => {
@@ -53,6 +55,7 @@ client.on('message', async msg => { // for every message, do the following:
         })
       }
     }
+
     if (msg.content.startsWith(config.prefix)) { // listen for command prefix
 
       // first split the arguments, remove prefix
@@ -131,26 +134,43 @@ client.on('message', async msg => { // for every message, do the following:
         let isTooMany = false; // were there too many arguments?
         switch (args.length) {
           case 0:
-            msg.channel.send("Pick a language to list all toki pona words derived therefrom.");
+            msg.channel.send("Pick a language to list all toki pona words from that language.");
             return;
           case 1:
             l = args.shift().toLowerCase();
             if (l in langs) isLang = true;
             else {
-              for (lang in langs) if (l in lang["aliases"]) isLang = true;
+              for (lang in langs) {
+                for (alias in langs[lang].aliases) {
+                  if (l === langs[lang].aliases[alias]) {
+                    isLang = true;
+                    l = lang;
+                    break
+                  }
+                }
+              }
             }
             break;
           default:
             l1 = args.shift().toLowerCase();
             l2 = l1 + " " + args.shift().toLowerCase();
-            if (l2 in langs) isLang = true;
+            if (l2 in langs) {
+              isLang = true;
+              l = l2;
+            }
             else {
               if (l1 in langs) {
                 isLang = true;
+                l = l1;
               } else {
-                for (lang in langs) if (l1 in lang["aliases"]) {
-                  isLang = true;
-                  l = lang; // replace alias with full language name
+                for (lang in langs) {
+                  for (alias in langs[lang].aliases) {
+                    if (l1 === langs[lang].aliases[alias]) {
+                      isLang = true;
+                      l = lang;
+                      break
+                    }
+                  }
                 }
               }
               if (isLang) {
@@ -231,7 +251,7 @@ client.on('message', async msg => { // for every message, do the following:
             if (err) {
               console.log(`Process exited with error ${err}: ${stderr}`);
             } else {
-              console.log(`Process exited without error: ${stderr}`)
+              console.log(`Process exited without error: ${stdout}`)
             }
             msg.channel.stopTyping();
             // reply with attachment of image
