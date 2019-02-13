@@ -25,7 +25,6 @@ const client = new Discord.Client();
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
-  console.log(`${langs["english"].aliases}`)
 });
 
 client.on('message', async msg => { // for every message, do the following:
@@ -134,7 +133,15 @@ client.on('message', async msg => { // for every message, do the following:
         let isTooMany = false; // were there too many arguments?
         switch (args.length) {
           case 0:
-            msg.channel.send("Pick a language to list all toki pona words from that language.");
+            out += `Pick a language to list all toki pona word derivations.`;
+            out += `\n──────────`;
+            for (lang in langs) {
+              langcaps = lang.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+              });
+              out += `\n${langcaps}`;
+            }
+            msg.channel.send(out);
             return;
           case 1:
             l = args.shift().toLowerCase();
@@ -152,20 +159,19 @@ client.on('message', async msg => { // for every message, do the following:
             }
             break;
           default:
-            l1 = args.shift().toLowerCase();
-            l2 = l1 + " " + args.shift().toLowerCase();
+            l = args.shift().toLowerCase();
+            l2 = l + " " + args.shift().toLowerCase();
             if (l2 in langs) {
               isLang = true;
               l = l2;
             }
             else {
-              if (l1 in langs) {
+              if (l in langs) {
                 isLang = true;
-                l = l1;
               } else {
                 for (lang in langs) {
                   for (alias in langs[lang].aliases) {
-                    if (l1 === langs[lang].aliases[alias]) {
+                    if (l === langs[lang].aliases[alias]) {
                       isLang = true;
                       l = lang;
                       break

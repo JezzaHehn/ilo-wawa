@@ -1,157 +1,256 @@
 {
-  "english":{
-    "words":{
-      "jaki" : "yucky",
-      "jelo" : "yellow",
-      "ke" : "'kay ← okay",
-      "mani" : "money",
-      "mun" : "moon",
-      "o" : "oh",
-      "oke" : "okay ← oll korrect",
-      "open" : "open",
-      "po" : "four",
-      "pu" : "book",
-      "sike" : "circle",
-      "supa" : "surface",
-      "tawa" : "towards",
-      "tu" : "two",
-      "wan" : "one"
+    "cantonese": {
+        "aliases": [
+            "gwóngdūng wá",
+            "yue",
+            "广东话",
+            "廣東話"
+        ],
+        "words": {
+            "jan": "人 jan",
+            "ko": "膏 gou",
+            "ni": "哩 ni",
+            "sinpin": "前邊 tsin bin"
+        }
     },
-    "aliases":[
-      "en",
-      "eng"
-    ]
-  },
-  "tok pisin":{
-    "words":{
-      "insa" : "insait ← English inside",
-      "kama" : "kamap ← English come up",
-      "ken" : "ken ← English can",
-      "lili" : "liklik ← Ramoaaina liklik",
-      "lon" : "long ← English along",
-      "lukin" : "lukim ← English look him",
-      "meli" : "meri ← English Mary",
-      "nanpa" : "namba ← English number",
-      "nasa" : "nasau",
-      "pakala" : "bagarap ← English bugger up",
-      "pata" : "b(a)rata ← English brother",
-      "pi" : "bilong ← English belong",
-      "pilin" : "pilim ← English feel him",
-      "pini" : "pinis ← English finish",
-      "poki" : "bokis ← English box",
-      "suwi" : "swit ← English sweet",
-      "taso" : "tasol ← English that's all",
-      "toki" : "tok ← English talk"
+    "croatian": {
+        "aliases": [
+            "hr",
+            "hrv",
+            "hrvatski",
+            "serbo-croatian",
+            "serbocroatian"
+        ],
+        "words": {
+            "kalama": "galama",
+            "luka": "ruka",
+            "nasin": "način",
+            "noka": "noga",
+            "oko": "oko",
+            "olin": "volim",
+            "ona": "ona",
+            "palisa": "palica",
+            "pata": "brat",
+            "poka": "bok",
+            "sijelo": "tijelo",
+            "uta": "usta",
+            "utala": "udarati"
+        }
     },
-    "aliases":[
-      "tokpisin",
-      "tok-pisin"
-    ]
-  },
-  "finnish":{
-    "words":{
-      "apeja" : "häpeä",
-      "ike" : "ilkeä",
-      "kala" : "fish",
-      "kan" : "kanssa",
-      "kasi" : "kasvi",
-      "kijetesantakalu" : "kierteishäntäkarhu",
-      "kin" : "-kin",
-      "kiwen" : "kiven",
-      "leko" : "lohko",
-      "linja" : "linja",
-      "lipu" : "lippu",
-      "ma" : "maa",
-      "mije" : "mijes",
-      "nena" : "nenä",
-      "nimi" : "nimi",
-      "pana" : "panna",
-      "pimeja" : "pimeä",
-      "sama" : "sama",
-      "sina" : "sinä",
-      "suli" : "suuri",
-      "walo" : "valko-",
-      "wawa" : "vahva"
+    "dutch": {
+        "aliases": [
+            "dut",
+            "nederlands",
+            "nl",
+            "nld"
+        ],
+        "words": {
+            "akesi": "hagedis",
+            "ale": "alle",
+            "ali": "alle",
+            "ante": "ander",
+            "awen": "houden",
+            "en": "en",
+            "kapa": "kop",
+            "kepeken": "gebruiken",
+            "lape": "slapen",
+            "loje": "rood, rooie",
+            "sitelen": "schilderen",
+            "weka": "weg",
+            "wile": "willen"
+        }
     },
-    "aliases":[
-      "fi",
-      "fin",
-      "finnic",
-      "finno-ugrian",
-      "finno-ugric",
-      "suomen kieli",
-      "suomi",
-      "uralic"
-    ]
-  },
-  "croatian":{
-    "words":{
-      "kalama" : "galama",
-      "luka" : "ruka",
-      "nasin" : "način",
-      "noka" : "noga",
-      "oko" : "oko",
-      "olin" : "volim",
-      "ona" : "ona",
-      "palisa" : "palica",
-      "pata" : "brat",
-      "poka" : "bok",
-      "sijelo" : "tijelo",
-      "uta" : "usta",
-      "utala" : "udarati"
+    "english": {
+        "aliases": [
+            "en",
+            "eng"
+        ],
+        "words": {
+            "jaki": "yucky",
+            "jelo": "yellow",
+            "ke": "'kay ← okay",
+            "mani": "money",
+            "mun": "moon",
+            "o": "oh",
+            "oke": "okay ← oll korrect",
+            "open": "open",
+            "po": "four",
+            "pu": "book",
+            "sike": "circle",
+            "supa": "surface",
+            "tawa": "towards",
+            "tu": "two",
+            "wan": "one"
+        }
     },
-    "aliases":[
-      "hr",
-      "hrv",
-      "hrvatski",
-      "serbocroatian",
-      "serbo-croatian"
-    ]
-  },
-  "esperanto":{
-    "words":{
-      "ijo" : "io",
-      "ilo" : "ilo",
-      "kapa" : "kapo",
-      "la" : "la",
-      "li" : "li",
-      "mi" : "mi",
-      "musi" : "amuzi",
-      "mute" : "multe",
-      "pali" : "fari",
-      "pona" : "bona",
-      "sama" : "sama",
-      "selo" : "ŝelo",
-      "suno" : "suno",
-      "supa" : "surfaco",
-      "tenpo" : "tempo",
-      "tomo" : "domo"
+    "esperanto": {
+        "aliases": [
+            "eo"
+        ],
+        "words": {
+            "ijo": "io",
+            "ilo": "ilo",
+            "kapa": "kapo",
+            "la": "la",
+            "li": "li",
+            "mi": "mi",
+            "musi": "amuzi",
+            "mute": "multe",
+            "pali": "fari",
+            "pona": "bona",
+            "sama": "sama",
+            "selo": "ŝelo",
+            "suno": "suno",
+            "supa": "surfaco",
+            "tenpo": "tempo",
+            "tomo": "domo"
+        }
     },
-    "aliases":[
-      "eo"
-    ]
-  },
-  "dutch":{
-    "words":{
-      "akesi" : "hagedis",
-      "ale" : "alle",
-      "ali" : "alle",
-      "ante" : "ander",
-      "awen" : "houden",
-      "en" : "en",
-      "kapa" : "kop",
-      "kepeken" : "gebruiken",
-      "lape" : "slapen",
-      "loje" : "rood, rooie",
-      "sitelen" : "schilderen",
-      "weka" : "weg",
-      "wile" : "willen"
+    "finnish": {
+        "aliases": [
+            "fi",
+            "fin",
+            "finnic",
+            "finno-ugrian",
+            "finno-ugric",
+            "suomen kieli",
+            "suomi",
+            "uralic"
+        ],
+        "words": {
+            "apeja": "häpeä",
+            "ike": "ilkeä",
+            "kala": "fish",
+            "kan": "kanssa",
+            "kasi": "kasvi",
+            "kijetesantakalu": "kierteishäntäkarhu",
+            "kin": "-kin",
+            "kiwen": "kiven",
+            "leko": "lohko",
+            "linja": "linja",
+            "lipu": "lippu",
+            "ma": "maa",
+            "mije": "mijes",
+            "nena": "nenä",
+            "nimi": "nimi",
+            "pana": "panna",
+            "pimeja": "pimeä",
+            "sama": "sama",
+            "sina": "sinä",
+            "suli": "suuri",
+            "walo": "valko-",
+            "wawa": "vahva"
+        }
     },
-    "aliases":[
-      "nl",
-      "dut",
-      "nld",
-      "nederlands"
-    ]
-  }
+    "french": {
+        "aliases": [
+            "acadian",
+            "acadien",
+            "fr",
+            "fra",
+            "français",
+            "fre"
+        ],
+        "words": {
+            "alasa": "à la chasse",
+            "anpa": "en bas",
+            "kapesi": "café",
+            "kule": "couleur",
+            "kute": "écouter",
+            "len": "linge",
+            "lete": "frette",
+            "likujo": "recueil",
+            "moli": "mourir",
+            "monsi": "mon tchu",
+            "pasila": "facile",
+            "pini": "fini",
+            "pipi": "bibitte",
+            "powe": "faux",
+            "supa": "surface",
+            "telo": "de l'eau",
+            "waso": "oiseau"
+        }
+    },
+    "georgian": {
+        "aliases": [
+            "geo",
+            "ka",
+            "kartuli",
+            "kat",
+            "ქართული"
+        ],
+        "words": {
+            "ala": "არა ara",
+            "anu": "ან an",
+            "kili": "ხილი xili",
+            "mama": "მამა mama",
+            "o": "-ო -o",
+            "seli": "ცხელი cxeli",
+            "sewi": "შეკით sevit",
+            "sona": "ცოდნა codna",
+            "soweli": "ცხოკელი cxoveli"
+        }
+    },
+    "mandarin": {
+        "aliases": [
+            "cmn",
+            "cn",
+            "guānhuà",
+            "官話",
+            "官话"
+        ],
+        "words": {
+            "jo": "有 yǒu",
+            "kon": "空氣 kōngqì",
+            "pu": "普 pǔ",
+            "seme": "什么 shénme",
+            "sin": "新 xīn"
+        }
+    },
+    "tok pisin": {
+        "aliases": [
+            "tok-pisin",
+            "tokpisin"
+        ],
+        "words": {
+            "insa": "insait ← English inside",
+            "kama": "kamap ← English come up",
+            "ken": "ken ← English can",
+            "lili": "liklik ← Ramoaaina liklik",
+            "lon": "long ← English along",
+            "lukin": "lukim ← English look him",
+            "meli": "meri ← English Mary",
+            "nanpa": "namba ← English number",
+            "nasa": "nasau",
+            "pakala": "bagarap ← English bugger up",
+            "pata": "b(a)rata ← English brother",
+            "pi": "bilong ← English belong",
+            "pilin": "pilim ← English feel him",
+            "pini": "pinis ← English finish",
+            "poki": "bokis ← English box",
+            "suwi": "swit ← English sweet",
+            "taso": "tasol ← English that's all",
+            "toki": "tok ← English talk"
+        }
+    },
+    "toki pona": {
+        "aliases": [
+            "toki-pona",
+            "tokipona",
+            "tp"
+        ],
+        "words": {
+            "a": "onomatopoetic",
+            "e": "a priori",
+            "kamalawala": "'kama pi lawa ala'",
+            "kulu": "kulupu",
+            "kuntu": "'kalama musi tan uta'",
+            "melome": "'meli pi olin meli'",
+            "mijomi": "'mije pi olin mije'",
+            "peto": "'pana e telo oko'",
+            "pipo": "pipi",
+            "ten": "tenpo",
+            "unpa": "onomatopoetic"
+        }
+    }
 }
