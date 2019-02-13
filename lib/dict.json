@@ -763,9 +763,18 @@
     "defs": [
       "stop, cease"
     ],
-    "etym": "unknown",
-    "rep": false,
+    "etym": "unknown (jan Sonja)",
+    "rep": "generally replaced by *pini*",
     "pu": false
+  },
+  "pakala": {
+    "defs": [
+      "botched, broken, damaged, harmed, messed up",
+      "exclamatory interjection"
+    ],
+    "etym": "Tok Pisin *bagarap* 'accident' ← English 'bugger up'",
+    "rep": false,
+    "pu": true
   },
   "pali": {
     "defs": [

@@ -77,9 +77,81 @@
       "fi",
       "fin",
       "finnic",
-      "suomi",
+      "finno-ugrian",
+      "finno-ugric",
       "suomen kieli",
+      "suomi",
       "uralic"
+    ]
+  },
+  "croatian":{
+    "words":{
+      "kalama" : "galama",
+      "luka" : "ruka",
+      "nasin" : "način",
+      "noka" : "noga",
+      "oko" : "oko",
+      "olin" : "volim",
+      "ona" : "ona",
+      "palisa" : "palica",
+      "pata" : "brat",
+      "poka" : "bok",
+      "sijelo" : "tijelo",
+      "uta" : "usta",
+      "utala" : "udarati"
+    },
+    "aliases":[
+      "hr",
+      "hrv",
+      "hrvatski",
+      "serbocroatian",
+      "serbo-croatian"
+    ]
+  },
+  "esperanto":{
+    "words":{
+      "ijo" : "io",
+      "ilo" : "ilo",
+      "kapa" : "kapo",
+      "la" : "la",
+      "li" : "li",
+      "mi" : "mi",
+      "musi" : "amuzi",
+      "mute" : "multe",
+      "pali" : "fari",
+      "pona" : "bona",
+      "sama" : "sama",
+      "selo" : "ŝelo",
+      "suno" : "suno",
+      "supa" : "surfaco",
+      "tenpo" : "tempo",
+      "tomo" : "domo"
+    },
+    "aliases":[
+      "eo"
+    ]
+  },
+  "dutch":{
+    "words":{
+      "akesi" : "hagedis",
+      "ale" : "alle",
+      "ali" : "alle",
+      "ante" : "ander",
+      "awen" : "houden",
+      "en" : "en",
+      "kapa" : "kop",
+      "kepeken" : "gebruiken",
+      "lape" : "slapen",
+      "loje" : "rood, rooie",
+      "sitelen" : "schilderen",
+      "weka" : "weg",
+      "wile" : "willen"
+    },
+    "aliases":[
+      "nl",
+      "dut",
+      "nld",
+      "nederlands"
     ]
   }
 }

@@ -29,24 +29,29 @@ client.on('ready', () => {
 
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
-    if (msg.content.toLowerCase().match(/ilo wawa/g)) { // listen for name
-      msg.react("🔨").then(() => {
-        if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
+    if (msg.content.toLowerCase().match(/ilo wawa/g)) { // listen for name to react
+      if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
+        msg.react("🔨").then(() => {
           msg.react("❤").then(() => {
             console.log(`mi olin e ${msg.author.tag}`)
           }).catch(err => {
             console.log(`error: ${err}`);
           })
-        } else {
+        }).catch(err => {
+          console.log(`error: ${err}`);
+        })
+      }
+      if (msg.content.toLowerCase().match(/thank/g)) { // listen for thank
+        msg.react("🔨").then(() => {
           msg.react("👍").then(() => {
             console.log(`mi pilin pona e ${msg.author.tag}`)
           }).catch(err => {
             console.log(`error: ${err}`);
           })
-        }
-      }).catch(err => {
-        console.log(`error: ${err}`);
-      })
+        }).catch(err => {
+          console.log(`error: ${err}`);
+        })
+      }
     }
     if (msg.content.startsWith(config.prefix)) { // listen for command prefix
 
@@ -120,22 +125,57 @@ client.on('message', async msg => { // for every message, do the following:
 
       // give etymology of each argument if toki pona word
       if (command === 'l' || command === 'lang' || command === 'language') {
-        let out = "";
-        l = args.shift().toLowerCase();
-        if (l in langs) {  // if the lang is in the list
+        let out = ""; // output string
+        let l; // name of desired language, pulled from arguments
+        let isLang = false; // is the language in the list?
+        let isTooMany = false; // were there too many arguments?
+        switch (args.length) {
+          case 0:
+            msg.channel.send("Pick a language to list all toki pona words derived therefrom.");
+            return;
+          case 1:
+            l = args.shift().toLowerCase();
+            if (l in langs) isLang = true;
+            else {
+              for (lang in langs) if (l in lang["aliases"]) isLang = true;
+            }
+            break;
+          default:
+            l1 = args.shift().toLowerCase();
+            l2 = l1 + " " + args.shift().toLowerCase();
+            if (l2 in langs) isLang = true;
+            else {
+              if (l1 in langs) {
+                isLang = true;
+              } else {
+                for (lang in langs) if (l1 in lang["aliases"]) {
+                  isLang = true;
+                  l = lang; // replace alias with full language name
+                }
+              }
+              if (isLang) {
+                out += `\nOne language at a time, please. `
+                out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
+                out += `\n──────────`;
+              }
+              break;
+            }
+            if(args.length) {
+              out += `\nOne language at a time, please. `
+              out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
+              out += `\n──────────`;
+            }
+            break;
+        }
+        if (isLang) {  // if the language was found
           lang = langs[l];
           out += `\n__**${l}**__`; // start with name of requested language
           for (w in lang.words) {
              out += `\n${w} ← ${lang.words[w]}`; // add word
           }
-        } else {
+        } else { // if the lang was not found
           out += `\nThe language "${l}" was not found in the list of `;
           out += `source languages of Toki Pona. :book::mag::shrug:`;
-        }
-        if(args.length) {
-          out += `\n──────────`
-          out += `\nOne language at a time, please. `
-          out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
         }
         msg.channel.send(out) // send data dump to channel
       } // end language
