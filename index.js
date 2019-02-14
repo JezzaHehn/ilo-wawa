@@ -22,6 +22,21 @@ const exec = require('child_process').exec;
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+function dictPrint(w) {
+  out = "";
+  out += `__**${w}**__`; // add word to output
+  if (w in dict) {  // if the word is in the dictionary
+    let defs = dict[w].defs;
+    for(let i=0; i<defs.length; i++) {
+      out += `\n• ${defs[i]}`;  // add each definition to output
+    }
+    if (dict[w].rep) out += `\n${dict[w].rep}`;
+  } else {
+    out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
+  }
+  return out
+}
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
@@ -30,7 +45,7 @@ client.on('ready', () => {
 client.on('message', async msg => { // for every message, do the following:
   if(!msg.author.bot) { // ignore bots
 
-    if (msg.content.toLowerCase().match(/ilo wawa/g)) { // listen for name to react
+    if (msg.content.toLowerCase().match(/ilo[ +]wawa/g)) { // listen for name to react
       if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
         msg.react("🔨").then(() => {
           msg.react("❤").then(() => {
@@ -59,7 +74,7 @@ client.on('message', async msg => { // for every message, do the following:
 
       // first split the arguments, remove prefix
       let args = msg.content.slice(config.prefix.length)
-                              .trim().replace(/\n/g, '\\n').split(/ +/g);
+      .trim().replace(/\n/g, '\\n').split(/ +/g);
       // pop first argument (command) and leave the other arguments
       const command = args.shift().toLowerCase();
 
@@ -75,34 +90,26 @@ client.on('message', async msg => { // for every message, do the following:
 
       // print command list
       if (command === 'help' || command === 'h' || command === '?') {
-          let out = '__**nimi ilo pi ilo wawa**__';
-          out += '\n──────────';
-          out += '\n**d, def, define** *arg1 [arg2 arg3...]* - Define toki pona words';
-          out += '\n**e, etym, etymology** *arg1 [arg2 arg3...]* - Print etymologies of words';
-          out += '\n**h, help, ?** - Print this command list';
-          out += '\n**l, lang, language** *arg1* - (Under Construction) Show all words derived from a language';
-          out += '\n**ping** - Determine bot connection speed';
-          out += '\n**pu** *arg1 [arg2 arg3...]* - Show whether words are from The Book';
-          out += '\n**s, sitelen** - Write in sitelen pona';
-          msg.channel.send(out) // send command list to channel
+        let out = '__**nimi ilo pi ilo wawa**__';
+        out += '\n──────────';
+        out += '\n**d, def, define** *word [words...]* - Define one or more toki pona words';
+        out += '\n**e, etym, etymology** *word [words...]* - Print etymologies of words';
+        out += '\n**f, find** *word or phrase* - Search dictionary definitions';
+        out += '\n**h, help, ?** - Print this command list';
+        out += '\n**l, lang, language** [*language*] - Show languages, or words from language';
+        out += '\n**ping** - Determine bot connection speed';
+        out += '\n**pu** *word [words...]* - Show whether words are from The Book';
+        out += '\n**s, sitelen** *sentence* - Write in sitelen pona';
+        msg.channel.send(out) // send command list to channel
       } // end help
 
       // define each argument if toki pona word
       if (command === 'd' || command === 'def' || command === 'define') {
         let out = ""; // initialize output string
-        for(let i=0; i<args.length; i++) { // for each word
+        for(i=0; i<args.length; i++) { // for each word
           w = args[i];
-          if (i>0) { out += `\n──────────` }
-          out += `\n__**${w}**__`; // add word to output
-          if (w in dict) {  // if the word is in the dictionary
-            let defs = dict[w].defs;
-            for(let j=0; j<defs.length; j++) {
-              out += `\n• ${defs[j]}`;  // add each definition to output
-            }
-            if (dict[w].rep) out += `\n${dict[w].rep}`;
-          } else {
-            out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
-          }
+          if (i>0) out += "\n──────────";
+          out += "\n" + dictPrint(w);
         }
         msg.channel.send(out) // send data dump to channel
       } // end define
@@ -111,9 +118,9 @@ client.on('message', async msg => { // for every message, do the following:
       // give etymology of each argument if toki pona word
       if (command === 'e' || command === 'etym' || command === 'etymology') {
         let out = ""; // initialize output string
-        for(let i=0; i<args.length; i++) { // for each word
+        for(i=0; i<args.length; i++) { // for each word
           w = args[i];
-          if (i>0) { out += `\n──────────` }
+          if (i>0) { out += "\n──────────" }
           out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
             out += `\n*etymology:* ${dict[w].etym}`; // add etymology
@@ -125,6 +132,26 @@ client.on('message', async msg => { // for every message, do the following:
       } // end etymology
 
 
+      // define each argument if toki pona word
+      if (command === 'f' || command === 'find') {
+        let out = "__**Dictionary search results:**__"; // initialize output string
+        let query = ""; // initialize query regex string
+        let found = false;
+
+        for(i=0; i<args.length; i++) query += args[i] + " "; // combine args into query
+        query = query.slice(0,-1); // trim final space and create regex
+        Object.keys(dict).forEach(function(word) { // for each word in the whole dictionary
+          for(j=0; j<dict[word].defs.length; j++) if (dict[word].defs[j].includes(query)) {
+            out += `\n──────────\n` + dictPrint(word);  // add the word to the output
+            found = true;
+            break
+          }
+        });
+        if(!found) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+        msg.channel.send(out) // send data dump to channel
+      } // end find
+
+
       // give etymology of each argument if toki pona word
       if (command === 'l' || command === 'lang' || command === 'language') {
         let out = ""; // output string
@@ -133,20 +160,46 @@ client.on('message', async msg => { // for every message, do the following:
         let isTooMany = false; // were there too many arguments?
         switch (args.length) {
           case 0:
-            out += `Pick a language to list all toki pona word derivations.`;
-            out += `\n──────────`;
-            for (lang in langs) {
-              langcaps = lang.replace(/\w\S*/g, function(txt){
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-              });
-              out += `\n${langcaps}`;
+          out += `Pick a language to list all toki pona word derivations.`;
+          out += "\n──────────";
+          for (lang in langs) {
+            langcaps = lang.replace(/\w\S*/g, function(txt){
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+            out += `\n**${langcaps}** - *`;
+            for (alias in langs[lang].aliases) {
+              out += langs[lang].aliases[alias] + ", ";
             }
-            msg.channel.send(out);
-            return;
+            out = out.slice(0,-2) + "*";
+          }
+          msg.channel.send(out);
+          return;
           case 1:
-            l = args.shift().toLowerCase();
-            if (l in langs) isLang = true;
-            else {
+          l = args.shift().toLowerCase();
+          if (l in langs) isLang = true;
+          else {
+            for (lang in langs) {
+              for (alias in langs[lang].aliases) {
+                if (l === langs[lang].aliases[alias]) {
+                  isLang = true;
+                  l = lang;
+                  break
+                }
+              }
+            }
+          }
+          break;
+          default:
+          l = args.shift().toLowerCase();
+          l2 = l + " " + args.shift().toLowerCase();
+          if (l2 in langs) {
+            isLang = true;
+            l = l2;
+          }
+          else {
+            if (l in langs) {
+              isLang = true;
+            } else {
               for (lang in langs) {
                 for (alias in langs[lang].aliases) {
                   if (l === langs[lang].aliases[alias]) {
@@ -157,47 +210,25 @@ client.on('message', async msg => { // for every message, do the following:
                 }
               }
             }
-            break;
-          default:
-            l = args.shift().toLowerCase();
-            l2 = l + " " + args.shift().toLowerCase();
-            if (l2 in langs) {
-              isLang = true;
-              l = l2;
-            }
-            else {
-              if (l in langs) {
-                isLang = true;
-              } else {
-                for (lang in langs) {
-                  for (alias in langs[lang].aliases) {
-                    if (l === langs[lang].aliases[alias]) {
-                      isLang = true;
-                      l = lang;
-                      break
-                    }
-                  }
-                }
-              }
-              if (isLang) {
-                out += `\nOne language at a time, please. `
-                out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
-                out += `\n──────────`;
-              }
-              break;
-            }
-            if(args.length) {
+            if (isLang) {
               out += `\nOne language at a time, please. `
               out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
-              out += `\n──────────`;
+              out += "\n──────────";
             }
             break;
+          }
+          if(args.length) {
+            out += `\nOne language at a time, please. `
+            out += `:stuck_out_tongue_winking_eye: :thumbsup:`;
+            out += "\n──────────";
+          }
+          break;
         }
         if (isLang) {  // if the language was found
           lang = langs[l];
           out += `\n__**${l}**__`; // start with name of requested language
           for (w in lang.words) {
-             out += `\n${w} ← ${lang.words[w]}`; // add word
+            out += `\n${w} ← ${lang.words[w]}`; // add word
           }
         } else { // if the lang was not found
           out += `\nThe language "${l}" was not found in the list of `;
@@ -211,7 +242,7 @@ client.on('message', async msg => { // for every message, do the following:
         let out = ""; // initialize output string
         for(var i=0; i<args.length; i++) { // for each word
           w = args[i];
-          if (i>0) { out += `\n──────────` }
+          if (i>0) { out += "\n──────────" }
           out += `\n__**${w}**__`; // add word to output
           if (w in dict) {  // if the word is in the dictionary
             if (dict[w].pu) out += `\nnimi '${w}' li pu. :white_check_mark:`;
@@ -245,35 +276,35 @@ client.on('message', async msg => { // for every message, do the following:
 
         // concatenate pieces of gimp function to put text in image
         const sitelencommand = '"' + config.gimppath +
-          '" -d -b ' + '"(sitelen \\"' + file + '\\" \\"' + sentence +
-          '\\" \\"linja pona\\" 50 \'(0 0 0) 20)" -b "(gimp-quit 0)"';
+        '" -d -b ' + '"(sitelen \\"' + file + '\\" \\"' + sentence +
+        '\\" \\"linja pona\\" 50 \'(0 0 0) 20)" -b "(gimp-quit 0)"';
 
         console.log(`Attempting to sitelen... ${sitelencommand}`);
         msg.channel.startTyping();
 
         // call gimp to create sitelen png, named after message ID
         const gimpProcess = exec(sitelencommand, function(err, stdout, stderr) {
-            console.log(`Process started.`);
-            if (err) {
-              console.log(`Process exited with error ${err}: ${stderr}`);
-            } else {
-              console.log(`Process exited without error: ${stdout}`)
-            }
-            msg.channel.stopTyping();
-            // reply with attachment of image
-            msg.channel.send(`${msg.author} li toki e ni:`, {
-              files: [{
-                attachment: file,
-                name: sentence+".png"
-              }]
-            });
+          console.log(`Process started.`);
+          if (err) {
+            console.log(`Process exited with error ${err}: ${stderr}`);
+          } else {
+            console.log(`Process exited without error: ${stdout}`)
           }
-        );
-      } // end sitelen
+          msg.channel.stopTyping();
+          // reply with attachment of image
+          msg.channel.send(`${msg.author} li toki e ni:`, {
+            files: [{
+              attachment: file,
+              name: sentence+".png"
+            }]
+          });
+        }
+      );
+    } // end sitelen
 
 
-    }
   }
+}
 }); // end message
 
 client.login(config.token);

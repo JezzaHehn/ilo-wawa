@@ -37,6 +37,16 @@
             "utala": "udarati"
         }
     },
+    "danish": {
+        "aliases": [
+            "da",
+            "dan",
+            "dansk"
+        ],
+        "words": {
+            "leko": "Lego (← leg godt)"
+        }
+    },
     "dutch": {
         "aliases": [
             "dut",
@@ -111,9 +121,6 @@
             "fi",
             "fin",
             "finnic",
-            "finno-ugrian",
-            "finno-ugric",
-            "suomen kieli",
             "suomi",
             "uralic"
         ],
@@ -191,6 +198,34 @@
             "soweli": "ცხოკელი cxoveli"
         }
     },
+    "greek": {
+        "aliases": [
+            "el",
+            "elliniká",
+            "gr",
+            "gre",
+            "ελληνικά"
+        ],
+        "words": {
+            "kapesi": "καφές kafés",
+            "lanpan": "λαμβάνω lamváno"
+        }
+    },
+    "japanese": {
+        "aliases": [
+            "ja",
+            "jpn",
+            "nihongo",
+            "日本語"
+        ],
+        "words": {
+            "jaku": "百 hyaku",
+            "moku": "モグモグ mogu mogu",
+            "monsuta": "モンスター monsutā ← English monster",
+            "san": "三 san",
+            "wesu": "押す osu"
+        }
+    },
     "mandarin": {
         "aliases": [
             "cmn",
@@ -205,6 +240,16 @@
             "pu": "普 pǔ",
             "seme": "什么 shénme",
             "sin": "新 xīn"
+        }
+    },
+    "swahili": {
+        "aliases": [
+            "kiswahili",
+            "sw",
+            "swa"
+        ],
+        "words": {
+            "kipisi": "kipisi"
         }
     },
     "tok pisin": {
@@ -251,6 +296,27 @@
             "pipo": "pipi",
             "ten": "tenpo",
             "unpa": "onomatopoetic"
+        }
+    },
+    "tongan": {
+        "aliases": [
+            "to",
+            "ton"
+        ],
+        "words": {
+            "kulupu": "kulupu ← English *group*"
+        }
+    },
+    "welsh": {
+        "aliases": [
+            "cy",
+            "cym",
+            "cymraeg",
+            "wel"
+        ],
+        "words": {
+            "laso": "glas",
+            "linluwi": "rhyngrwyd"
         }
     }
 }
