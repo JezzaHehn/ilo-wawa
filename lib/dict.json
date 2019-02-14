@@ -25,7 +25,8 @@
     },
     "alasa": {
         "defs": [
-            "hunt, forage"
+            "hunt, forage",
+            "search"
         ],
         "etym": "Acadian French *à la chasse* 'hunting' ← French *chasser* 'to hunt'",
         "pu": true,
@@ -375,6 +376,14 @@
         ],
         "etym": "Greek *λαμβάνω lamváno* 'take, seize, grasp, receive'",
         "pu": false,
+        "rep": false
+    },
+    "lape": {
+        "defs": [
+            "sleeping, resting"
+        ],
+        "etym": "Dutch slapen 'sleep'",
+        "pu": true,
         "rep": false
     },
     "laso": {
