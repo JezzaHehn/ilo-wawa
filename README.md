@@ -6,12 +6,6 @@ This Discord bot was created to be a learning tool for the Toki Pona language. T
 
 ## Getting Started
 
-* Download the source code and use `npm i` in the install directory.
-* Move the `linja-pona-4.0.otf` font from `etc` to your machine's font folder.
-* Visit the [Discord dev portal](https://discordapp.com/developers/) to set up a bot account, and copy the client token into `config.json`.
-* Invite the bot to your server.
-* Run the bot by using `nodemon index.js` in a terminal in the install directory.
-
 ### Prerequisites
 
 To install ilo wawa's prerequisite Node.js packages, you will need
@@ -22,6 +16,16 @@ To run ilo wawa on your local machine, you will need:
 * the GIMP (for sitelen command)
 
 You will also need to visit the [Discord developer portal](https://discordapp.com/developers/) to set up a bot account and get a token.
+
+### Installing the Bot
+
+* After installing prerequisites above, download ilo wawa's source code and use `npm i` in the install directory.
+* Visit the [Discord dev portal](https://discordapp.com/developers/) to set up an app and a bot account, and copy the client token into `config.json`. Also take note your app's client ID for the next step.
+* Invite the bot to your Discord server by changing `CLIENT_ID_HERE` to your client ID in this link:
+`https://discordapp.com/oauth2/authorize?client_id=CLIENT_ID_HERE&scope=bot&permissions=0`
+* Move the `linja-pona-4.0.otf` font from `etc` to your machine's font folder.
+* Move the `sitelen.scm` script from `etc` to the GIMP's scripts folder, and copy that folder's path into `config.json`.
+* Run the bot by using `nodemon index.js` in a terminal in the install directory.
 
 ## Donate
 
