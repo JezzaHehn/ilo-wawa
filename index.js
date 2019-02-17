@@ -89,17 +89,19 @@ async function parse(msg) {
 
   // print command list
   if (command === 'help' || command === 'h' || command === '?') {
-    let out = '__**nimi ilo pi ilo wawa**__';
-    out += '\n──────────';
-    out += '\n**d, def, define** *word [words...]* - Define one or more toki pona words';
-    out += '\n**e, etym, etymology** *word [words...]* - Print etymologies of words';
+    let out = '';
+    out +='```╔══════════════════════╗';
+    out += '\n║ nimi ilo pi ilo wawa ║';
+    out += '\n╚══════════════════════╝```';
+    out += '\n**d, def, define** *[words...]* - Define toki pona words, or show word list';
+    out += '\n**e, etym, etymology** *word [words...]* - Show etymologies of words';
     out += '\n**f, find** *word or phrase* - Search dictionary definitions';
     out += '\n**h, help, ?** - Print this command list';
-    out += '\n**l, lang, language** [*language*] - Show languages, or words from language';
+    out += '\n**l, lang, language** [*language*] - Show language list, or show words derived from a language';
     out += '\n**ping** - Determine bot connection speed';
-    out += '\n**pu** *word [words...]* - Show whether words are from The Book';
+    out += '\n**pu** *word [words...]* - Show only pu information';
     out += '\n**s, sitelen** *sentence* - Write in sitelen pona';
-    out += '\n\nFor more information, visit https://github.com/Anthrakia/ilo-wawa'
+    out += '\n\nFor more information, visit <https://github.com/Anthrakia/ilo-wawa>'
     msg.channel.send(out) // send command list to channel
   } // end help
 
