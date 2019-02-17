@@ -1,0 +1,344 @@
+{
+    "alasa": {
+        "defs": [
+            "search"
+        ],
+        "etym": "Acadian French *à la chasse* 'hunting' ← French *chasser* 'to hunt'",
+        "pu": true,
+        "rep": false
+    },
+    "ale": {
+        "defs": [
+            "the number 20 (uncommon)"
+        ],
+        "etym": "Dutch *alle* 'all'",
+        "pu": true,
+        "rep": "for counting, generally replaced by *mute*"
+    },
+    "ali": {
+        "defs": [
+            "the number 20 (uncommon)"
+        ],
+        "etym": "toki pona *ale*",
+        "pu": true,
+        "rep": "for counting, generally replaced by *mute*"
+    },
+    "anu": {
+        "defs": [
+            "choose"
+        ],
+        "etym": "Georgian *ან an* 'or'",
+        "pu": true,
+        "rep": false
+    },
+    "iki": {
+        "defs": [
+            "she, he, it, they"
+        ],
+        "etym": "unknown",
+        "pu": false,
+        "rep": "replaced by *ona*"
+    },
+    "kamalawala": {
+        "defs": [
+            "anarchy"
+        ],
+        "etym": "toki pona *'kama pi lawa ala'*",
+        "pu": false,
+        "rep": false
+    },
+    "kan": {
+        "defs": [
+            "with, among"
+        ],
+        "etym": "?Finnish *kanssa* 'with'",
+        "pu": false,
+        "rep": "generally replaced by *poka*"
+    },
+    "kapa": {
+        "defs": [
+            "hill, protrusion"
+        ],
+        "etym": "?Dutch *kop* 'head, cup' or ?Esperanto *kapo* 'head'",
+        "pu": false,
+        "rep": "replaced by *nena*"
+    },
+    "kapesi": {
+        "defs": [
+            "brown, grey"
+        ],
+        "etym": "?French *café* 'light brown' or Greek *καφές kafés* 'coffee'",
+        "pu": false,
+        "rep": "generally replaced by *pimeja*"
+    },
+    "ke": {
+        "defs": [
+            "*oke*",
+            "[interjection expressing contextual agreement]"
+        ],
+        "etym": "English *'kay* ← *okay*",
+        "pu": false,
+        "rep": false
+    },
+    "kijetesantakalu": {
+        "defs": [
+            "Sonja's April Fool's Day joke from 2009",
+            "any animal from the Procyonidae family, such as raccoons, coatis, kinkajous, olingos, ringtails, and cacomistles"
+        ],
+        "etym": "Finnish *kierteishäntäkarhu* 'kinkajou' ← *kierteis* 'spiral' + *häntä* 'tail' + *karhu* 'bear'",
+        "pu": false,
+        "rep": false
+    },
+    "kin": {
+        "defs": [
+            "too, also, as well"
+        ],
+        "etym": "Finnish *-kin* 'too, also, still'",
+        "pu": true,
+        "rep": false
+    },
+    "kipisi": {
+        "defs": [
+            "split, cut"
+        ],
+        "etym": "Swahili *kipisi* 'sliver, small piece of wood'",
+        "pu": false,
+        "rep": false
+    },
+    "kule": {
+        "defs": [
+            "*of or relating to the LGBT+ community*"
+        ],
+        "etym": "French *couleur* 'color'",
+        "pu": true,
+        "rep": false
+    },
+    "kulu": {
+        "defs": [
+            "*kulupu*",
+            "community, company, group, nation, society, tribe",
+            "the number 6 (especially in senary)"
+        ],
+        "etym": "toki pona *kulupu*",
+        "pu": false,
+        "rep": "for the number 6, generally replaced by *tu tu tu* or *mute*"
+    },
+    "kuntu": {
+        "defs": [
+            "laughter, humor"
+        ],
+        "etym": "toki pona abbrev. *k.m.t.u.* ← *'kalama musi tan uta'*",
+        "pu": false,
+        "rep": false
+    },
+    "lanpan": {
+        "defs": [
+            "take, seize, catch, receive"
+        ],
+        "etym": "Greek *λαμβάνω lamváno* 'take, seize, grasp, receive'",
+        "pu": false,
+        "rep": false
+    },
+    "leko": {
+        "defs": [
+            "stairs, square, block"
+        ],
+        "etym": "?Finnish *lohko* 'block, section' or ?Danish *Lego* (← *leg godt* 'play well')",
+        "pu": false,
+        "rep": false
+    },
+    "linluwi": {
+        "defs": [
+            "network(s), internet(s)"
+        ],
+        "etym": "Welsh *rhyngrwyd* 'Internet'",
+        "pu": false
+    },
+    "luka": {
+        "defs": [
+            "tenticle"
+        ],
+        "etym": "Serbo-Croation *ruka рука* 'hand, arm'",
+        "pu": true,
+        "rep": "for counting, generally replaced by *tu tu wan* or *mute*"
+    },
+    "majuna": {
+        "defs": [
+            "old"
+        ],
+        "etym": "Esperanto *maljuna* 'old' ← *mal-* '[opposite of]' + *juna* 'young'",
+        "pu": false,
+        "rep": false
+    },
+    "melome": {
+        "defs": [
+            "sapphic, lesbian, wlw (women/fem-aligned people loving women/fem-aligned people)"
+        ],
+        "etym": "toki pona *'meli pi olin meli'*",
+        "pu": false,
+        "rep": false
+    },
+    "mijomi": {
+        "defs": [
+            "gay, mlm (men/masc-aligned people loving men/masc-aligned people)"
+        ],
+        "etym": "toki pona *'mije pi olin mije'*",
+        "pu": false,
+        "rep": false
+    },
+    "monsuta": {
+        "defs": [
+            "fear, monster"
+        ],
+        "etym": "?Japanese *モンスター monsutā* 'monster' ← English *monster*",
+        "pu": false,
+        "rep": false
+    },
+    "namako": {
+        "defs": [
+            "embellishment, spice"
+        ],
+        "etym": "Hindi *नमक namak* 'salt' ← Persian *نمک namak* 'salt'",
+        "pu": true,
+        "rep": false
+    },
+    "oke": {
+        "defs": [
+            "*ke*",
+            "[interjection expressing contextual agreement]"
+        ],
+        "etym": "English *okay*",
+        "pu": false,
+        "rep": false
+    },
+    "omen": {
+        "defs": [
+            "sarcasm, sarcastic, irony, ironic"
+        ],
+        "etym": "toki pona abbrev. *o.m.e.m.* ← *'o moli e mi'*",
+        "pu": false,
+        "rep": false
+    },
+    "pakala": {
+        "defs": [
+            "exclamatory interjection"
+        ],
+        "etym": "Tok Pisin *bagarap* 'accident' ← English 'bugger up'",
+        "pu": true,
+        "rep": false
+    },
+    "pake": {
+        "defs": [
+            "stop, cease"
+        ],
+        "etym": "unknown (jan Sonja)",
+        "pu": false,
+        "rep": "generally replaced by *pini*"
+    },
+    "pali": {
+        "defs": [
+            "do, take action on, work on; build, make, prepare"
+        ],
+        "etym": "Esperanto *fari* 'do, make'",
+        "pu": true,
+        "rep": false
+    },
+    "palisa": {
+        "defs": [
+            "long hard thing; branch, rod, stick"
+        ],
+        "etym": "Serbo-Croatian *palica палица* 'bat, rod, cane'",
+        "pu": true,
+        "rep": false
+    },
+    "pan": {
+        "defs": [
+            "cereal, grain; barley, corn, oat, rice, wheat; bread, pasta"
+        ],
+        "etym": "common Romance *pan* 'bread' & Japanese *パン pan* 'bread' (← Portuguese *pão* 'bread)",
+        "pu": true,
+        "rep": false
+    },
+    "pana": {
+        "defs": [
+            "give, send, emit, provide, put, release"
+        ],
+        "etym": "?Finnish *panna* 'put, set, place'",
+        "pu": true,
+        "rep": false
+    },
+    "pasila": {
+        "defs": [
+            "good, easy"
+        ],
+        "etym": "?French *facile* 'easy'",
+        "pu": false,
+        "rep": "generally replaced by *pona*"
+    },
+    "pata": {
+        "defs": [
+            "sibling"
+        ],
+        "etym": "?Serbo-Croatian *brat брат* \"brother\" or ?Tok Pisin *b(a)rata* 'brother, paternal cousin (of the same gender), woman's sister' (← English *brother*)",
+        "pu": false,
+        "rep": "generally replaced by *jan sama*"
+    },
+    "peto": {
+        "defs": [
+            "cry, tear(s)"
+        ],
+        "etym": "toki pona *'pana e telo oko'*",
+        "pu": false,
+        "rep": false
+    },
+    "pipo": {
+        "defs": [
+            "annoy, annoyance, bothersome, boring"
+        ],
+        "etym": "toki pona *pipi*",
+        "pu": false,
+        "rep": false
+    },
+    "po": {
+        "defs": [
+            "the number 4  (uncommon)"
+        ],
+        "etym": "?English *four*",
+        "pu": false,
+        "rep": "generally replaced by *tu tu* or *mute*"
+    },
+    "powe": {
+        "defs": [
+            "unreal, false, untrue, pretend, deceive, trick"
+        ],
+        "etym": "?French *faux* 'false'",
+        "pu": false,
+        "rep": false
+    },
+    "sin": {
+        "defs": [
+            "again",
+            "renewal, newness"
+        ],
+        "etym": "Mandarin *新 xīn* 'new, fresh'",
+        "pu": true,
+        "rep": false
+    },
+    "ten": {
+        "defs": [
+            "clipping of *'tenpo'*",
+            "time, duration, moment, occasion, period, situation"
+        ],
+        "etym": "toki pona *tenpo* ← Esperanto *tempo* 'time'",
+        "pu": false,
+        "rep": false
+    },
+    "tuli": {
+        "defs": [
+            "the number 3  (uncommon)"
+        ],
+        "etym": "English *three*",
+        "pu": false,
+        "rep": "generally replaced by *tu wan* or *mute*"
+    }
+}

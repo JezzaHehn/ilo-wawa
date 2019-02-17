@@ -822,7 +822,7 @@
             "good, easy"
         ],
         "etym": "?French *facile* 'easy'",
-        "pu": true,
+        "pu": false,
         "rep": "generally replaced by *pona*"
     },
     "pata": {
@@ -1135,7 +1135,8 @@
     },
     "toki": {
         "defs": [
-            "communicate, say, speak, talk, *say*, use language, think"
+            "communicate, say, speak, talk, *say*, use language, think",
+            "interjection 'hello'"
         ],
         "etym": "Tok Pisin *tok* ← English *talk*",
         "pu": true,
