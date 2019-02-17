@@ -39,14 +39,6 @@
         "pu": false,
         "rep": "replaced by *ona*"
     },
-    "kamalawala": {
-        "defs": [
-            "anarchy"
-        ],
-        "etym": "toki pona *'kama pi lawa ala'*",
-        "pu": false,
-        "rep": false
-    },
     "kan": {
         "defs": [
             "with, among"
@@ -70,15 +62,6 @@
         "etym": "?French *café* 'light brown' or Greek *καφές kafés* 'coffee'",
         "pu": false,
         "rep": "generally replaced by *pimeja*"
-    },
-    "ke": {
-        "defs": [
-            "*oke*",
-            "[interjection expressing contextual agreement]"
-        ],
-        "etym": "English *'kay* ← *okay*",
-        "pu": false,
-        "rep": false
     },
     "kijetesantakalu": {
         "defs": [
@@ -111,24 +94,6 @@
         ],
         "etym": "French *couleur* 'color'",
         "pu": true,
-        "rep": false
-    },
-    "kulu": {
-        "defs": [
-            "*kulupu*",
-            "community, company, group, nation, society, tribe",
-            "the number 6 (especially in senary)"
-        ],
-        "etym": "toki pona *kulupu*",
-        "pu": false,
-        "rep": "for the number 6, generally replaced by *tu tu tu* or *mute*"
-    },
-    "kuntu": {
-        "defs": [
-            "laughter, humor"
-        ],
-        "etym": "toki pona abbrev. *k.m.t.u.* ← *'kalama musi tan uta'*",
-        "pu": false,
         "rep": false
     },
     "lanpan": {
@@ -170,22 +135,6 @@
         "pu": false,
         "rep": false
     },
-    "melome": {
-        "defs": [
-            "sapphic, lesbian, wlw (women/fem-aligned people loving women/fem-aligned people)"
-        ],
-        "etym": "toki pona *'meli pi olin meli'*",
-        "pu": false,
-        "rep": false
-    },
-    "mijomi": {
-        "defs": [
-            "gay, mlm (men/masc-aligned people loving men/masc-aligned people)"
-        ],
-        "etym": "toki pona *'mije pi olin mije'*",
-        "pu": false,
-        "rep": false
-    },
     "monsuta": {
         "defs": [
             "fear, monster"
@@ -200,23 +149,6 @@
         ],
         "etym": "Hindi *नमक namak* 'salt' ← Persian *نمک namak* 'salt'",
         "pu": true,
-        "rep": false
-    },
-    "oke": {
-        "defs": [
-            "*ke*",
-            "[interjection expressing contextual agreement]"
-        ],
-        "etym": "English *okay*",
-        "pu": false,
-        "rep": false
-    },
-    "omen": {
-        "defs": [
-            "sarcasm, sarcastic, irony, ironic"
-        ],
-        "etym": "toki pona abbrev. *o.m.e.m.* ← *'o moli e mi'*",
-        "pu": false,
         "rep": false
     },
     "pakala": {
@@ -282,22 +214,6 @@
         "etym": "?Serbo-Croatian *brat брат* \"brother\" or ?Tok Pisin *b(a)rata* 'brother, paternal cousin (of the same gender), woman's sister' (← English *brother*)",
         "pu": false,
         "rep": "generally replaced by *jan sama*"
-    },
-    "peto": {
-        "defs": [
-            "cry, tear(s)"
-        ],
-        "etym": "toki pona *'pana e telo oko'*",
-        "pu": false,
-        "rep": false
-    },
-    "pipo": {
-        "defs": [
-            "annoy, annoyance, bothersome, boring"
-        ],
-        "etym": "toki pona *pipi*",
-        "pu": false,
-        "rep": false
     },
     "po": {
         "defs": [
