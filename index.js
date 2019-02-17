@@ -11,6 +11,7 @@ const config = require("./config.json");
 const puDict = require('./lib/puDict.json');  // just pu words and definitions
 const exDict = require('./lib/exDict.json');  // extra nonpu definitions and words
 const langs = require('./lib/langs.json');  // list of derivations
+var wordList;
 
 // utility functions for filesystem read/write
 const fs = require('fs');
@@ -35,15 +36,38 @@ function dictPrint(w) {
     if (w in exDict) out += `\n__pu ala la sona pi nimi ni:__`;
   }
   if (w in exDict) {  // if there is extra information
-    if (!exDict[w].pu) out += `\nnimi '${w}' li pu ala. :x:`;
+    if (!exDict[w].pu) {
+      out += `\nnimi '${w}' li pu ala. :x:`;
+      out += `\n*etymology:* ${dict[w].etym}`; // add etymology
+    }
     let defs = exDict[w].defs;
     for(let i=0; i<defs.length; i++) {
       out += `\n• ${defs[i]}`;  // add each extra definition to output
     }
     if (exDict[w].rep) out += `\n${exDict[w].rep}`;
   }
-  if ( !(w in puDict || w in exDict) ) {  // if the word isn't found at all
+
+  // add etymology
+  if (w in puDict) out += `\n*etymology:* ${puDict[w].etym}`;
+  else if (w in exDict) out += `\n*etymology:* ${exDict[w].etym}`;
+
+  if (!(w in puDict || w in exDict)) {  // if the word isn't found at all
     out += `\nlipu la nimi "${w}" li lon ala. :book::mag::shrug:`;
+  }
+  return out
+}
+
+function puPrint(w) {
+  out = "";
+  out += `__**${w}**__`; // add word to output
+  if (w in puDict) {  // if the word is pu
+    out += `\nnimi '${w}' li pu. :white_check_mark:`;
+    let defs = puDict[w].defs;
+    for(let i=0; i<defs.length; i++) {
+      out += `\n• ${defs[i]}`;  // add each pu definition to output
+    }
+  } else {  // if the word isn't pu
+    out += `\nnimi '${w}' li pu ala. :x:`;
   }
   return out
 }
@@ -82,7 +106,9 @@ async function parse(msg) {
   // define each argument if toki pona word
   if (command === 'd' || command === 'def' || command === 'define') {
     let out = ""; // initialize output string
-    for(i=0; i<args.length; i++) { // for each word
+    if(args.length == 0) {  // if no args, list all words
+      out = wordList;
+    } else for(i=0; i<args.length; i++) { // for each word
       w = args[i];
       if (i>0) out += "\n──────────";
       out += "\n" + dictPrint(w);
@@ -97,8 +123,10 @@ async function parse(msg) {
       w = args[i];
       if (i>0) { out += "\n──────────" }
       out += `\n__**${w}**__`; // add word to output
-      if (w in dict) {  // if the word is in the dictionary
-        out += `\n*etymology:* ${dict[w].etym}`; // add etymology
+      if (w in puDict) {  // if the word is in the dictionary
+        out += `\n*etymology:* ${puDict[w].etym}`; // add etymology
+      } else if (w in exDict) {  // if the word is in the dictionary
+        out += `\n*etymology:* ${exDict[w].etym}`; // add etymology
       } else {
         out += `\nThe word "${w}" was not found. :book::mag::shrug:`;
       }
@@ -213,16 +241,10 @@ async function parse(msg) {
 
   if (command === 'pu') { // is the word pu?
     let out = ""; // initialize output string
-    for(var i=0; i<args.length; i++) { // for each word
+    for(i=0; i<args.length; i++) { // for each word
       w = args[i];
-      if (i>0) { out += "\n──────────" }
-      out += `\n__**${w}**__`; // add word to output
-      if (w in dict) {  // if the word is in the dictionary
-        if (dict[w].pu) out += `\nnimi '${w}' li pu. :white_check_mark:`;
-        else out += `\nnimi '${w}' li pu ala. :x:`;
-      } else {
-        out += `\nnimi "${w}" li lon ala. :book::mag::shrug: ni li pu ala. :x:`;
-      }
+      if (i>0) out += "\n──────────";
+      out += "\n" + puPrint(w);
     }
     msg.channel.send(out) // send data dump to channel
   } // end pu
@@ -280,7 +302,7 @@ async function sitelen(msg, sentence) {
 async function parseChange(oldMsg, newMsg) {
   // first split the arguments, remove prefix
   let args = newMsg.content.slice(config.prefix.length)
-                   .trim().replace(/\n/g, '\\n').split(/ +/g);
+  .trim().replace(/\n/g, '\\n').split(/ +/g);
   // pop first argument (command) and leave the other arguments
   const command = args.shift().toLowerCase();
 
@@ -299,8 +321,69 @@ async function parseChange(oldMsg, newMsg) {
 
 } // end parseChange
 
+function initWordList() {
+  //  populate and sort the two word lists
+
+  // === pu ===
+  wordList = "nimi pu:\n```\n";
+  puRowList = new Array(21).fill(new Array());
+  i = 0;
+  for(w in puDict) {
+    puRowList[i] = puRowList[i].concat(w);
+    i = (i+1) % puRowList.length;
+  }
+
+  colCount = puRowList[0].length;
+  wordList += "╔"+("═".repeat(9)+"╤").repeat(colCount-1)+"═".repeat(9)+"╗\n";
+
+  for(row in puRowList) {
+    wordList += "║ ";
+    for(w in puRowList[row]) {
+      if(w>0) wordList += "│ ";
+      wordList += puRowList[row][w].padEnd(8,' ');
+    }
+    spacer = colCount-puRowList[row].length
+    wordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
+  }
+
+  colCount = puRowList[0].length;
+  wordList += "╚"+("═".repeat(9)+"╧").repeat(colCount-1)+"═".repeat(9)+"╝\n```";
+
+
+  // === pu ala ===
+  wordList += "nimi pu ala:```\n";
+  exRowList = new Array(4).fill(new Array());
+  i = 0;
+  for(w in exDict) {
+    if(!(exDict[w].pu) && w != 'kijetesantakalu' ) {
+      exRowList[i] = exRowList[i].concat(w);
+      i = (i+1) % exRowList.length;
+    }
+  }
+
+  colCount = exRowList[0].length;
+  wordList += "╔"+("═".repeat(9)+"╤").repeat(colCount-1)+"═".repeat(9)+"╗\n";
+
+  for(row in exRowList) {
+    wordList += "║ ";
+    for(w in exRowList[row]) {
+      if(w>0) wordList += "│ ";
+      wordList += exRowList[row][w].padEnd(8,' ');
+    }
+    spacer = colCount-exRowList[row].length
+    wordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
+  }
+
+  colCount = puRowList[0].length;
+  wordList += "╟─────────┴─────────┼"+"─────────┴".repeat(colCount-4)+"─────────╢\n";
+  wordList += "║ kijetesantakalu   │"+"          ".repeat(colCount-4)+"         ║\n"
+  wordList += "╚═══════════════════╧"+("══════════").repeat(colCount-4)+"═════════╝\n```";
+
+  console.log("Word List:\n", wordList);
+}
 
 client.on('ready', () => {
+  initWordList();
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
 });
