@@ -27,7 +27,7 @@ You will also need to visit the [Discord developer portal](https://discordapp.co
 
 If you've learned something from ilo wawa in a server...
 or if you have ever benefitted from this bot's code...
-(please consider donating to help keep ilo wawa alive! ❤)[https://paypal.me/jezzahehn]
+[please consider donating to help keep ilo wawa alive!](https://paypal.me/jezzaheh) ❤
 
 ## Authors
 
@@ -36,7 +36,7 @@ or if you have ever benefitted from this bot's code...
 * **jan Akuton** - *compiled dictionary and helped with language support*
 * **jan Jeko** - *pu/nonpu booleans in dictionary*
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Anthrakia/ilo-wawa/graphs/contributors) who participated in this project.
 
 ## License
 
