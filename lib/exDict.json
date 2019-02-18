@@ -158,34 +158,6 @@
         "pu": false,
         "rep": "generally replaced by *pini*"
     },
-    "pali": {
-        "defs": [
-            "do, take action on, work on; build, make, prepare"
-        ],
-        "pu": true,
-        "rep": false
-    },
-    "palisa": {
-        "defs": [
-            "long hard thing; branch, rod, stick"
-        ],
-        "pu": true,
-        "rep": false
-    },
-    "pan": {
-        "defs": [
-            "cereal, grain; barley, corn, oat, rice, wheat; bread, pasta"
-        ],
-        "pu": true,
-        "rep": false
-    },
-    "pana": {
-        "defs": [
-            "give, send, emit, provide, put, release"
-        ],
-        "pu": true,
-        "rep": false
-    },
     "pasila": {
         "defs": [
             "good, easy"

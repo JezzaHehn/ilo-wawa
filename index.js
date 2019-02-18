@@ -38,7 +38,7 @@ function dictPrint(w) {
   if (w in exDict) {  // if there is extra information
     if (!exDict[w].pu) {
       out += `\nnimi '${w}' li pu ala. :x:`;
-      out += `\n*etymology:* ${dict[w].etym}`; // add etymology
+      out += `\n*etymology:* ${exDict[w].etym}`; // add etymology
     }
     let defs = exDict[w].defs;
     for(let i=0; i<defs.length; i++) {
@@ -112,7 +112,7 @@ async function parse(msg) {
       out = wordList;
     } else for(i=0; i<args.length; i++) { // for each word
       w = args[i];
-      if (i>0) out += "\n──────────";
+      if (i>0) out += "\n────────────────────────";
       out += "\n" + dictPrint(w);
     }
     msg.channel.send(out) // send data dump to channel
@@ -123,7 +123,7 @@ async function parse(msg) {
     let out = ""; // initialize output string
     for(i=0; i<args.length; i++) { // for each word
       w = args[i];
-      if (i>0) { out += "\n──────────" }
+      if (i>0) { out += "\n────────────────────────" }
       out += `\n__**${w}**__`; // add word to output
       if (w in puDict) {  // if the word is in the dictionary
         out += `\n*etymology:* ${puDict[w].etym}`; // add etymology
@@ -138,21 +138,36 @@ async function parse(msg) {
 
   // define each argument if toki pona word
   if (command === 'f' || command === 'find') {
-    let out = "__**Dictionary search results:**__"; // initialize output string
+    let out = "__**Dictionary search results**__\n"; // initialize output string
     let query = ""; // initialize query regex string
-    let found = false;
+    let puFound = false;
+    let exFound = false;
 
     for(i=0; i<args.length; i++) query += args[i] + " "; // combine args into query
     query = query.slice(0,-1); // trim final space and create regex
-    Object.keys(dict).forEach(function(word) { // for each word in the whole dictionary
-      for(j=0; j<dict[word].defs.length; j++) if (dict[word].defs[j].includes(query)) {
-        out += `\n──────────\n` + dictPrint(word);  // add the word to the output
-        found = true;
+    Object.keys(puDict).forEach(function(word) { // for each word in the pu dictionary
+      for(def in puDict[word].defs) if(puDict[word].defs[def].includes(query)) {
+        if(!puFound) {
+          out += `The following is pu:`
+          puFound = true;
+        }
+        out += `\n────────────────────────\n` + puPrint(word);  // add the word to the output
         break
       }
     });
-    if(!found) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
-    if(out.length < 4000) msg.channel.send(out) // send data dump to channel
+    Object.keys(exDict).forEach(function(word) { // for each word in the pu dictionary
+      for(def in exDict[word].defs) if(exDict[word].defs[def].includes(query)) {
+        if(!exFound) {
+          if(puFound) out += `\n════════════════════════\n`
+          out += `The following is pre-pu or post-pu information:`
+          exFound = true;
+        }
+        out += `\n────────────────────────\n` + dictPrint(word);  // add the word to the output
+        break
+      }
+    });
+    if(!puFound && !exFound) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+    if(out.length < 2000) msg.channel.send(out) // send data dump to channel
     else msg.channel.send(`Too many results! Please try being more specific.`);
   } // end find
 
@@ -165,7 +180,7 @@ async function parse(msg) {
     switch (args.length) {
       case 0:
       out += `Pick a language to list all toki pona word derivations.`;
-      out += "\n──────────";
+      out += "\n────────────────────────";
       for (lang in langs) {
         langcaps = lang.replace(/\w\S*/g, function(txt){
           return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -245,7 +260,7 @@ async function parse(msg) {
     let out = ""; // initialize output string
     for(i=0; i<args.length; i++) { // for each word
       w = args[i];
-      if (i>0) out += "\n──────────";
+      if (i>0) out += "\n────────────────────────";
       out += "\n" + puPrint(w);
     }
     msg.channel.send(out) // send data dump to channel
@@ -328,7 +343,7 @@ function initWordList() {
 
   // === pu ===
   wordList = "nimi pu:\n```\n";
-  puRowList = new Array(21).fill(new Array());
+  puRowList = new Array(41).fill(new Array());
   i = 0;
   for(w in puDict) {
     puRowList[i] = puRowList[i].concat(w);
@@ -336,7 +351,7 @@ function initWordList() {
   }
 
   colCount = puRowList[0].length;
-  wordList += "╔"+("═".repeat(9)+"╤").repeat(colCount-1)+"═".repeat(9)+"╗\n";
+  wordList += "╔"+("═════════╤").repeat(colCount-1)+"═════════╗\n";
 
   for(row in puRowList) {
     wordList += "║ ";
@@ -354,7 +369,7 @@ function initWordList() {
 
   // === pu ala ===
   wordList += "nimi pu ala:```\n";
-  exRowList = new Array(4).fill(new Array());
+  exRowList = new Array(6).fill(new Array());
   i = 0;
   for(w in exDict) {
     if(!(exDict[w].pu) && w != 'kijetesantakalu' ) {
@@ -376,10 +391,10 @@ function initWordList() {
     wordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
   }
 
-  colCount = puRowList[0].length;
-  wordList += "╟─────────┴─────────┼"+"─────────┴".repeat(colCount-4)+"─────────╢\n";
-  wordList += "║ kijetesantakalu   │"+"          ".repeat(colCount-4)+"         ║\n"
-  wordList += "╚═══════════════════╧"+("══════════").repeat(colCount-4)+"═════════╝\n```";
+  colCount = exRowList[0].length;
+  wordList += "╟─────────┴─────────┼─────────╢\n";
+  wordList += "║ kijetesantakalu   │         ║\n"
+  wordList += "╚═══════════════════╧═════════╝\n```";
 
   console.log("Word List:\n", wordList);
 }

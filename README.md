@@ -31,7 +31,7 @@ You will also need to visit the [Discord developer portal](https://discordapp.co
 
 If you've learned something from ilo wawa in a server...
 or if you have ever benefitted from this bot's code...
-[please consider donating to help keep ilo wawa alive!](https://paypal.me/jezzaheh) ❤
+[please consider donating to help keep ilo wawa alive!](https://paypal.me/jezzahehn) ❤
 
 ## Authors
 
