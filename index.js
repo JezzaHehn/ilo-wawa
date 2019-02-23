@@ -37,8 +37,8 @@ function dictPrint(w) {
   }
   if (w in exDict) {  // if there is extra information
     if (!exDict[w].pu) {
-      out += `\nnimi '${w}' li pu ala. :x:`;
-      out += `\n*etymology:* ${exDict[w].etym}`; // add etymology
+      if (exDict[w].community) out += `\nnimi '${w}' li sin pi jan Sonja ala, li pu ala. :x:`;
+      else out += `\nnimi '${w}' li pu ala. :x:`;
     }
     let defs = exDict[w].defs;
     for(let i=0; i<defs.length; i++) {
@@ -368,12 +368,13 @@ function initWordList() {
 
 
   // === pu ala ===
-  wordList += "nimi pu ala:```\n";
+  wordList += "\nnimi pu ala:```\n";
   exRowList = new Array(6).fill(new Array());
   i = 0;
   for(w in exDict) {
     if(!(exDict[w].pu) && w != 'kijetesantakalu' ) {
-      exRowList[i] = exRowList[i].concat(w);
+      if(exDict[w].community) exRowList[i] = exRowList[i].concat(w + '*');
+      else exRowList[i] = exRowList[i].concat(w);
       i = (i+1) % exRowList.length;
     }
   }
@@ -395,47 +396,71 @@ function initWordList() {
   wordList += "╟─────────┴─────────┼─────────╢\n";
   wordList += "║ kijetesantakalu   │         ║\n"
   wordList += "╚═══════════════════╧═════════╝\n```";
+  wordList += " * = nimi sin pi jan Sonja ala"
 
   console.log("Word List:\n", wordList);
 }
 
+function pangram() {
+  letterList = ['a','e','i','j','k',
+                'l','m','n','o','p',
+                's','t','u','w'];
+  puList = [];
+  for(w in puDict) puList.push(w);
+  puList.sort(function(a, b) {
+    return a.length-b.length
+  })
+  panList = [];
+  for(w in puList) {
+    console.log('Testing the word ' + puList[w])
+    if(letterList.length == 0) break;
+    for(l in letterList) {
+      if(puList[w].includes(letterList[l])) {
+        console.log(puList[w] + ' is a match for ' + letterList[l]);
+        panList.push(puList[w]);
+        for(i=0;i<puList[w].length;i++) {
+          letterList = letterList.filter(x => x!=puList[w][i]);
+        }
+        break
+      }
+    }
+  }
+  console.log(panList);
+}
+
 client.on('ready', () => {
   initWordList();
+  //pangram();
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`------------------------`);
 });
 
 client.on('message', async msg => { // for every message, do the following:
   if (!msg.author.bot) { // ignore bots
-
-    if (msg.content.toLowerCase().match(/ilo[ +]wawa/g)) { // listen for name to react
-      if (msg.content.toLowerCase().match(/olin/g)) { // listen for olin
-        msg.react("🔨").then(() => {
-          msg.react("❤").then(() => {
-            console.log(`mi olin e ${msg.author.tag}`)
-          }).catch(err => {
-            console.log(`error: ${err}`);
-          })
-        }).catch(err => {
-          console.log(`error: ${err}`);
-        })
+    m = msg.content.toLowerCase()
+    if (m.match(/ilo wawa/g)) { // listen for name to react
+      if (m.match(/mi( mute li)? olin/g)) { // listen for olin
+        msg.react("🔨").catch(err => console.log(err));
+        msg.react("❤").catch(err => console.log(err));
+        console.log(`mi olin e ${msg.author.tag}`)
       }
-      if (msg.content.toLowerCase().match(/thank/g)) { // listen for thank
-        msg.react("🔨").then(() => {
-          msg.react("👍").then(() => {
-            console.log(`mi pilin pona e ${msg.author.tag}`)
-          }).catch(err => {
-            console.log(`error: ${err}`);
-          })
-        }).catch(err => {
-          console.log(`error: ${err}`);
-        })
+      if (m.match(/thank/g) || m.match(/pona/g)) { // listen for thank and pona
+        msg.react("🔨").catch(err => console.log(err));
+        msg.react("👍").catch(err => console.log(err));
+        console.log(`mi pilin pona e ${msg.author.tag}`)
+      }
+      if (m.match(/sleep/g) || m.match(/lape/g)) { // listen for sleep and lape
+        msg.react("🔨").catch(err => console.log(err));
+        msg.react("👀").catch(err => console.log(err));
+        console.log(`mi lape ala a!`)
+        msg.channel.send(`mi lape ala a!`).catch(err => console.log(err));
       }
     }
 
     if (msg.content.startsWith(config.prefix)) { // listen for command prefix
       parse(msg);
     }
+
   }
 }); // end message
 
@@ -447,4 +472,4 @@ client.on('messageUpdate', async (oldMsg, newMsg) => {
   }
 }); // end messageUpdate
 
-client.login(config.token);
+client.login(config.token).catch(err => console.log(err));

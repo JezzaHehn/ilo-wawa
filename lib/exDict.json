@@ -91,6 +91,7 @@
         "rep": false
     },
     "lanpan": {
+        "community": true,
         "defs": [
             "take, seize, catch, receive"
         ],
@@ -107,6 +108,7 @@
         "rep": false
     },
     "linluwi": {
+        "community": true,
         "defs": [
             "network(s), internet(s)"
         ],
@@ -180,7 +182,7 @@
         ],
         "etym": "?English *four*",
         "pu": false,
-        "rep": "generally replaced by *tu tu* or *mute*"
+        "rep": "generally replaced by *tu tu* (four) or *mute* (many)"
     },
     "powe": {
         "defs": [
@@ -199,6 +201,7 @@
         "rep": false
     },
     "ten": {
+        "community": true,
         "defs": [
             "clipping of *'tenpo'*",
             "time, duration, moment, occasion, period, situation"
@@ -213,6 +216,6 @@
         ],
         "etym": "English *three*",
         "pu": false,
-        "rep": "generally replaced by *tu wan* or *mute*"
+        "rep": "generally replaced by *tu wan* (three) or *mute* (many)"
     }
 }

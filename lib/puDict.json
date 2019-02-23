@@ -4,7 +4,7 @@
             "*kin*",
             "emphasis, emotion, or confirmation"
         ],
-        "etym": "{onomatopoetic}"
+        "etym": "a priori (onomatopoetic)"
     },
     "akesi": {
         "defs": [
@@ -40,7 +40,7 @@
             "all, abundant, countless, bountiful, every, plentiful",
             "the number 100 (uncommon)"
         ],
-        "etym": "toki pona *ale*"
+        "etym": "Dutch *alle* 'all'"
     },
     "anpa": {
         "defs": [
@@ -71,7 +71,7 @@
         "defs": [
             "(before the direct object)"
         ],
-        "etym": "jan Sonja"
+        "etym": "a priori"
     },
     "en": {
         "defs": [
@@ -209,9 +209,16 @@
         ],
         "etym": "Tongan *kulupu* ← English *group*"
     },
+    "kute": {
+        "defs": [
+            "ear",
+            "hear, listen; pay attention to, obey"
+        ],
+        "etym": "Acadian French *écouter* 'listen'"
+    },
     "la": {
         "defs": [
-            "(between the context [/adverbial] phrase and the main sentence)"
+            "(between the context/adverbial phrase and the main sentence)"
         ],
         "etym": "Esperanto *la* '[definite article]'"
     },
@@ -360,7 +367,7 @@
         "defs": [
             "(animal noise or communication)"
         ],
-        "etym": "{onomatopoetic}"
+        "etym": "(onomatopoetic)"
     },
     "mun": {
         "defs": [
@@ -712,7 +719,7 @@
         "defs": [
             "have sexual or marital relations with"
         ],
-        "etym": "?{onomatopoetic}"
+        "etym": "?(onomatopoetic)"
     },
     "uta": {
         "defs": [
