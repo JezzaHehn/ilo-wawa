@@ -436,28 +436,32 @@ client.on('ready', () => {
 });
 
 client.on('message', async msg => { // for every message, do the following:
-  if (!msg.author.bot) { // ignore bots
+  if(!msg.author.bot) { // ignore bots
     m = msg.content.toLowerCase()
-    if (m.match(/ilo wawa/g)) { // listen for name to react
-      if (m.match(/mi( mute li)? olin/g)) { // listen for olin
-        msg.react("🔨").catch(err => console.log(err));
-        msg.react("❤").catch(err => console.log(err));
-        console.log(`mi olin e ${msg.author.tag}`)
-      }
-      if (m.match(/thank/g) || m.match(/pona/g)) { // listen for thank and pona
-        msg.react("🔨").catch(err => console.log(err));
-        msg.react("👍").catch(err => console.log(err));
-        console.log(`mi pilin pona e ${msg.author.tag}`)
-      }
-      if (m.match(/sleep/g) || m.match(/lape/g)) { // listen for sleep and lape
-        msg.react("🔨").catch(err => console.log(err));
-        msg.react("👀").catch(err => console.log(err));
-        console.log(`mi lape ala a!`)
-        msg.channel.send(`mi lape ala a!`).catch(err => console.log(err));
-      }
+
+    // listen for name to react if mentioned
+    mentioned = false;
+    if(m.match(/ilo wawa/g)) mentioned = true;
+    else if(msg.mentions.users.get(client.user.id)) mentioned = true;
+    if(mentioned) { // react
+      msg.react("🔨").catch(err => console.log(err)).then(function() {
+        if (m.match(/mi( mute li)? olin/g)) { // listen for olin
+          msg.react("❤").catch(err => console.log(err));
+          console.log(`mi olin e ${msg.author.tag}`)
+        }
+        if (m.match(/thank/g) || m.match(/pona/g)) { // listen for thank and pona
+          msg.react("👍").catch(err => console.log(err));
+          console.log(`mi pilin pona e ${msg.author.tag}`)
+        }
+        if (m.match(/sleep/g) || m.match(/w[ao]ke/g) || m.match(/lape/g)) { // listen for sleep, etc
+          msg.react("👀").catch(err => console.log(err));
+          console.log(`mi lape ala a!`)
+          msg.channel.send(`mi lape ala a!`).catch(err => console.log(err));
+        }
+      });
     }
 
-    if (msg.content.startsWith(config.prefix)) { // listen for command prefix
+    if(msg.content.startsWith(config.prefix)) { // listen for command prefix
       parse(msg);
     }
 
@@ -465,8 +469,8 @@ client.on('message', async msg => { // for every message, do the following:
 }); // end message
 
 client.on('messageUpdate', async (oldMsg, newMsg) => {
-  if (!oldMsg.author.bot) { // ignore bots
-    if (newMsg.content.startsWith(config.prefix)) { // listen for command prefix
+  if(!oldMsg.author.bot) { // ignore bots
+    if(newMsg.content.startsWith(config.prefix)) { // listen for command prefix
       outMsg = parseChange(oldMsg, newMsg);
     }
   }
