@@ -6,12 +6,13 @@
 
 // configuration: prefix, token, gimppath
 const config = require("./config.json");
+const pfx = config.prefix;
 
 // dictionary of toki pona words, and list of source languages
 const puDict = require('./lib/puDict.json');  // just pu words and definitions
 const exDict = require('./lib/exDict.json');  // extra nonpu definitions and words
 const langs = require('./lib/langs.json');  // list of derivations
-var wordList;
+var puWordList, exWordList;
 
 // utility functions for filesystem read/write
 const fs = require('fs');
@@ -72,9 +73,9 @@ function puPrint(w) {
   return out
 }
 
-async function parse(msg) {
+async function parseCmd(msg) {
   // first split the arguments, remove prefix
-  let args = msg.content.slice(config.prefix.length)
+  let args = msg.content.slice(pfx.length)
   .trim().replace(/\n/g, '\\n').split(/ +/g);
   // pop first argument (command) and leave the other arguments
   const command = args.shift().toLowerCase();
@@ -93,14 +94,15 @@ async function parse(msg) {
     out +='```╔══════════════════════╗';
     out += '\n║ nimi ilo pi ilo wawa ║';
     out += '\n╚══════════════════════╝```';
-    out += '\n**d, def, define** *[words...]* - Define toki pona words, or show word list';
-    out += '\n**e, etym, etymology** *word [words...]* - Show etymologies of words';
-    out += '\n**f, find** *word or phrase* - Search dictionary definitions';
-    out += '\n**h, help, ?** - Print this command list';
-    out += '\n**l, lang, language** [*language*] - Show language list, or show words derived from a language';
-    out += '\n**ping** - Determine bot connection speed';
-    out += '\n**pu** *word [words...]* - Show only pu information';
-    out += '\n**s, sitelen** *sentence* - Write in sitelen pona';
+    out += `\nCommand abbreviations are __u__nderlined.\n`;
+    out += `\n**•   __${pfx}d__efine** *[words...]* - Define toki pona words, or show word list`;
+    out += `\n**•   __${pfx}e__tymology** *word [words...]* - Show etymologies of words`;
+    out += `\n**•   __${pfx}f__ind** *word or phrase* - Search dictionary definitions`;
+    out += `\n**•   __${pfx}h__elp, ${pfx}?** - Print this command list`;
+    out += `\n**•   __${pfx}l__anguage** [*language*] - Show language list, or show words derived from a language`;
+    out += `\n**•   ${pfx}ping** - Determine bot connection speed`;
+    out += `\n**•   ${pfx}pu** *[words...]* - Show only pu word list and definitions`;
+    out += `\n**•   __${pfx}s__itelen** *sentence* - Write in sitelen pona`;
     out += '\n\nFor more information, visit <https://github.com/Anthrakia/ilo-wawa>'
     msg.channel.send(out) // send command list to channel
   } // end help
@@ -109,7 +111,7 @@ async function parse(msg) {
   if (command === 'd' || command === 'def' || command === 'define') {
     let out = ""; // initialize output string
     if(args.length == 0) {  // if no args, list all words
-      out = wordList;
+      out = puWordList + exWordList;
     } else for(i=0; i<args.length; i++) { // for each word
       w = args[i];
       if (i>0) out += "\n────────────────────────";
@@ -258,7 +260,9 @@ async function parse(msg) {
 
   if (command === 'pu') { // is the word pu?
     let out = ""; // initialize output string
-    for(i=0; i<args.length; i++) { // for each word
+    if(args.length == 0) {  // if no args, list all pu words
+      out = puWordList;
+    } else for(i=0; i<args.length; i++) { // for each pu word
       w = args[i];
       if (i>0) out += "\n────────────────────────";
       out += "\n" + puPrint(w);
@@ -318,7 +322,7 @@ async function sitelen(msg, sentence) {
 
 async function parseChange(oldMsg, newMsg) {
   // first split the arguments, remove prefix
-  let args = newMsg.content.slice(config.prefix.length)
+  let args = newMsg.content.slice(pfx.length)
   .trim().replace(/\n/g, '\\n').split(/ +/g);
   // pop first argument (command) and leave the other arguments
   const command = args.shift().toLowerCase();
@@ -342,7 +346,7 @@ function initWordList() {
   //  populate and sort the two word lists
 
   // === pu ===
-  wordList = "nimi pu:\n```\n";
+  puWordList = "nimi pu:\n```\n";
   puRowList = new Array(41).fill(new Array());
   i = 0;
   for(w in puDict) {
@@ -351,24 +355,24 @@ function initWordList() {
   }
 
   colCount = puRowList[0].length;
-  wordList += "╔"+("═════════╤").repeat(colCount-1)+"═════════╗\n";
+  puWordList += "╔"+("═════════╤").repeat(colCount-1)+"═════════╗\n";
 
   for(row in puRowList) {
-    wordList += "║ ";
+    puWordList += "║ ";
     for(w in puRowList[row]) {
-      if(w>0) wordList += "│ ";
-      wordList += puRowList[row][w].padEnd(8,' ');
+      if(w>0) puWordList += "│ ";
+      puWordList += puRowList[row][w].padEnd(8,' ');
     }
     spacer = colCount-puRowList[row].length
-    wordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
+    puWordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
   }
 
   colCount = puRowList[0].length;
-  wordList += "╚"+("═".repeat(9)+"╧").repeat(colCount-1)+"═".repeat(9)+"╝\n```";
+  puWordList += "╚"+("═════════╧").repeat(colCount-1)+"═════════╝\n```\n";
 
 
   // === pu ala ===
-  wordList += "\nnimi pu ala:```\n";
+  exWordList = "nimi pu ala:```\n";
   exRowList = new Array(6).fill(new Array());
   i = 0;
   for(w in exDict) {
@@ -380,25 +384,23 @@ function initWordList() {
   }
 
   colCount = exRowList[0].length;
-  wordList += "╔"+("═".repeat(9)+"╤").repeat(colCount-1)+"═".repeat(9)+"╗\n";
+  exWordList += "╔"+("═════════╤").repeat(colCount-1)+"═════════╗\n";
 
   for(row in exRowList) {
-    wordList += "║ ";
+    exWordList += "║ ";
     for(w in exRowList[row]) {
-      if(w>0) wordList += "│ ";
-      wordList += exRowList[row][w].padEnd(8,' ');
+      if(w>0) exWordList += "│ ";
+      exWordList += exRowList[row][w].padEnd(8,' ');
     }
     spacer = colCount-exRowList[row].length
-    wordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
+    exWordList += "│ ".repeat(spacer) + " ".repeat(spacer*8) + "║\n";
   }
 
   colCount = exRowList[0].length;
-  wordList += "╟─────────┴─────────┼─────────╢\n";
-  wordList += "║ kijetesantakalu   │         ║\n"
-  wordList += "╚═══════════════════╧═════════╝\n```";
-  wordList += " * = nimi sin pi jan Sonja ala"
-
-  console.log("Word List:\n", wordList);
+  exWordList += "╟─────────┴─────────┼─────────╢\n";
+  exWordList += "║ kijetesantakalu   │         ║\n"
+  exWordList += "╚═══════════════════╧═════════╝\n```";
+  exWordList += " * = nimi sin pi jan Sonja ala"
 }
 
 function pangram() {
@@ -461,8 +463,8 @@ client.on('message', async msg => { // for every message, do the following:
       });
     }
 
-    if(msg.content.startsWith(config.prefix)) { // listen for command prefix
-      parse(msg);
+    if(msg.content.startsWith(pfx)) { // listen for command prefix
+      parseCmd(msg);
     }
 
   }
@@ -470,7 +472,7 @@ client.on('message', async msg => { // for every message, do the following:
 
 client.on('messageUpdate', async (oldMsg, newMsg) => {
   if(!oldMsg.author.bot) { // ignore bots
-    if(newMsg.content.startsWith(config.prefix)) { // listen for command prefix
+    if(newMsg.content.startsWith(pfx)) { // listen for command prefix
       outMsg = parseChange(oldMsg, newMsg);
     }
   }
