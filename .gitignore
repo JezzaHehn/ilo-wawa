@@ -1,3 +1,4 @@
-# ignore the configuration file with secure information
+# ignore the configuration files with secure information like IDs
 config.json
+janLawa.json
 **/node_modules

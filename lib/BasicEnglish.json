@@ -1,0 +1,2028 @@
+{
+  "able": [],
+  "about": [],
+  "account": [],
+  "acid": [],
+  "across": [],
+  "act": [],
+  "addition": [],
+  "adjustment": [
+    {
+      "def": "ante",
+      "ver": "376744299783651331"
+    }
+  ],
+  "advertisement": [],
+  "after": [],
+  "again": [
+    {
+      "def": "tenpo sin",
+      "ver": "376744299783651331"
+    }
+  ],
+  "against": [
+    {
+      "def": "tawa",
+      "ver": "376744299783651331"
+    }
+  ],
+  "agreement": [],
+  "air": [],
+  "all": [],
+  "almost": [],
+  "among": [
+    {
+      "def": "poka",
+      "ver": "376744299783651331"
+    }
+  ],
+  "amount": [],
+  "amusement": [
+    {
+      "def": "musi",
+      "ver": "448736981824831499"
+    }
+  ],
+  "and": [],
+  "angle": [],
+  "angry": [],
+  "animal": [],
+  "answer": [
+    {
+      "def": "sona",
+      "ver": "376744299783651331"
+    }
+  ],
+  "ant": [],
+  "any": [],
+  "apparatus": [],
+  "apple": [],
+  "approval": [],
+  "arch": [],
+  "argument": [],
+  "arm": [],
+  "army": [],
+  "art": [],
+  "as": [
+    {
+      "def": "tan",
+      "ver": "376744299783651331"
+    }
+  ],
+  "at": [
+    {
+      "def": "lon",
+      "ver": "376744299783651331"
+    }
+  ],
+  "attack": [],
+  "attempt": [],
+  "attention": [],
+  "attraction": [
+    {
+      "def": "kama poka",
+      "ver": "376744299783651331"
+    }
+  ],
+  "authority": [
+    {
+      "def": "wawa",
+      "ver": "448736981824831499"
+    }
+  ],
+  "automatic": [],
+  "awake": [
+    {
+      "def": "lape ala",
+      "ver": "376744299783651331"
+    }
+  ],
+  "baby": [],
+  "back": [],
+  "bad": [
+    {
+      "def": "ike",
+      "ver": "376744299783651331"
+    }
+  ],
+  "bag": [],
+  "balance": [
+    {
+      "def": "sama",
+      "ver": false
+    }
+  ],
+  "ball": [],
+  "band": [
+    {
+      "def": "kulupu",
+      "ver": "376744299783651331"
+    },
+    {
+      "def": "linja",
+      "ver": "376744299783651331"
+    }
+  ],
+  "base": [],
+  "basin": [],
+  "basket": [],
+  "bath": [
+    {
+      "def": "poki telo",
+      "ver": false
+    }
+  ],
+  "be": [],
+  "beautiful": [],
+  "because": [
+    {
+      "def": "tan",
+      "ver": false
+    },
+    {
+      "def": "tan ni:",
+      "ver": false
+    }
+  ],
+  "bed": [],
+  "bee": [],
+  "before": [],
+  "behaviour": [],
+  "belief": [],
+  "bell": [
+    {
+      "def": "ilo kalama",
+      "ver": "376744299783651331"
+    }
+  ],
+  "bent": [],
+  "berry": [],
+  "between": [],
+  "bird": [],
+  "birth": [],
+  "bit": [],
+  "bite": [],
+  "bitter": [],
+  "black": [],
+  "blade": [
+    {
+      "def": "ilo pi kama tu",
+      "ver": false
+    }
+  ],
+  "blood": [
+    {
+      "def": "telo jan loje",
+      "ver": "376744299783651331"
+    },
+    {
+      "def": "telo soweli loje",
+      "ver": "376744299783651331"
+    }
+  ],
+  "blow": [
+    {
+      "def": "pana e kon",
+      "ver": false
+    }
+  ],
+  "blue": [],
+  "board": [],
+  "boat": [],
+  "body": [],
+  "boiling": [],
+  "bone": [],
+  "book": [],
+  "boot": [],
+  "bottle": [
+    {
+      "def": "poki telo",
+      "ver": "376744299783651331"
+    }
+  ],
+  "box": [],
+  "boy": [
+    {
+      "def": "jan",
+      "ver": "448736981824831499"
+    },
+    {
+      "def": "jan lili",
+      "ver": "448736981824831499"
+    },
+    {
+      "def": "jan mije",
+      "ver": "448736981824831499"
+    }
+  ],
+  "brain": [],
+  "brake": [],
+  "branch": [],
+  "brass": [],
+  "bread": [],
+  "breath": [],
+  "brick": [],
+  "bridge": [
+    {
+      "def": "ilo tawa lon sewi telo",
+      "ver": false
+    }
+  ],
+  "bright": [],
+  "broken": [],
+  "brother": [],
+  "brown": [
+    {
+      "def": "pimeja",
+      "ver": "448736981824831499"
+    }
+  ],
+  "brush": [],
+  "bucket": [
+    {
+      "def": "poki",
+      "ver": "448736981824831499"
+    }
+  ],
+  "building": [],
+  "bulb": [
+    {
+      "def": "sike",
+      "ver": false
+    }
+  ],
+  "burn": [],
+  "burst": [
+    {
+      "def": "context",
+      "ver": false
+    }
+  ],
+  "business": [
+    {
+      "def": "esun",
+      "ver": false
+    }
+  ],
+  "but": [
+    {
+      "def": "taso",
+      "ver": "448736981824831499"
+    }
+  ],
+  "butter": [],
+  "button": [],
+  "by": [
+    {
+      "def": "tan",
+      "ver": "448736981824831499"
+    }
+  ],
+  "cake": [],
+  "camera": [],
+  "canvas": [],
+  "card": [],
+  "care": [],
+  "carriage": [],
+  "cart": [],
+  "cat": [
+    {
+      "def": "soweli suwi",
+      "ver": "448736981824831499"
+    }
+  ],
+  "cause": [
+    {
+      "def": "(la)",
+      "ver": "448736981824831499"
+    }
+  ],
+  "certain": [
+    {
+      "def": "lon",
+      "ver": false
+    }
+  ],
+  "chain": [],
+  "chalk": [],
+  "chance": [],
+  "change": [
+    {
+      "def": "ante",
+      "ver": "222185957431050242"
+    }
+  ],
+  "cheap": [
+    {
+      "def": "mani lili",
+      "ver": false
+    }
+  ],
+  "cheese": [],
+  "chemical": [],
+  "chest": [],
+  "chief": [],
+  "chin": [],
+  "church": [],
+  "circle": [],
+  "clean": [],
+  "clear": [],
+  "clock": [],
+  "cloth": [],
+  "cloud": [
+    {
+      "def": "kon sewi",
+      "ver": false
+    }
+  ],
+  "coal": [
+    {
+      "def": "kiwen",
+      "ver": "222185957431050242"
+    }
+  ],
+  "coat": [],
+  "cold": [],
+  "collar": [
+    {
+      "def": "poka pi lupa len",
+      "ver": "448736981824831499"
+    }
+  ],
+  "colour": [
+    {
+      "def": "kule",
+      "ver": "448736981824831499"
+    }
+  ],
+  "comb": [],
+  "come": [
+    {
+      "def": "kama",
+      "ver": "448736981824831499"
+    }
+  ],
+  "comfort": [],
+  "committee": [],
+  "common": [
+    {
+      "def": "mute",
+      "ver": false
+    }
+  ],
+  "company": [],
+  "comparison": [],
+  "competition": [],
+  "complete": [],
+  "complex": [],
+  "condition": [],
+  "connection": [],
+  "conscious": [],
+  "control": [],
+  "cook": [],
+  "copper": [],
+  "copy": [],
+  "cord": [
+    {
+      "def": "linja",
+      "ver": "222185957431050242"
+    }
+  ],
+  "cork": [],
+  "cotton": [],
+  "cough": [],
+  "country": [],
+  "cover": [],
+  "cow": [],
+  "crack": [],
+  "credit": [
+    {
+      "def": "mani",
+      "ver": "222185957431050242"
+    }
+  ],
+  "crime": [],
+  "cruel": [],
+  "crush": [
+    {
+      "def": "pakala",
+      "ver": false
+    },
+    {
+      "def": "jan olin",
+      "ver": false
+    }
+  ],
+  "cry": [],
+  "cup": [],
+  "current": [],
+  "curtain": [
+    {
+      "def": "len ",
+      "ver": "222185957431050242"
+    }
+  ],
+  "curve": [],
+  "cushion": [],
+  "cut": [],
+  "damage": [],
+  "danger": [],
+  "dark": [],
+  "daughter": [],
+  "day": [],
+  "dead": [],
+  "dear": [],
+  "death": [],
+  "debt": [],
+  "decision": [
+    {
+      "def": "lawa sona",
+      "ver": "448736981824831499"
+    }
+  ],
+  "deep": [],
+  "degree": [
+    {
+      "def": "wan lili",
+      "ver": false
+    }
+  ],
+  "delicate": [],
+  "dependent": [],
+  "design": [],
+  "desire": [],
+  "destruction": [],
+  "detail": [
+    {
+      "def": "sona lili",
+      "ver": "448736981824831499"
+    },
+    {
+      "def": "pali lili",
+      "ver": "448736981824831499"
+    }
+  ],
+  "development": [],
+  "different": [],
+  "digestion": [],
+  "direction": [],
+  "dirty": [
+    {
+      "def": "jaki",
+      "ver": false
+    }
+  ],
+  "discovery": [],
+  "discussion": [
+    {
+      "def": "toki",
+      "ver": false
+    }
+  ],
+  "disease": [],
+  "disgust": [],
+  "distance": [],
+  "distribution": [],
+  "division": [],
+  "do": [
+    {
+      "def": "pali",
+      "ver": "448736981824831499"
+    }
+  ],
+  "dog": [],
+  "door": [
+    {
+      "def": "lupa",
+      "ver": "222185957431050242"
+    },
+    {
+      "def": "lupa tomo",
+      "ver": "222185957431050242"
+    },
+    {
+      "def": "lupa suli",
+      "ver": "222185957431050242"
+    }
+  ],
+  "doubt": [],
+  "down": [],
+  "drain": [],
+  "drawer": [],
+  "dress": [],
+  "drink": [
+    {
+      "def": "moku",
+      "ver": "222185957431050242"
+    }
+  ],
+  "driving": [],
+  "drop": [],
+  "dry": [],
+  "dust": [],
+  "ear": [],
+  "early": [
+    {
+      "def": "lon tenpo kama lili",
+      "ver": false
+    }
+  ],
+  "earth": [
+    {
+      "def": "ma",
+      "ver": false
+    }
+  ],
+  "east": [],
+  "edge": [],
+  "education": [],
+  "effect": [],
+  "egg": [],
+  "elastic": [],
+  "electric": [],
+  "end": [],
+  "engine": [],
+  "enough": [
+    {
+      "def": "mute lili",
+      "ver": "222185957431050242"
+    }
+  ],
+  "equal": [],
+  "error": [],
+  "even": [],
+  "event": [
+    {
+      "def": "kama kulupu",
+      "ver": "222185957431050242"
+    },
+    {
+      "def": "kama wan",
+      "ver": "222185957431050242"
+    },
+    {
+      "def": "ijo suli",
+      "ver": "222185957431050242"
+    }
+  ],
+  "ever": [],
+  "every": [
+    {
+      "def": "ale",
+      "ver": "222185957431050242"
+    }
+  ],
+  "example": [],
+  "exchange": [],
+  "existence": [],
+  "expansion": [],
+  "experience": [],
+  "expert": [],
+  "eye": [],
+  "face": [],
+  "fact": [],
+  "fall": [],
+  "false": [],
+  "family": [],
+  "far": [],
+  "farm": [
+    {
+      "def": "tomo pan soweli",
+      "ver": false
+    }
+  ],
+  "fat": [
+    {
+      "def": "~~mi~~",
+      "ver": false
+    }
+  ],
+  "father": [],
+  "fear": [],
+  "feather": [],
+  "feeble": [],
+  "feeling": [],
+  "female": [],
+  "fertile": [],
+  "fiction": [],
+  "field": [],
+  "fight": [],
+  "finger": [
+    {
+      "def": "linja luka",
+      "ver": false
+    },
+    {
+      "def": "luka",
+      "ver": false
+    }
+  ],
+  "fire": [],
+  "first": [],
+  "fish": [],
+  "fixed": [],
+  "flag": [],
+  "flame": [],
+  "flat": [],
+  "flight": [
+    {
+      "def": "tawa kon",
+      "ver": false
+    }
+  ],
+  "floor": [
+    {
+      "def": "supa [noka]",
+      "ver": false
+    }
+  ],
+  "flower": [
+    {
+      "def": "kasi",
+      "ver": false
+    }
+  ],
+  "fly": [],
+  "fold": [],
+  "food": [
+    {
+      "def": "moku",
+      "ver": false
+    }
+  ],
+  "foolish": [
+    {
+      "def": "nasa",
+      "ver": false
+    }
+  ],
+  "foot": [],
+  "for": [],
+  "force": [],
+  "fork": [],
+  "form": [
+    {
+      "def": "lipu sitelen",
+      "ver": false
+    },
+    {
+      "def": "lipu sona",
+      "ver": false
+    },
+    {
+      "def": "sijelo",
+      "ver": false
+    }
+  ],
+  "forward": [
+    {
+      "def": "sinpin",
+      "ver": false
+    }
+  ],
+  "fowl": [],
+  "frame": [
+    {
+      "def": "suli a",
+      "ver": false
+    },
+    {
+      "def": "suli mute",
+      "ver": false
+    },
+    {
+      "def": "~~majuna~~",
+      "ver": false
+    }
+  ],
+  "free": [],
+  "frequent": [
+    {
+      "def": "lon tenpo mute",
+      "ver": false
+    }
+  ],
+  "friend": [
+    {
+      "def": "jan pona",
+      "ver": false
+    }
+  ],
+  "from": [],
+  "front": [],
+  "fruit": [],
+  "full": [],
+  "future": [],
+  "garden": [
+    {
+      "def": "ma kasi",
+      "ver": false
+    }
+  ],
+  "general": [],
+  "get": [
+    {
+      "def": "kama jo",
+      "ver": false
+    }
+  ],
+  "girl": [],
+  "give": [
+    {
+      "def": "pana",
+      "ver": false
+    }
+  ],
+  "glass": [],
+  "glove": [
+    {
+      "def": "len luka",
+      "ver": false
+    }
+  ],
+  "go": [
+    {
+      "def": "tawa",
+      "ver": false
+    }
+  ],
+  "goat": [
+    {
+      "def": "soweli",
+      "ver": false
+    }
+  ],
+  "gold": [],
+  "good": [],
+  "government": [],
+  "grain": [
+    {
+      "def": "pan",
+      "ver": false
+    }
+  ],
+  "grass": [],
+  "great": [],
+  "green": [],
+  "grey": [
+    {
+      "def": "pimeja walo",
+      "ver": false
+    },
+    {
+      "def": "walo pimeja",
+      "ver": false
+    }
+  ],
+  "grip": [],
+  "group": [],
+  "growth": [],
+  "guide": [],
+  "gun": [],
+  "hair": [
+    {
+      "def": "linja",
+      "ver": false
+    }
+  ],
+  "hammer": [],
+  "hand": [
+    {
+      "def": "luka",
+      "ver": false
+    }
+  ],
+  "hanging": [],
+  "happy": [],
+  "harbour": [],
+  "hard": [],
+  "harmony": [],
+  "hat": [],
+  "hate": [],
+  "have": [
+    {
+      "def": "jo",
+      "ver": false
+    }
+  ],
+  "he": [
+    {
+      "def": "ona",
+      "ver": false
+    }
+  ],
+  "head": [],
+  "healthy": [],
+  "hearing": [],
+  "heart": [],
+  "heat": [],
+  "help": [],
+  "here": [
+    {
+      "def": "lon ni",
+      "ver": false
+    }
+  ],
+  "high": [],
+  "history": [],
+  "hole": [],
+  "hollow": [
+    {
+      "def": "li jo e lupa",
+      "ver": false
+    }
+  ],
+  "hook": [],
+  "hope": [],
+  "horn": [],
+  "horse": [
+    {
+      "def": "soweli tawa",
+      "ver": false
+    }
+  ],
+  "hospital": [
+    {
+      "def": "tomo pona",
+      "ver": false
+    }
+  ],
+  "hour": [
+    {
+      "def": [
+        "tenpo lili"
+      ],
+      "ver": false
+    }
+  ],
+  "house": [],
+  "how": [
+    {
+      "def": "nasin seme",
+      "ver": false
+    }
+  ],
+  "humour": [],
+  "I": [
+    {
+      "def": "mi",
+      "ver": false
+    }
+  ],
+  "ice": [],
+  "idea": [
+    {
+      "def": "sona ",
+      "ver": false
+    },
+    {
+      "def": "pilin",
+      "ver": false
+    },
+    {
+      "def": "toki insa",
+      "ver": false
+    }
+  ],
+  "if": [],
+  "ill": [],
+  "important": [],
+  "impulse": [],
+  "in": [
+    {
+      "def": "insa",
+      "ver": false
+    }
+  ],
+  "increase": [],
+  "industry": [],
+  "ink": [],
+  "insect": [],
+  "instrument": [],
+  "insurance": [
+    {
+      "def": "mani kulupu pona",
+      "ver": false
+    }
+  ],
+  "interest": [],
+  "invention": [],
+  "iron": [],
+  "island": [],
+  "jelly": [],
+  "jewel": [],
+  "join": [
+    {
+      "def": "kama kulupu",
+      "ver": false
+    },
+    {
+      "def": "kama wan",
+      "ver": false
+    },
+    {
+      "def": "pali wan e",
+      "ver": false
+    }
+  ],
+  "journey": [],
+  "judge": [],
+  "jump": [],
+  "keep": [
+    {
+      "def": "jo awen",
+      "ver": false
+    }
+  ],
+  "kettle": [],
+  "key": [],
+  "kick": [],
+  "kind": [
+    {
+      "def": "pona",
+      "ver": false
+    }
+  ],
+  "kiss": [
+    {
+      "def": "uta",
+      "ver": false
+    }
+  ],
+  "knee": [],
+  "knife": [],
+  "knot": [],
+  "knowledge": [
+    {
+      "def": "sona",
+      "ver": false
+    }
+  ],
+  "land": [],
+  "language": [],
+  "last": [],
+  "late": [],
+  "laugh": [],
+  "law": [],
+  "lead": [
+    {
+      "def": "lawa",
+      "ver": false
+    },
+    {
+      "def": "kiwen",
+      "ver": false
+    }
+  ],
+  "leaf": [],
+  "learning": [],
+  "leather": [
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "left": [],
+  "leg": [
+    {
+      "def": "noka",
+      "ver": false
+    }
+  ],
+  "let": [
+    {
+      "def": "ken e",
+      "ver": false
+    }
+  ],
+  "letter": [],
+  "level": [],
+  "library": [],
+  "lift": [],
+  "light": [],
+  "like": [],
+  "limit": [],
+  "line": [],
+  "linen": [
+    {
+      "def": "len",
+      "ver": false
+    }
+  ],
+  "lip": [],
+  "liquid": [
+    {
+      "def": "telo",
+      "ver": false
+    }
+  ],
+  "list": [],
+  "little": [
+    {
+      "def": "lili",
+      "ver": false
+    }
+  ],
+  "living": [],
+  "lock": [],
+  "long": [],
+  "look": [],
+  "loose": [],
+  "loss": [],
+  "loud": [],
+  "love": [
+    {
+      "def": "olin",
+      "ver": false
+    }
+  ],
+  "low": [
+    {
+      "def": "anpa",
+      "ver": false
+    }
+  ],
+  "machine": [],
+  "make": [
+    {
+      "def": "pali",
+      "ver": false
+    }
+  ],
+  "male": [],
+  "man": [],
+  "manager": [],
+  "map": [],
+  "mark": [],
+  "market": [],
+  "married": [],
+  "mass": [],
+  "match": [
+    {
+      "def": "ilo seli",
+      "ver": false
+    }
+  ],
+  "material": [
+    {
+      "def": "Nooo",
+      "ver": false
+    }
+  ],
+  "may": [],
+  "meal": [
+    {
+      "def": "DUCK",
+      "ver": false
+    }
+  ],
+  "measure": [],
+  "meat": [],
+  "medical": [],
+  "meeting": [],
+  "memory": [],
+  "metal": [],
+  "middle": [
+    {
+      "def": "no",
+      "ver": false
+    }
+  ],
+  "military": [],
+  "milk": [],
+  "mind": [],
+  "mine": [],
+  "minute": [],
+  "mist": [],
+  "mixed": [],
+  "money": [
+    {
+      "def": "mani",
+      "ver": false
+    }
+  ],
+  "monkey": [],
+  "month": [
+    {
+      "def": "tenpo mun",
+      "ver": false
+    }
+  ],
+  "moon": [],
+  "morning": [],
+  "mother": [],
+  "motion": [],
+  "mountain": [
+    {
+      "def": "nena",
+      "ver": false
+    }
+  ],
+  "mouth": [],
+  "move": [],
+  "much": [
+    {
+      "def": "mute",
+      "ver": false
+    }
+  ],
+  "muscle": [
+    {
+      "def": "ijo wawa",
+      "ver": false
+    }
+  ],
+  "music": [],
+  "nail": [],
+  "name": [],
+  "narrow": [],
+  "nation": [],
+  "natural": [],
+  "near": [
+    {
+      "def": "kama lon tenpo lili",
+      "ver": false
+    }
+  ],
+  "necessary": [],
+  "neck": [
+    {
+      "def": "palisa jan",
+      "ver": false
+    }
+  ],
+  "need": [],
+  "needle": [],
+  "nerve": [],
+  "net": [],
+  "new": [],
+  "news": [],
+  "night": [
+    {
+      "def": "tenpo pimeja ",
+      "ver": false
+    },
+    {
+      "def": "tenpo mun",
+      "ver": false
+    }
+  ],
+  "no": [
+    {
+      "def": "ala",
+      "ver": false
+    }
+  ],
+  "noise": [],
+  "normal": [],
+  "north": [],
+  "nose": [],
+  "not": [
+    {
+      "def": "ala",
+      "ver": false
+    }
+  ],
+  "note": [
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "now": [
+    {
+      "def": "tenpo ni",
+      "ver": false
+    }
+  ],
+  "number": [
+    {
+      "def": "nanpa",
+      "ver": false
+    }
+  ],
+  "nut": [],
+  "observation": [],
+  "of": [
+    {
+      "def": "pi",
+      "ver": false
+    }
+  ],
+  "off": [
+    {
+      "def": "open ala",
+      "ver": false
+    }
+  ],
+  "offer": [
+    {
+      "def": "pana",
+      "ver": false
+    }
+  ],
+  "office": [],
+  "oil": [],
+  "old": [],
+  "on": [
+    {
+      "def": "open",
+      "ver": false
+    }
+  ],
+  "only": [
+    {
+      "def": "taso",
+      "ver": false
+    }
+  ],
+  "open": [],
+  "operation": [],
+  "opinion": [],
+  "opposite": [],
+  "or": [
+    {
+      "def": "anu",
+      "ver": false
+    }
+  ],
+  "orange": [],
+  "order": [],
+  "organization": [
+    {
+      "def": "kulupu",
+      "ver": false
+    }
+  ],
+  "ornament": [],
+  "other": [
+    {
+      "def": "namako",
+      "ver": false
+    }
+  ],
+  "out": [],
+  "oven": [],
+  "over": [],
+  "owner": [],
+  "page": [],
+  "pain": [],
+  "paint": [],
+  "paper": [
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "parallel": [],
+  "parcel": [],
+  "part": [
+    {
+      "def": "wan pi",
+      "ver": false
+    },
+    {
+      "def": "ijo",
+      "ver": false
+    }
+  ],
+  "past": [],
+  "paste": [],
+  "payment": [],
+  "peace": [],
+  "pen": [],
+  "pencil": [
+    {
+      "def": "ilo sitelen",
+      "ver": false
+    }
+  ],
+  "person": [
+    {
+      "def": "jan",
+      "ver": false
+    }
+  ],
+  "physical": [],
+  "picture": [],
+  "pig": [],
+  "pin": [],
+  "pipe": [],
+  "place": [],
+  "plane": [],
+  "plant": [
+    {
+      "def": "kasi",
+      "ver": false
+    }
+  ],
+  "plate": [
+    {
+      "def": "selo moku",
+      "ver": false
+    }
+  ],
+  "play": [],
+  "please": [],
+  "pleasure": [],
+  "plough": [],
+  "pocket": [
+    {
+      "def": "poki lili",
+      "ver": false
+    }
+  ],
+  "point": [],
+  "poison": [
+    {
+      "def": "jaki moli",
+      "ver": false
+    },
+    {
+      "def": "telo jaki",
+      "ver": false
+    },
+    {
+      "def": "telo moli",
+      "ver": false
+    }
+  ],
+  "polish": [],
+  "political": [
+    {
+      "def": "pi ijo lawa",
+      "ver": false
+    }
+  ],
+  "poor": [],
+  "porter": [],
+  "position": [],
+  "possible": [],
+  "pot": [],
+  "potato": [],
+  "powder": [
+    {
+      "def": "ko",
+      "ver": false
+    }
+  ],
+  "power": [],
+  "present": [],
+  "price": [],
+  "print": [],
+  "prison": [],
+  "private": [],
+  "probable": [],
+  "process": [],
+  "produce": [],
+  "profit": [],
+  "property": [],
+  "prose": [],
+  "protest": [],
+  "public": [],
+  "pull": [],
+  "pump": [
+    {
+      "def": "ilo pana",
+      "ver": false
+    }
+  ],
+  "punishment": [],
+  "purpose": [],
+  "push": [],
+  "put": [],
+  "quality": [],
+  "question": [],
+  "quick": [],
+  "quiet": [],
+  "quite": [],
+  "rail": [],
+  "rain": [],
+  "range": [],
+  "rat": [],
+  "rate": [],
+  "ray": [],
+  "reaction": [],
+  "reading": [],
+  "ready": [],
+  "reason": [],
+  "receipt": [
+    {
+      "def": "lipu esun",
+      "ver": false
+    },
+    {
+      "def": "lipu mani",
+      "ver": false
+    }
+  ],
+  "record": [],
+  "red": [],
+  "regret": [
+    {
+      "def": "pilin ike",
+      "ver": false
+    },
+    {
+      "def": "pilin pi wile ante",
+      "ver": false
+    }
+  ],
+  "regular": [],
+  "relation": [],
+  "religion": [],
+  "representative": [],
+  "request": [],
+  "respect": [],
+  "responsible": [],
+  "rest": [],
+  "reward": [],
+  "rhythm": [
+    {
+      "def": "kalama tenpo",
+      "ver": false
+    }
+  ],
+  "rice": [],
+  "right": [],
+  "ring": [],
+  "river": [],
+  "road": [
+    {
+      "def": "nasin",
+      "ver": false
+    }
+  ],
+  "rod": [],
+  "roll": [],
+  "roof": [],
+  "room": [],
+  "root": [],
+  "rough": [],
+  "round": [],
+  "rub": [
+    {
+      "def": "luka e",
+      "ver": false
+    }
+  ],
+  "rule": [
+    {
+      "def": "lawa",
+      "ver": false
+    }
+  ],
+  "run": [],
+  "sad": [],
+  "safe": [],
+  "sail": [
+    {
+      "def": "tawa kepeken tomo telo",
+      "ver": false
+    },
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "salt": [],
+  "same": [],
+  "sand": [],
+  "say": [],
+  "scale": [],
+  "school": [],
+  "science": [],
+  "scissors": [],
+  "screw": [],
+  "sea": [],
+  "seat": [],
+  "second": [],
+  "secret": [],
+  "secretary": [
+    {
+      "def": "jan sona",
+      "ver": false
+    }
+  ],
+  "see": [],
+  "seed": [],
+  "seem": [
+    {
+      "def": "context",
+      "ver": false
+    }
+  ],
+  "selection": [],
+  "self": [],
+  "send": [],
+  "sense": [],
+  "separate": [],
+  "serious": [],
+  "servant": [],
+  "sex": [],
+  "shade": [],
+  "shake": [],
+  "shame": [],
+  "sharp": [],
+  "sheep": [
+    {
+      "def": "soweli len",
+      "ver": false
+    }
+  ],
+  "shelf": [],
+  "ship": [
+    {
+      "def": "tomo tawa telo",
+      "ver": false
+    }
+  ],
+  "shirt": [],
+  "shock": [],
+  "shoe": [
+    {
+      "def": "poki noka",
+      "ver": false
+    }
+  ],
+  "short": [],
+  "shut": [],
+  "side": [],
+  "sign": [
+    {
+      "def": "fugg idk",
+      "ver": false
+    }
+  ],
+  "silk": [
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "silver": [],
+  "simple": [],
+  "sister": [],
+  "size": [],
+  "skin": [],
+  "skirt": [
+    {
+      "def": "len anpa",
+      "ver": false
+    }
+  ],
+  "sky": [],
+  "sleep": [],
+  "slip": [],
+  "slope": [],
+  "slow": [
+    {
+      "def": "kepeken tenpo suli",
+      "ver": false
+    }
+  ],
+  "small": [],
+  "smash": [],
+  "smell": [],
+  "smile": [
+    {
+      "def": "sinpin pona",
+      "ver": false
+    },
+    {
+      "def": "sinpin pi pilin pona",
+      "ver": false
+    },
+    {
+      "def": "uta pona",
+      "ver": false
+    }
+  ],
+  "smoke": [
+    {
+      "def": "kon",
+      "ver": false
+    }
+  ],
+  "smooth": [],
+  "snake": [],
+  "sneeze": [],
+  "snow": [
+    {
+      "def": "ko lete",
+      "ver": false
+    }
+  ],
+  "so": [
+    {
+      "def": "mute",
+      "ver": false
+    }
+  ],
+  "soap": [],
+  "society": [
+    {
+      "def": "kulupu",
+      "ver": false
+    },
+    {
+      "def": "kulupu lawa",
+      "ver": false
+    }
+  ],
+  "sock": [],
+  "soft": [],
+  "solid": [],
+  "some": [],
+  "son": [],
+  "song": [],
+  "sort": [],
+  "sound": [],
+  "soup": [],
+  "south": [],
+  "space": [
+    {
+      "def": "sewi",
+      "ver": false
+    }
+  ],
+  "spade": [],
+  "special": [
+    {
+      "def": "jan Kawa",
+      "ver": false
+    }
+  ],
+  "sponge": [],
+  "spoon": [
+    {
+      "def": "ijo moku",
+      "ver": false
+    },
+    {
+      "def": "ijo moku sike",
+      "ver": false
+    }
+  ],
+  "spring": [],
+  "square": [],
+  "stage": [
+    {
+      "def": "TESA I DID A BOO BOO",
+      "ver": false
+    }
+  ],
+  "stamp": [],
+  "star": [],
+  "start": [],
+  "statement": [],
+  "station": [
+    {
+      "def": "tomo",
+      "ver": false
+    },
+    {
+      "def": "ma tawa",
+      "ver": false
+    }
+  ],
+  "steam": [],
+  "steel": [],
+  "stem": [],
+  "step": [
+    {
+      "def": "tawa noka",
+      "ver": false
+    }
+  ],
+  "stick": [],
+  "sticky": [
+    {
+      "def": "ko",
+      "ver": false
+    }
+  ],
+  "stiff": [
+    {
+      "def": "kiwen",
+      "ver": false
+    }
+  ],
+  "still": [],
+  "stitch": [],
+  "stocking": [
+    {
+      "def": "len noka",
+      "ver": false
+    }
+  ],
+  "stomach": [],
+  "stone": [],
+  "stop": [],
+  "store": [],
+  "story": [],
+  "straight": [],
+  "strange": [],
+  "street": [
+    {
+      "def": "nasin",
+      "ver": false
+    }
+  ],
+  "stretch": [
+    {
+      "def": "tawa",
+      "ver": false
+    }
+  ],
+  "strong": [],
+  "structure": [],
+  "substance": [
+    {
+      "def": "ijo",
+      "ver": false
+    }
+  ],
+  "such": [
+    {
+      "def": "a",
+      "ver": false
+    }
+  ],
+  "sudden": [],
+  "sugar": [],
+  "suggestion": [],
+  "summer": [],
+  "sun": [
+    {
+      "def": "suno",
+      "ver": false
+    }
+  ],
+  "support": [],
+  "surprise": [],
+  "sweet": [],
+  "swim": [
+    {
+      "def": "tawa tomo",
+      "ver": false
+    },
+    {
+      "def": "kala",
+      "ver": false
+    }
+  ],
+  "system": [],
+  "table": [],
+  "tail": [
+    {
+      "def": "li pona tawa ",
+      "ver": false
+    },
+    {
+      "def": "olin",
+      "ver": false
+    }
+  ],
+  "take": [],
+  "talk": [],
+  "tall": [],
+  "taste": [],
+  "tax": [],
+  "teaching": [
+    {
+      "def": "pana sona",
+      "ver": false
+    }
+  ],
+  "tendency": [],
+  "test": [
+    {
+      "def": "pali nanpa wan",
+      "ver": false
+    },
+    {
+      "def": "kepeken nanpa wan",
+      "ver": false
+    }
+  ],
+  "than": [],
+  "that": [
+    {
+      "def": "no",
+      "ver": false
+    }
+  ],
+  "the": [],
+  "then": [],
+  "theory": [],
+  "there": [],
+  "thick": [],
+  "thin": [
+    {
+      "def": "lili",
+      "ver": false
+    },
+    {
+      "def": "linja",
+      "ver": false
+    }
+  ],
+  "thing": [],
+  "this": [],
+  "though": [],
+  "thought": [],
+  "thread": [
+    {
+      "def": "linja",
+      "ver": false
+    }
+  ],
+  "throat": [
+    {
+      "def": "ilo kalama",
+      "ver": false
+    }
+  ],
+  "through": [],
+  "thumb": [],
+  "thunder": [],
+  "ticket": [
+    {
+      "def": "lipu",
+      "ver": false
+    }
+  ],
+  "tight": [],
+  "till": [],
+  "time": [],
+  "tin": [],
+  "tired": [],
+  "to": [],
+  "toe": [
+    {
+      "def": "wan noka",
+      "ver": false
+    }
+  ],
+  "together": [],
+  "tomorrow": [
+    {
+      "def": "tenpo suno kama",
+      "ver": false
+    }
+  ],
+  "tongue": [],
+  "tooth": [],
+  "top": [],
+  "touch": [],
+  "town": [],
+  "trade": [
+    {
+      "def": "pana",
+      "ver": false
+    }
+  ],
+  "train": [],
+  "transport": [],
+  "tray": [],
+  "tree": [
+    {
+      "def": "kasi",
+      "ver": false
+    }
+  ],
+  "trick": [],
+  "trouble": [],
+  "trousers": [],
+  "true": [],
+  "turn": [],
+  "twist": [],
+  "umbrella": [],
+  "under": [],
+  "unit": [],
+  "up": [],
+  "use": [],
+  "value": [],
+  "verse": [],
+  "very": [],
+  "vessel": [
+    {
+      "def": "poki",
+      "ver": false
+    }
+  ],
+  "view": [],
+  "violent": [],
+  "voice": [],
+  "waiting": [],
+  "walk": [],
+  "wall": [],
+  "war": [],
+  "warm": [],
+  "wash": [],
+  "waste": [],
+  "watch": [
+    {
+      "def": "lukin",
+      "ver": false
+    },
+    {
+      "def": "ilo tenpo",
+      "ver": false
+    }
+  ],
+  "water": [
+    {
+      "def": "telo",
+      "ver": false
+    }
+  ],
+  "wave": [],
+  "wax": [],
+  "way": [],
+  "weather": [],
+  "week": [
+    {
+      "def": "tenpo esun",
+      "ver": false
+    }
+  ],
+  "weight": [],
+  "well": [],
+  "west": [],
+  "wet": [],
+  "wheel": [
+    {
+      "def": "sike tawa",
+      "ver": false
+    }
+  ],
+  "when": [],
+  "where": [
+    {
+      "def": "lon seme",
+      "ver": false
+    },
+    {
+      "def": "ma seme",
+      "ver": false
+    }
+  ],
+  "while": [],
+  "whip": [],
+  "whistle": [],
+  "white": [],
+  "who": [
+    {
+      "def": "jan seme",
+      "ver": false
+    }
+  ],
+  "why": [],
+  "wide": [],
+  "will": [],
+  "wind": [],
+  "window": [
+    {
+      "def": "lupa",
+      "ver": false
+    }
+  ],
+  "wine": [],
+  "wing": [],
+  "winter": [],
+  "wire": [],
+  "wise": [],
+  "with": [],
+  "woman": [],
+  "wood": [],
+  "wool": [],
+  "word": [],
+  "work": [],
+  "worm": [
+    {
+      "def": "pipi linja",
+      "ver": false
+    }
+  ],
+  "wound": [],
+  "writing": [],
+  "wrong": [],
+  "year": [
+    {
+      "def": "tenpo sike",
+      "ver": false
+    }
+  ],
+  "yellow": [],
+  "yes": [],
+  "yesterday": [
+    {
+      "def": "tenpo suno pini",
+      "ver": false
+    }
+  ],
+  "you": [],
+  "young": []
+}
