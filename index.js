@@ -71,12 +71,21 @@ function puPrint(w) {
       out += `\n• ${defs[i]}`;  // add each pu definition to output
     }
   } else {  // if the word isn't pu
-  out += `\nnimi '${w}' li pu ala. :x:`;
+    out += `\nnimi '${w}' li pu ala. :x:`;
+  }
+  return out
 }
-return out
+
+function bePrint(w) {
+  out = "";
+  out += `__**${w}**__`; // add word to output
+  if(beDict[w].length == 0) out += `\n(Nothing yet; make a suggestion with __${pfx}c__ontribute)`
+  for(d in beDict[w]) out += `\n• ${beDict[w][d].def}`
+  return out
 }
 
 async function contribute(msg, count) {
+  let out;
   words = Object.keys(beDict)   // array of strings (basic english words)
   filter = m => (m.author.id === msg.author.id)
 
@@ -216,6 +225,7 @@ async function parseCmd(msg) {
     out += `\n**•   __${pfx}l__anguage** [*language*] - Show language list, or show words derived from a language`;
     out += `\n**•   ${pfx}ping** - Determine bot connection speed`;
     out += `\n**•   ${pfx}pu** *[words...]* - Show only pu word list and definitions`;
+    out += `\n**•   __${pfx}q__uiz** *[number]* - Test your pu vocabulary knowledge!`;
     out += `\n**•   __${pfx}s__itelen** *sentence* - Write in sitelen pona`;
     out += '\n\nFor more information, visit <https://github.com/Anthrakia/ilo-wawa>'
     msg.channel.send(out) // send command list to channel
@@ -223,8 +233,8 @@ async function parseCmd(msg) {
 
   // allow users to contribute to translations
   if (command === 'c' || command === 'contribute') {
-    if(args.length == 0) {  // if no args, do it once.
-      count = 1
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
     } else {
       if(isNaN(args[0])) {
         msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
@@ -280,6 +290,7 @@ async function parseCmd(msg) {
     let query = ""; // initialize query regex string
     let puFound = false;
     let exFound = false;
+    let beFound = false;
 
     for(i=0; i<args.length; i++) query += args[i] + " "; // combine args into query
     query = query.slice(0,-1); // trim final space and create regex
@@ -304,7 +315,22 @@ async function parseCmd(msg) {
         break
       }
     });
-    if(!puFound && !exFound) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+    if(!puFound && !exFound) {
+      beWords = Object.keys(beDict)
+      for(w = 0; w < beWords.length; w++) { // for each word in the basic english dictionary
+        word = beWords[w]
+        if(word.includes(query)) {
+          if(!beFound) {
+            if(puFound || exFound) out += `\n════════════════════════\n`
+            out += `The following is from the community phrasebook:`
+            beFound = true;
+          }
+          out += `\n────────────────────────\n` + bePrint(word);  // add the word to the output
+        }
+      }
+    }
+    if(!puFound && !exFound && !beFound) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+
     if(out.length < 2000) msg.channel.send(out) // send data dump to channel
     else msg.channel.send(`Too many results! Please try being more specific.`);
   } // end find
@@ -405,6 +431,49 @@ async function parseCmd(msg) {
     }
     msg.channel.send(out) // send data dump to channel
   } // end pu
+
+  // quiz user with random words
+  if (command === 'q' || command === 'quiz') {
+    let count;
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
+    } else {
+      if(isNaN(args[0])) {
+        msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+        return
+      } else count = Math.floor(Number(args[0]));
+    }
+    if(count>25) {
+      msg.channel.send('nanpa sina li suli mute kin! o toki e nanpa lili.')
+      return
+    }
+    if(count<1) {
+      msg.channel.send('nanpa sina li lili mute kin! o toki e nanpa suli.')
+      return
+    }
+    msg.channel.send(`Let's play a game! I'll say a toki pona word (pu only) and give a five-second countdown for you to guess the answer before I show the definition.\n\nReady?`)
+    for(i=0; i<count; i++) {
+      await sleep(2000);
+
+      words = Object.keys(puDict)
+      w = words[Math.floor(Math.random()*words.length)] // string, randomly selected word
+
+      out1 = `What does "${w}" mean?"\n\n`
+      const m = await msg.channel.send(out1).then(async m => {
+        for(j=5; j>=0; j--) {
+          await sleep(1000)
+          if(j != 0) m.edit(out1 + j)
+          else m.edit('────────────────────────')
+        }
+      });
+      await sleep(100)
+      msg.channel.send(puPrint(w))
+    }
+
+    await sleep(1000)
+    msg.channel.send('sina kama sona la mi wile a! :heart:')
+  } // end quiz
+
 
   // convert to sitelen pona
   if (command === 's' || command === 'sitelen') {
