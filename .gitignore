@@ -1,3 +1,4 @@
 # ignore the configuration file with secure information
 config.json
+janLawa.json
 **/node_modules
