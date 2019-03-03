@@ -16,9 +16,12 @@ const langs = require('./lib/langs.json');      // list of source languages
 var beDict = require('./lib/BasicEnglish.json');// original word list pulled from wikipedia
 var janLawa = require('./janLawa.json');        // list of approved user ids
 
-// utility functions for filesystem read/write, also sleep
+// utility functions for filesystem read/write and encrypting user ids
 const fs = require('fs');
 const tempy = require('tempy');
+const CryptoJS = require('crypto-js');
+
+// sleep function because this isn't part of javascript natively for some reason?
 sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // for forking GIMP child process
@@ -108,7 +111,11 @@ async function contribute(msg, count) {
     for(d in defs) {
       out += ` li '${defs[d]}'`
       console.log(`${m.author.tag} said that '${w}' is "${defs[d]}"`)
-      beDict[w].push({def:defs[d],ver:false}) // add each def into dict, but unverified
+      beDict[w].push({
+        def:defs[d],
+        usr:CryptoJS.HmacSHA1(m.author.id, config.token).toString(),
+        ver:false
+      }) // add each def into dict, but unverified
     }
     out += '.\n\n'
   })
@@ -135,11 +142,13 @@ async function contribute(msg, count) {
 async function verify(msg, count) {
   words = Object.keys(beDict)   // array of strings (basic english words)
   filter = m => (m.author.id === msg.author.id)
+  cryptid = CryptoJS.HmacSHA1(msg.author.id, config.token).toString()
   let w, out;
 
   for(word in words) {
     for(d in Object.entries(beDict[words[word]])) {
-      if(beDict[words[word]][d].ver == false) {
+      if(beDict[words[word]][d].ver == false &&
+         beDict[words[word]][d].usr != cryptid) {
         w = words[word];
       }
     }
@@ -168,9 +177,10 @@ async function verify(msg, count) {
         beDict[w].splice(beDict[w].indexOf(beDict[w][d]), 1)
         out = 'mi weka e sona pakala. 👋'
       } else if(m.content.match(/^(pona|y)/i) || m.content.includes("👍")) {
-        beDict[w][d].ver = m.author.id
+        // mark the definition as verified by the user's encrypted id
+        beDict[w][d].ver = cryptid
         out = ':white_check_mark: sona li pona. ni li awen. 👍'
-      } else {
+      } else {  // otherwise, bad input
         out = `:x: ni li pakala... o toki e '👍/👎', 'y/n', 'pona/ala'. tenpo ni la mi pini.`
       }
     }
@@ -451,23 +461,37 @@ async function parseCmd(msg) {
       msg.channel.send('nanpa sina li lili mute kin! o toki e nanpa suli.')
       return
     }
+
+    filter = m => (m.author.bot == false)
     msg.channel.send(`Let's play a game! I'll say a toki pona word (pu only) and give a five-second countdown for you to guess the answer before I show the definition.\n\nReady?`)
     for(i=0; i<count; i++) {
       await sleep(2000);
 
       words = Object.keys(puDict)
-      w = words[Math.floor(Math.random()*words.length)] // string, randomly selected word
+      w = words[Math.floor(Math.random()*words.length)]
+      answer = puPrint(w) + '\n────────────────────────' // buffer answer for searching and subsequent printing
+
+      let collector = msg.channel.createMessageCollector(filter, {
+        time: 6500,
+        errors: ['time']
+      })
+
+      collector.on('collect', (m, collector) => {
+        if(answer.includes(m.content.toLowerCase())) {
+          m.react("👍").catch(err => console.log(err));
+        }
+      })
 
       out1 = `What does "${w}" mean?"\n\n`
       const m = await msg.channel.send(out1).then(async m => {
         for(j=5; j>=0; j--) {
           await sleep(1000)
           if(j != 0) m.edit(out1 + j)
-          else m.edit('────────────────────────')
+          else m.edit(out1 + '────────────────────────')
         }
       });
       await sleep(100)
-      msg.channel.send(puPrint(w))
+      msg.channel.send(answer)
     }
 
     await sleep(1000)
@@ -499,8 +523,8 @@ async function parseCmd(msg) {
       msg.channel.send('sina ken ala lawa.')
       return
     }
-    if(args.length == 0) {  // if no args, do it once.
-      count = 1
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
     } else {
       if(isNaN(args[0])) {
         if(msg.mentions.users.length != 0) {
