@@ -8,15 +8,21 @@
 const config = require("./config.json");
 const pfx = config.prefix;
 
-// dictionary of toki pona words, and list of source languages
+// toki pona language resources
 const puDict = require('./lib/puDict.json');  // just pu words and definitions
 const exDict = require('./lib/exDict.json');  // extra nonpu definitions and words
-const langs = require('./lib/langs.json');  // list of derivations
 var puWordList, exWordList;
+const langs = require('./lib/langs.json');      // list of source languages
+var beDict = require('./lib/BasicEnglish.json');// original word list pulled from wikipedia
+var janLawa = require('./janLawa.json');        // list of approved user ids
 
-// utility functions for filesystem read/write
+// utility functions for filesystem read/write and encrypting user ids
 const fs = require('fs');
 const tempy = require('tempy');
+const CryptoJS = require('crypto-js');
+
+// sleep function because this isn't part of javascript natively for some reason?
+sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // for forking GIMP child process
 const exec = require('child_process').exec;
@@ -53,9 +59,9 @@ function dictPrint(w) {
   else if (w in exDict) out += `\n*etymology:* ${exDict[w].etym}`;
 
   if (!(w in puDict || w in exDict)) {  // if the word isn't found at all
-    out += `\nlipu la nimi "${w}" li lon ala. :book::mag::shrug:`;
-  }
-  return out
+  out += `\nlipu la nimi "${w}" li lon ala. :book::mag::shrug:`;
+}
+return out
 }
 
 function puPrint(w) {
@@ -72,6 +78,132 @@ function puPrint(w) {
   }
   return out
 }
+
+function bePrint(w) {
+  out = "";
+  out += `__**${w}**__`; // add word to output
+  if(beDict[w].length == 0) out += `\n(Nothing yet; make a suggestion with __${pfx}c__ontribute)`
+  for(d in beDict[w]) out += `\n• ${beDict[w][d].def}`
+  return out
+}
+
+async function contribute(msg, count) {
+  let out;
+  words = Object.keys(beDict)   // array of strings (basic english words)
+  filter = m => (m.author.id === msg.author.id)
+
+  do {  // only find undefined words
+    w = words[Math.floor(Math.random()*words.length)] // string, selected word
+  } while(beDict[w].length != 0) // do until finding a word with no definitions
+  console.log("word is", w)
+  msg.channel.send(`nimi "${w}" li seme?`)
+  await sleep(100);
+
+  let collector = msg.channel.createMessageCollector(filter, {
+    maxMatches:1,
+    time: 60000,
+    errors: ['time']
+  })
+
+  collector.on('collect', (m, collector) => {
+    let defs = m.content.match(/[^\r\n]+/g) // split by newline
+    out = `pona. :ok_hand: nimi "${w}"` // reset output buffer to send confirmation later
+    for(d in defs) {
+      out += ` li '${defs[d]}'`
+      console.log(`${m.author.tag} said that '${w}' is "${defs[d]}"`)
+      beDict[w].push({
+        def:defs[d],
+        usr:CryptoJS.HmacSHA1(m.author.id, config.token).toString(),
+        ver:false
+      }) // add each def into dict, but unverified
+    }
+    out += '.\n\n'
+  })
+
+  collector.on('end', async () => {
+    if(out) {
+      msg.channel.send(out)
+      await sleep(100);
+      if(--count) contribute(msg, count) // recurse until the count is empty
+      else {
+        msg.channel.send('pona mute a! pali lili la luka mute li pali! :+1:')
+        console.log('Contribution ended. Saving Basic English dictionary to file...')
+        fs.writeFile("./lib/BasicEnglish.json", JSON.stringify(beDict, null, 2), (err) => console.log(err));
+      }
+    } else {
+      msg.channel.send('tenpo suli la sina toki e ala.')
+      console.log('Contribution ended. Saving Basic English dictionary to file...')
+      fs.writeFile("./lib/BasicEnglish.json", JSON.stringify(beDict, null, 2), (err) => console.log(err));
+    }
+  })
+
+} // end contribute()
+
+async function verify(msg, count) {
+  words = Object.keys(beDict)   // array of strings (basic english words)
+  filter = m => (m.author.id === msg.author.id)
+  cryptid = CryptoJS.HmacSHA1(msg.author.id, config.token).toString()
+  let w, out;
+
+  for(word in words) {
+    for(d in Object.entries(beDict[words[word]])) {
+      if(beDict[words[word]][d].ver == false &&
+         beDict[words[word]][d].usr != cryptid) {
+        w = words[word];
+      }
+    }
+    if(w != null) break
+  }
+
+  if(w == null) return
+  else console.log("Checking the word", w)
+
+  var d;
+  for(def in beDict[w]) if(beDict[w][def].ver == false) d = def
+
+  msg.channel.send(`nimi "${w}" la, '${beDict[w][d].def}' li pona ala pona? 👍/👎?`)
+  await sleep(100);
+
+  let collector = msg.channel.createMessageCollector(filter, {
+    maxMatches:1,
+    time: 60000,
+    errors: ['time']
+  })
+
+  collector.on('collect', (m, collector) => {
+    if(m.content.match(/^(y|n|pona|ala)/i) || m.content.includes("👍") || m.content.includes("👎")) {
+      if(m.content.match(/^(n|(pona )?ala|ike)/i) || m.content.includes("👎")) {
+        // remove the definition
+        beDict[w].splice(beDict[w].indexOf(beDict[w][d]), 1)
+        out = 'mi weka e sona pakala. 👋'
+      } else if(m.content.match(/^(pona|y)/i) || m.content.includes("👍")) {
+        // mark the definition as verified by the user's encrypted id
+        beDict[w][d].ver = cryptid
+        out = ':white_check_mark: sona li pona. ni li awen. 👍'
+      } else {  // otherwise, bad input
+        out = `:x: ni li pakala... o toki e '👍/👎', 'y/n', 'pona/ala'. tenpo ni la mi pini.`
+      }
+    }
+  })
+
+  collector.on('end', async () => {
+    if(out) {
+      msg.channel.send(out)
+      await sleep(100);
+      if(--count) verify(msg, count) // recurse until the count is empty
+      else {
+        msg.channel.send('pona mute a! pali lili la luka mute li pali! :+1:')
+        console.log('Verification ended. Saving Basic English dictionary to file...')
+        fs.writeFile("./lib/BasicEnglish.json", JSON.stringify(beDict, null, 2), (err) => console.log(err));
+      }
+    } else {
+      msg.channel.send('tenpo suli la sina toki e ala.')
+      console.log('Verification ended. Saving Basic English dictionary to file...')
+      fs.writeFile("./lib/BasicEnglish.json", JSON.stringify(beDict, null, 2), (err) => console.log(err));
+    }
+  })
+
+} // end verify
 
 async function parseCmd(msg) {
   // first split the arguments, remove prefix
@@ -95,6 +227,7 @@ async function parseCmd(msg) {
     out += '\n║ nimi ilo pi ilo wawa ║';
     out += '\n╚══════════════════════╝```';
     out += `\nCommand abbreviations are __u__nderlined.\n`;
+    out += `\n**•   __${pfx}c__ontribute** *[number]* - Help build the phrase book`;
     out += `\n**•   __${pfx}d__efine** *[words...]* - Define toki pona words, or show word list`;
     out += `\n**•   __${pfx}e__tymology** *word [words...]* - Show etymologies of words`;
     out += `\n**•   __${pfx}f__ind** *word or phrase* - Search dictionary definitions`;
@@ -102,10 +235,33 @@ async function parseCmd(msg) {
     out += `\n**•   __${pfx}l__anguage** [*language*] - Show language list, or show words derived from a language`;
     out += `\n**•   ${pfx}ping** - Determine bot connection speed`;
     out += `\n**•   ${pfx}pu** *[words...]* - Show only pu word list and definitions`;
+    out += `\n**•   __${pfx}q__uiz** *[number]* - Test your pu vocabulary knowledge!`;
     out += `\n**•   __${pfx}s__itelen** *sentence* - Write in sitelen pona`;
     out += '\n\nFor more information, visit <https://github.com/Anthrakia/ilo-wawa>'
     msg.channel.send(out) // send command list to channel
   } // end help
+
+  // allow users to contribute to translations
+  if (command === 'c' || command === 'contribute') {
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
+    } else {
+      if(isNaN(args[0])) {
+        msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+        return
+      } else count = Math.floor(Number(args[0]));
+    }
+    if(count>25) {
+      msg.channel.send('nanpa sina li suli mute kin! o toki e nanpa lili.')
+      return
+    }
+    if(count<1) {
+      msg.channel.send('nanpa sina li lili mute kin! o toki e nanpa suli.')
+      return
+    }
+    msg.channel.send(`a pona! mi kama pana e nimi Inli ${count} tawa sina. nimi la sina ken pana e sona mute tawa linja mute.`)
+    contribute(msg, count);
+  } // end contribute
 
   // define each argument if toki pona word
   if (command === 'd' || command === 'def' || command === 'define') {
@@ -144,6 +300,7 @@ async function parseCmd(msg) {
     let query = ""; // initialize query regex string
     let puFound = false;
     let exFound = false;
+    let beFound = false;
 
     for(i=0; i<args.length; i++) query += args[i] + " "; // combine args into query
     query = query.slice(0,-1); // trim final space and create regex
@@ -168,7 +325,22 @@ async function parseCmd(msg) {
         break
       }
     });
-    if(!puFound && !exFound) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+    if(!puFound && !exFound) {
+      beWords = Object.keys(beDict)
+      for(w = 0; w < beWords.length; w++) { // for each word in the basic english dictionary
+        word = beWords[w]
+        if(word.includes(query)) {
+          if(!beFound) {
+            if(puFound || exFound) out += `\n════════════════════════\n`
+            out += `The following is from the community phrasebook:`
+            beFound = true;
+          }
+          out += `\n────────────────────────\n` + bePrint(word);  // add the word to the output
+        }
+      }
+    }
+    if(!puFound && !exFound && !beFound) out += `\nThe query "${query}" returned no results. :book::mag::shrug:`;
+
     if(out.length < 2000) msg.channel.send(out) // send data dump to channel
     else msg.channel.send(`Too many results! Please try being more specific.`);
   } // end find
@@ -270,6 +442,63 @@ async function parseCmd(msg) {
     msg.channel.send(out) // send data dump to channel
   } // end pu
 
+  // quiz user with random words
+  if (command === 'q' || command === 'quiz') {
+    let count;
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
+    } else {
+      if(isNaN(args[0])) {
+        msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+        return
+      } else count = Math.floor(Number(args[0]));
+    }
+    if(count>25) {
+      msg.channel.send('nanpa sina li suli mute kin! o toki e nanpa lili.')
+      return
+    }
+    if(count<1) {
+      msg.channel.send('nanpa sina li lili mute kin! o toki e nanpa suli.')
+      return
+    }
+
+    filter = m => (m.author.bot == false)
+    msg.channel.send(`Let's play a game! I'll say a toki pona word (pu only) and give a five-second countdown for you to guess the answer before I show the definition.\n\nReady?`)
+    for(i=0; i<count; i++) {
+      await sleep(2000);
+
+      words = Object.keys(puDict)
+      w = words[Math.floor(Math.random()*words.length)]
+      answer = puPrint(w) + '\n────────────────────────' // buffer answer for searching and subsequent printing
+
+      let collector = msg.channel.createMessageCollector(filter, {
+        time: 6500,
+        errors: ['time']
+      })
+
+      collector.on('collect', (m, collector) => {
+        if(answer.includes(m.content.toLowerCase())) {
+          m.react("👍").catch(err => console.log(err));
+        }
+      })
+
+      out1 = `What does "${w}" mean?"\n\n`
+      const m = await msg.channel.send(out1).then(async m => {
+        for(j=5; j>=0; j--) {
+          await sleep(1000)
+          if(j != 0) m.edit(out1 + j)
+          else m.edit(out1 + '────────────────────────')
+        }
+      });
+      await sleep(100)
+      msg.channel.send(answer)
+    }
+
+    await sleep(1000)
+    msg.channel.send('sina kama sona la mi wile a! :heart:')
+  } // end quiz
+
+
   // convert to sitelen pona
   if (command === 's' || command === 'sitelen') {
     if(args.length == 0) {
@@ -287,7 +516,44 @@ async function parseCmd(msg) {
     outSitelen = sitelen(msg, sentence);
 
   } // end sitelen
-}
+
+  // allow authorized users to verify translations
+  if (command === 'v' || command === 'verify') {
+    if(!(janLawa.includes(msg.author.id))) { // only allow authorized users
+      msg.channel.send('sina ken ala lawa.')
+      return
+    }
+    if(args.length == 0) {  // if no args, do it five times.
+      count = 5
+    } else {
+      if(isNaN(args[0])) {
+        if(msg.mentions.users.length != 0) {
+          msg.mentions.users.forEach( (user) => {
+            console.log(`${msg.author.tag} has verified ${user.tag}`)
+            msg.channel.send(`tenpo ni la ${user.tag} li ken lawa.`)
+            if(!janLawa.includes(user.id)) janLawa.push(user.id)
+          })
+          fs.writeFile("./janLawa.json", JSON.stringify(janLawa, null, 2), (err) => console.log(err));
+        } else {
+          msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+          return
+        }
+      } else count = Math.floor(Number(args[0]));
+    }
+    if(count>25) {
+      msg.channel.send('nanpa sina li suli mute kin! o toki e nanpa lili.')
+      return
+    }
+    if(count<1) {
+      msg.channel.send('nanpa sina li lili mute kin! o toki e nanpa suli.')
+      return
+    }
+    console.log(msg.author.tag, 'verifying....')
+    msg.channel.send(`pona, mi pana e sona kulupu tawa sina...`)
+    verify(msg, count);
+  } // end verify
+
+} // end parseCmd
 
 async function sitelen(msg, sentence) {
   // create temporary .png file and fix backslashes for feckin Winderps
@@ -405,8 +671,8 @@ function initWordList() {
 
 function pangram() {
   letterList = ['a','e','i','j','k',
-                'l','m','n','o','p',
-                's','t','u','w'];
+  'l','m','n','o','p',
+  's','t','u','w'];
   puList = [];
   for(w in puDict) puList.push(w);
   puList.sort(function(a, b) {
