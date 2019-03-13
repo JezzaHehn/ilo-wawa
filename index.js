@@ -227,10 +227,10 @@ async function parseCmd(msg) {
     out += '\n║ nimi ilo pi ilo wawa ║';
     out += '\n╚══════════════════════╝```';
     out += `\nCommand abbreviations are __u__nderlined.\n`;
-    out += `\n**•   __${pfx}c__ontribute** *[number]* - Help build the phrase book`;
+    out += `\n**•   __${pfx}c__ontribute** *[number]* - Help build the phrasebook`;
     out += `\n**•   __${pfx}d__efine** *[words...]* - Define toki pona words, or show word list`;
     out += `\n**•   __${pfx}e__tymology** *word [words...]* - Show etymologies of words`;
-    out += `\n**•   __${pfx}f__ind** *word or phrase* - Search dictionary definitions`;
+    out += `\n**•   __${pfx}f__ind** *word or phrase* - Search the dictionary and phrasebook`;
     out += `\n**•   __${pfx}h__elp, ${pfx}?** - Print this command list`;
     out += `\n**•   __${pfx}l__anguage** [*language*] - Show language list, or show words derived from a language`;
     out += `\n**•   ${pfx}ping** - Determine bot connection speed`;
@@ -247,7 +247,7 @@ async function parseCmd(msg) {
       count = 5
     } else {
       if(isNaN(args[0])) {
-        msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+        msg.channel.send('ona li nanpa ala... o toki e nanpa anu ala.')
         return
       } else count = Math.floor(Number(args[0]));
     }
@@ -449,7 +449,7 @@ async function parseCmd(msg) {
       count = 5
     } else {
       if(isNaN(args[0])) {
-        msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+        msg.channel.send('ona li nanpa ala... o toki e nanpa anu ala.')
         return
       } else count = Math.floor(Number(args[0]));
     }
@@ -513,7 +513,7 @@ async function parseCmd(msg) {
       sentence += args[i];    // add word
     }
 
-    outSitelen = sitelen(msg, sentence);
+    sitelen(msg, sentence);
 
   } // end sitelen
 
@@ -534,8 +534,9 @@ async function parseCmd(msg) {
             if(!janLawa.includes(user.id)) janLawa.push(user.id)
           })
           fs.writeFile("./janLawa.json", JSON.stringify(janLawa, null, 2), (err) => console.log(err));
+          return
         } else {
-          msg.channel.send('ona li nanpa ala... o toki e nanpa anu e ala.')
+          msg.channel.send('ona li nanpa ala... o toki e nanpa anu ala.')
           return
         }
       } else count = Math.floor(Number(args[0]));
@@ -557,7 +558,8 @@ async function parseCmd(msg) {
 
 async function sitelen(msg, sentence) {
   // create temporary .png file and fix backslashes for feckin Winderps
-  let file = escape(tempy.file({extension:".png"}));
+  let fn = msg.id + ".png";
+  let file = escape(tempy.file({name:fn}));
   file = unescape(file.replace(/%5C/g, "%5C%5C"));
   console.log(`Temp file: ${file}`);
 
@@ -580,9 +582,7 @@ async function sitelen(msg, sentence) {
 
     // reply with attachment of image
     msg.channel.stopTyping();
-    outMsg = new Discord.Attachment(file);
-    msg.channel.send(`${msg.author} li toki e ni:`, outMsg);
-    return outMsg;
+    msg.channel.send(`${msg.author} li toki e ni:`, new Discord.Attachment(file));
   });
 }
 
@@ -602,8 +602,18 @@ async function parseChange(oldMsg, newMsg) {
       sentence += args[i];    // add word
     }
 
-    if(args.length == 0) return null // if it's not empty...
-    else return sitelen(newMsg, sentence);
+    if(args.length == 0) return null // if it's empty, do nothing.
+    else { // if it's not empty, delete the old version and make a new one.
+      oldMsg.channel.fetchMessages()
+        .then(messages =>
+          messages.filter(m =>
+            m.attachments.filter(a => console.log(a.filename))//a => a.filename.includes(oldMsg.id.toString()))
+          ).delete(5000)
+        ).catch(console.error);
+
+      await sleep(500);
+      sitelen(newMsg, sentence);
+    }
   } // end sitelen
 
 } // end parseChange
@@ -739,7 +749,7 @@ client.on('message', async msg => { // for every message, do the following:
 client.on('messageUpdate', async (oldMsg, newMsg) => {
   if(!oldMsg.author.bot) { // ignore bots
     if(newMsg.content.startsWith(pfx)) { // listen for command prefix
-      outMsg = parseChange(oldMsg, newMsg);
+      parseChange(oldMsg, newMsg);
     }
   }
 }); // end messageUpdate
