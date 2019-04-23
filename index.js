@@ -606,9 +606,9 @@ async function parseChange(oldMsg, newMsg) {
     else { // if it's not empty, delete the old version and make a new one.
       oldMsg.channel.fetchMessages()
         .then(messages =>
-          messages.filter(m =>
-            m.attachments.filter(a => console.log(a.filename))//a => a.filename.includes(oldMsg.id.toString()))
-          ).delete(5000)
+          messages.filter(m => {
+            m.attachments.filter(a => a.filename.includes(oldMsg.id.toString()))
+          }).delete(5000)
         ).catch(console.error);
 
       await sleep(500);

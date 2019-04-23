@@ -1,0 +1,5 @@
+{
+  "gimppath" : "INSERT GIMP HOME DIRECTORY HERE",
+  "prefix"   : "+",
+  "token"    : "INSERT TOKEN HERE"
+}
