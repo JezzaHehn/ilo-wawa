@@ -14,7 +14,8 @@ const exDict = require('./lib/exDict.json');  // extra nonpu definitions and wor
 var puWordList, exWordList;
 const langs = require('./lib/langs.json');      // list of source languages
 var beDict = require('./lib/BasicEnglish.json');// original word list pulled from wikipedia
-var janLawa = require('./janLawa.json');        // list of approved user ids
+var janLawa = require('./janLawa.json');        // list of approved user ids for verification
+var janSitelen = require('./janSitelen.json');      // list of sitelen usage counts by user
 
 // utility functions for filesystem read/write and encrypting user ids
 const fs = require('fs');
@@ -505,6 +506,17 @@ async function parseCmd(msg) {
       msg.channel.send('o toki e nimi. mi ken sitelen pona.');
       return
     }
+
+    // check that user isn't overusing this function, to keep from overloading cloud service
+    authorHash = CryptoJS.HmacSHA1(msg.author.id, config.token).toString();
+    if(janSitelen.keys().contains(authorHash)) {
+      if(janSitelen[authorHash] <= 100) janSitelen[authorHash] += 1
+      else {
+        msg.channel.send('Sorry, but I only have enough resources for 100 per user per month.');
+        return
+      }
+    }
+    else janSitelen[authorHash] = 1
 
     // combine argument list with spaces to reconstruct sentence
     let sentence = "";
