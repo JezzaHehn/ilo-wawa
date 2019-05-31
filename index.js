@@ -238,7 +238,7 @@ async function parseCmd(msg) {
     out += `\n**•   ${pfx}pu** *[words...]* - Show only pu word list and definitions`;
     out += `\n**•   __${pfx}q__uiz** *[number]* - Test your pu vocabulary knowledge!`;
     out += `\n**•   __${pfx}s__itelen** *sentence* - Write in sitelen pona`;
-    out += '\n\nFor more information, visit <https://github.com/Anthrakia/ilo-wawa>'
+    out += '\n\nFor more information, visit <https://github.com/JezzaHehn/ilo-wawa>'
     msg.channel.send(out) // send command list to channel
   } // end help
 
