@@ -326,6 +326,16 @@
         "pu": true,
         "rep": false
     },
+    "kon": {
+        "defs": [
+            "air, breath",
+            "essence, spirit",
+            "hidden reality, unseen agent"
+        ],
+        "etym": "Mandarin 空氣 kōngqì 'air, atmosphere, ambience, opinion'",
+        "pu": true,
+        "rep": false
+    },
     "kule": {
         "defs": [
             "*of or relating to the LGBT+ community*",
