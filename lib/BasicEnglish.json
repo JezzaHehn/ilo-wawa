@@ -1856,7 +1856,23 @@
       "ver": false
     }
   ],
-  "produce": [],
+  "produce": [
+    {
+      "def": "pali",
+      "usr": "ac798dc0af512fb4fccd0670db10355f696a45d6",
+      "ver": false
+    },
+    {
+      "def": "pana",
+      "usr": "ac798dc0af512fb4fccd0670db10355f696a45d6",
+      "ver": false
+    },
+    {
+      "def": "kasi moku",
+      "usr": "ac798dc0af512fb4fccd0670db10355f696a45d6",
+      "ver": false
+    }
+  ],
   "profit": [],
   "property": [],
   "prose": [],
@@ -2717,7 +2733,13 @@
       "ver": false
     }
   ],
-  "voice": [],
+  "voice": [
+    {
+      "def": "kalama toki",
+      "usr": "ac798dc0af512fb4fccd0670db10355f696a45d6",
+      "ver": false
+    }
+  ],
   "waiting": [],
   "walk": [],
   "wall": [],
