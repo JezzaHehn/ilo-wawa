@@ -202,6 +202,14 @@
         "pu": false,
         "rep": false
     },
+    "pupu": {
+        "defs": [
+            "feces, urine, vomit"
+        ],
+        "etym": "English *poop*",
+        "pu": false,
+        "rep": "generally, *pupu* or *pupu ko* is feces, *pupu telo* is urine, and *pupu uta* is vomit"
+    },
     "sin": {
         "defs": [
             "again",
