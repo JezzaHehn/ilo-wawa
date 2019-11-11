@@ -36,7 +36,7 @@ function dictPrint(w) {
   out = "";
   out += `__**${w}**__`; // add word to output
   if (w in puDict) {  // if the word is pu
-    out += `\nnimi '${w}' li pu. :white_check_mark:`;
+    out += `\nnimi '${w}' li lon lipu Pu. :white_check_mark:`;
     let defs = puDict[w].defs;
     for(let i=0; i<defs.length; i++) {
       out += `\n• ${defs[i]}`;  // add each pu definition to output
@@ -45,8 +45,8 @@ function dictPrint(w) {
   }
   if (w in exDict) {  // if there is extra information
     if (!exDict[w].pu) {
-      if (exDict[w].community) out += `\nnimi '${w}' li sin pi jan Sonja ala, li pu ala. :x:`;
-      else out += `\nnimi '${w}' li pu ala. :x:`;
+      if (exDict[w].community) out += `\nnimi '${w}' li sin pi jan Sonja ala, li lon ala lipu Pu. :x:`;
+      else out += `\nnimi '${w}' li lon ala lipu Pu. :x:`;
     }
     let defs = exDict[w].defs;
     for(let i=0; i<defs.length; i++) {
@@ -69,13 +69,13 @@ function puPrint(w) {
   out = "";
   out += `__**${w}**__`; // add word to output
   if (w in puDict) {  // if the word is pu
-    out += `\nnimi '${w}' li pu. :white_check_mark:`;
+    out += `\nnimi '${w}' li lon lipu Pu. :white_check_mark:`;
     let defs = puDict[w].defs;
     for(let i=0; i<defs.length; i++) {
       out += `\n• ${defs[i]}`;  // add each pu definition to output
     }
   } else {  // if the word isn't pu
-    out += `\nnimi '${w}' li pu ala. :x:`;
+    out += `\nnimi '${w}' li lon ala lipu Pu. :x:`;
   }
   return out
 }
